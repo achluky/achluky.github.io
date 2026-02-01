@@ -1,8 +1,71 @@
-title: Research and Development Application
-description: achluky.github.io
+title: Ahmad Luky - Academic Portfolio
+description: Personal academic website showcasing research, publications, and teaching
+url: "https://achluky.github.io"
+baseurl: ""
 google_analytics: 
-show_downloads: true
-theme: jekyll-theme-minimal
+show_downloads: false
+theme: 
 
-gems:
-  - jekyll-mentions
+# Author information
+author:
+  name: Ahmad Luky
+  email: luky.lucky24@gmail.com
+  bio: Academic Researcher & Educator
+  location: Indonesia
+  social:
+    email: luky.lucky24@gmail.com
+    twitter: ahmadluky
+    linkedin: ahmadluky
+    orcid: 
+    google_scholar: 
+
+# SEO settings
+lang: en_US
+twitter:
+  username: ahmadluky
+  card: summary_large_image
+
+# Jekyll settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+# Exclude files
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Academic specific settings
+academic:
+  research_interests:
+    - "Quantitative Analysis"
+    - "Educational Technology" 
+    - "Data Science"
+    - "Collaborative Research"
+  
+  current_position: "Academic Researcher"
+  institution: "Your Institution"
+  
+# Navigation
+navigation:
+  - title: Home
+    url: "#home"
+  - title: About
+    url: "#about"
+  - title: Research
+    url: "#research"
+  - title: Publications
+    url: "#publications"
+  - title: Teaching
+    url: "#teaching"
+  - title: Contact
+    url: "#contact"
