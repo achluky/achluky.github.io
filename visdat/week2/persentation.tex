@@ -26,9 +26,243 @@
 \frame{\titlepage}
 
 
-\begin{frame}{Pendahuluan}
+% ------------------------------
+
+\begin{frame}{Gambaran Umum Abstraksi Data}
+    \begin{block}{Abstraksi Data}
+        Tujuan utama abstraksi data adalah menerjemahkan data dari \textbf{bahasa domain} (spesifik bidang) menjadi \textbf{bahasa visualisasi} (abstrak).
+    \end{block}
+    \textbf{Komponen Utama dalam The Big Picture:}
+    \begin{itemize}
+        \item \textbf{What Data?}: Mengidentifikasi tipe dataset (Table, Network, Field, atau Geometry).
+        \item \textbf{Data Types}: Membedakan elemen dasar seperti \textit{Items, Attributes, Links, Positions,} dan \textit{Grids}.
+        \item \textbf{Attribute Types}: Menentukan apakah data bersifat \textit{Categorical} atau \textit{Ordered} (Ordinal/Quantitative).
+        \item \textbf{Data Semantics}: Memahami arti dari data dalam konteks dunia nyata untuk menentukan metode pemrosesan yang tepat.
+    \end{itemize}
 \end{frame}
 
+
+% ------------------------------
+
+\begin{frame}{Mengapa Perlu Abstraksi Data?}
+    \begin{itemize}
+        \item \textbf{Bahasa Universal:} Abstraksi memungkinkan kita menggunakan kosakata yang sama untuk data yang berasal dari domain berbeda (misal: "nasabah" dalam bank dan "pasien" dalam RS keduanya diabstraksikan sebagai \textit{Items})[cite: 5].
+        \item \textbf{Tujuan:} Menentukan tipe data apa yang tersedia agar kita bisa memilih teknik visualisasi yang paling efektif[cite: 5].
+        \item \textbf{Pertanyaan Kunci:} "Data apa saja yang sedang dilihat pengguna?" (\textit{What?}) [cite: 5].
+    \end{itemize}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Mengapa Semantik dan Tipe Data Penting?}
+    \begin{block}{Why Data Semantics and Types Matter?}
+        Memahami \textbf{Semantik} (Makna) dan \textbf{Tipe} (Struktur) adalah langkah awal untuk menghindari kesalahan interpretasi visual.
+    \end{block}
+
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \textbf{Semantik (Makna):}
+            \begin{itemize}
+                \item Memberikan konteks pada angka mentah.
+                \item Menentukan peran item (siapa subjeknya, apa atributnya).
+                \item Contoh: Angka 10 bisa berarti \$10 (Uang) atau Kelas 10 (Tingkat).
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{Tipe (Struktur Matematika):}
+            \begin{itemize}
+                \item \textbf{Categorical:} Hanya label (Apple, Orange).
+                \item \textbf{Ordered:} Memiliki urutan.
+                \begin{itemize}
+                    \item \textit{Ordinal:} Urutan logis (S, M, L).
+                    \item \textit{Quantitative:} Angka bisa dihitung (10kg, 20kg).
+                \end{itemize}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ---------------------------------------
+
+\begin{frame}{Matching Principles: Ekspresifitas \& Efektivitas}
+    \begin{itemize}
+        \item \textbf{Prinsip Ekspresifitas:} Jangan gunakan tanda visual yang menyiratkan hubungan yang tidak ada pada data. 
+        \begin{itemize}
+            \item \textit{Kesalahan umum:} Menggunakan garis penghubung pada data kategori (menyiratkan tren berkelanjutan).
+        \end{itemize}
+        \item \textbf{Prinsip Efektivitas:} Gunakan saluran visual yang paling akurat untuk tipe data yang paling penting.
+        \begin{itemize}
+            \item Data kuantitatif paling efektif menggunakan \textbf{Posisi} pada sumbu yang sama.
+            \item Data kategori paling efektif menggunakan \textbf{Warna (Hue)} atau \textbf{Bentuk}.
+        \end{itemize}
+    \end{itemize}
+    \vfill
+    \begin{center}
+        \textit{"The visual system has its own rules; the data must be mapped to respect those rules."}
+    \end{center}
+\end{frame}
+
+
+% -------------------------------
+
+\begin{frame}{Dataset Types and Attributes}
+    Tabel ini merangkum apa saja yang menjadi elemen pembentuk dalam setiap tipe dataset utama:    
+    \vspace{0.4cm}
+    \centering
+    \small
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        \textbf{Dataset Type} & \textbf{Data Types} & \textbf{Availability} \\ \midrule
+        Tables       & Items, Attributes           & Umum digunakan        \\
+        Networks     & Items (Nodes), Links, Attributes & Relasional / Pohon   \\
+        Fields       & Grids, Attributes           & Spasial / Kontinu     \\
+        Geometry     & Items, Positions            & Bentuk Fisik 2D/3D    \\ \bottomrule
+    \end{tabular}
+\end{frame}
+
+%------------------------
+
+\begin{frame}{Data Types}
+    \begin{itemize}
+        \item \textbf{Items:} Entitas individu yang sedang diamati (Baris dalam tabel, Node dalam grafik).
+        \item \textbf{Attributes:} Karakteristik atau fitur dari sebuah item (misal: Nama, Umur, Gaji).
+        \item \textbf{Links:} Hubungan antar items, terutama pada data bertipe \textit{network}.
+        \item \textbf{Positions:} Data lokasi secara spasial (garis lintang/bujur)[cite: 6].
+    \end{itemize}
+\end{frame}
+
+
+%-----------------------
+
+\begin{frame}{Tipe-Tipe Dataset (Dataset Types)}
+    Munzner membagi dataset menjadi empat tipe utama:
+    \begin{enumerate}
+        \item \textbf{Tables:} Data dalam bentuk baris (\textit{items}) dan kolom (\textit{attributes}).
+        \item \textbf{Networks \& Trees:} Data yang memiliki hubungan (\textit{links}) antar titik (\textit{nodes}).
+        \item \textbf{Fields:} Data yang kontinu di ruang fisik (sering ditemukan dalam data spasial atau medis seperti MRI).
+        \item \textbf{Geometry:} Informasi tentang bentuk fisik 2D atau 3D.
+    \end{enumerate}
+\end{frame}
+
+%----------------------
+
+\begin{frame}{Attribute Types}
+    Atribut adalah variabel atau kolom data yang diukur. Munzner membaginya berdasarkan sifat matematikanya:
+    
+    \vspace{0.4cm}
+    \begin{enumerate}
+        \item \textbf{Categorical (Nominal):} Tidak ada urutan. Hanya untuk identitas/label.
+        \item \textbf{Ordered:} Memiliki urutan yang jelas.
+        \begin{itemize}
+            \item \textbf{Ordinal:} Ada urutan, tapi jarak antar nilai tidak terukur secara pasti.
+            \item \textbf{Quantitative:} Nilai numerik di mana operasi aritmatika bersifat valid.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+% ----------------------------------------- 
+\begin{frame}{Tabel: Perbandingan dan Contoh Atribut}
+    \centering
+    \small
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        \textbf{Tipe Atribut} & \textbf{Operasi Logis} & \textbf{Contoh Konkret} \\ \midrule
+        \textbf{Categorical} & $=$ (Sama/Beda) & Nama Kota, Jenis Sensor, Warna Mata \\ \addlinespace
+        \textbf{Ordinal}     & $<, >$ (Urutan) & Peringkat (1, 2, 3), Ukuran (S, M, L) \\ \addlinespace
+        \textbf{Quantitative}& $+,-,\times,/$ (Jarak) & Suhu, Pendapatan, Jumlah Populasi \\ \bottomrule
+    \end{tabular}
+    
+    \vspace{0.6cm}
+    \begin{block}{Penting bagi Desainer:}
+        Jangan menggunakan saluran visual yang memiliki urutan (seperti gradasi gelap ke terang) untuk data \textbf{Categorical}, karena otak manusia akan secara otomatis mencari "siapa yang lebih tinggi" padahal data tersebut setara.
+    \end{block}
+\end{frame}
+
+% ----------------------------------------- ---
+\begin{frame}{Latihan: Identifikasi Tipe Atribut}
+    Tentukan tipe atribut untuk data berikut:
+    \vfill
+    \begin{itemize}
+        \item \textbf{Nomor HP:} \dots (Tips: Apakah nomor HP bisa dijumlahkan?)
+        \item \textbf{Tingkat Kepedasan (Level 1-5):} \dots
+        \item \textbf{IPK Mahasiswa:} \dots
+        \item \textbf{Provinsi asal:} \dots
+    \end{itemize}
+    \vfill
+    \textit{*Nomor HP adalah \textbf{Categorical} (Nominal) meskipun berupa angka, karena ia hanya label unik.}
+\end{frame}
+
+
+% ----------------------------------------- ---
+\begin{frame}{Ordering Direction}
+    Untuk atribut yang terurut (\textit{Ordered}), kita harus memahami ke mana arah data tersebut mengalir:
+    
+    \vspace{0.4cm}
+    \begin{enumerate}
+        \item \textbf{Sequential:} Data mengalir dari satu ujung ke ujung lainnya (rendah ke tinggi).
+        \item \textbf{Diverging:} Data memiliki titik tengah yang krusial dan mengalir ke dua arah berlawanan.
+        \item \textbf{Cyclic:} Data yang nilainya berulang kembali ke titik awal.
+    \end{enumerate}
+\end{frame}
+
+% ----------------------------------------- ---
+\begin{frame}{Detail Karakteristik dan Contoh}
+    \small
+    \begin{itemize}
+        \item \textbf{Sequential (Satu Arah)}
+            \begin{itemize}
+                \item Contoh: Jumlah penduduk, tinggi badan, harga saham.
+                \item \textit{Warna:} Satu warna dengan intensitas berbeda (Light to Dark).
+            \end{itemize}
+        \item \textbf{Diverging (Dua Arah)}
+            \begin{itemize}
+                \item Contoh: Perubahan suhu, laba vs rugi, korelasi (-1 hingga +1).
+                \item \textit{Warna:} Dua warna berbeda (misal: Merah - Putih - Biru).
+            \end{itemize}
+        \item \textbf{Cyclic (Berulang)}
+            \begin{itemize}
+                \item Contoh: Jam, bulan, arah angin (derajat).
+                \item \textit{Warna:} Palet melingkar (\textit{Circular color maps}).
+            \end{itemize}
+    \end{itemize}
+    
+    \begin{block}{Pesan Utama}
+        Menggunakan palet \textbf{Sequential} untuk data \textbf{Diverging} akan menyembunyikan titik tengah yang penting (misal: kita tidak bisa melihat dengan cepat mana perusahaan yang rugi).
+    \end{block}
+\end{frame}
+
+% ----------------------------------------- ---
+\begin{frame}{Mengapa Ini Penting?}
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \textbf{Kesalahan Umum:} \\
+            Menggunakan warna pelangi (\textit{Rainbow colormaps}) untuk data sequential. 
+            \vspace{0.2cm}
+            \\ \textit{Akibatnya:} Otak sulit menentukan mana yang lebih besar/kecil karena tidak ada urutan intensitas warna yang alami.
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \textbf{Solusi Terbaik:} \\
+            Sesuaikan palet dengan struktur data. \\
+            $\rightarrow$ Diverging = Menonjolkan ekstrem. \\
+            $\rightarrow$ Sequential = Menonjolkan gradasi.
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ----------------------------------------- ---
+\begin{frame}{Ringkasan Abstraksi Data}
+    \begin{block}{Pesan Utama}
+        Sebelum membuat grafik, kita harus mengidentifikasi:
+        \begin{enumerate}
+            \item Apa tipe dataset-nya? (Table, Network, dsb)
+            \item Apa saja atributnya? (Categorical vs Ordered)
+            \item Bagaimana karakteristik datanya? (Sequential vs Diverging)
+        \end{enumerate}
+    \end{block}
+    \vfill
+    Pilihan visualisasi yang salah (misal: menggunakan gradasi warna untuk data kategori) akan membingungkan audiens secara kognitif.
+\end{frame}
 
 
 \end{document}
