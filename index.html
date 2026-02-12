@@ -17,285 +17,227 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            background: #f5f5f5;
             min-height: 100vh;
-            padding: 20px 0;
+            padding: 20px;
+            margin: 0;
         }
         
         .main-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        
-        .profile-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.5rem;
-        }
-        
-        .section-card {
             background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-            border: none;
-            transition: transform 0.2s ease;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .section-card:hover {
-            transform: translateY(-2px);
+        .header-section {
+            text-align: center;
+            padding: 30px 20px 20px;
+            background: #667eea;
+            color: white;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .profile-title {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        
+        .nav-simple {
+            background: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+        }
+        
+        .nav-simple .nav-link {
+            color: #495057;
+            padding: 8px 15px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 0.9rem;
+        }
+        
+        .nav-simple .nav-link:hover,
+        .nav-simple .nav-link.active {
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .content-section {
+            padding: 25px;
         }
         
         .section-title {
-            color: #667eea;
-            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.2rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
         }
         
-        .skill-badge {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+        .info-card {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .skill-tag {
+            background: #667eea;
             color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
+            padding: 4px 10px;
+            border-radius: 15px;
             font-size: 0.85rem;
-            margin: 5px;
+            margin: 3px;
             display: inline-block;
         }
         
-        .contact-item {
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
         }
         
-        .contact-item:last-child {
+        .contact-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .contact-list li:last-child {
             border-bottom: none;
         }
         
-        .contact-item a {
-            color: #333;
+        .contact-list a {
+            color: #495057;
             text-decoration: none;
         }
         
-        .contact-item a:hover {
+        .contact-list a:hover {
             color: #667eea;
         }
         
-        .btn-custom {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border: none;
-            border-radius: 25px;
-            color: white;
-            padding: 8px 20px;
-            margin: 5px;
-            transition: all 0.3s ease;
+        .social-links {
+            margin-top: 15px;
         }
         
-        .btn-custom:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        .social-links a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
             color: white;
+            margin: 0 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
         }
         
-        .research-item, .course-item, .pub-item {
-            padding: 12px;
-            margin-bottom: 10px;
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
             background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #667eea;
-        }
-        
-        .text-muted {
-            color: #6c757d !important;
+            color: #6c757d;
+            font-size: 0.85rem;
+            border-radius: 0 0 8px 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
+        <div class="main-card">
+            
+            <!-- Header Section -->
+            <div class="header-section">
+                <h1 class="profile-name">Ahmad Luky Ramdani</h1>
+                <p class="profile-title">Academic Researcher & Educator</p>
                 
-                <!-- Navigation Menu -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-white rounded-3 mb-4 shadow-sm">
-                    <div class="container-fluid">
-                        <a class="navbar-brand text-primary fw-bold" href="index.html">
-                            <i class="fas fa-graduation-cap"></i> @ahmadluky
-                        </a>
-                        
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav ms-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="index.html">
-                                        <i class="fas fa-home"></i> Home
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="about.html">
-                                        <i class="fas fa-user"></i> About Me
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="research.html">
-                                        <i class="fas fa-microscope"></i> Research
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="publications.html">
-                                        <i class="fas fa-book"></i> Publications
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="teaching.html">
-                                        <i class="fas fa-chalkboard-teacher"></i> Teaching
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="team.html">
-                                        <i class="fas fa-users"></i> Tim
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                
-                <div class="main-card">
-                    
-                    <!-- Profile Header -->
-                    <div class="profile-header">
-                        <div class="profile-img">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <h1 class="mb-2">Ahmad Luky</h1>
-                        <p class="mb-1">Academic Researcher & Educator</p>
-                        <p class="mb-0 opacity-75">Passionate about research, writing, and teaching</p>
-                    </div>
-                    
-                    <!-- Main Content -->
-                    <div class="p-4">
-                        <div class="row">
-                            
-                            <!-- Left Column -->
-                            <div class="col-lg-8">
-                                
-                                <!-- About Section -->
-                                <div class="section-card">
-                                    <h3 class="section-title">
-                                        <i class="fas fa-user"></i> About Me
-                                    </h3>
-                                    <p class="text-muted mb-3">
-                                        Academic researcher focused on bridging theory and practice. Dedicated to knowledge discovery, education, and mentoring future scholars in various research methodologies.
-                                    </p>
-                                    <div>
-                                        <span class="skill-badge"><i class="fas fa-search"></i> Research</span>
-                                        <span class="skill-badge"><i class="fas fa-pen"></i> Writing</span>
-                                        <span class="skill-badge"><i class="fas fa-chart-bar"></i> Analysis</span>
-                                        <span class="skill-badge"><i class="fas fa-chalkboard-teacher"></i> Teaching</span>
-                                    </div>
-                                </div>
-                                
-                                
-                            </div>
-                            
-                            <!-- Right Column -->
-                            <div class="col-lg-4">
-                                
-                                <!-- Contact -->
-                                <div class="section-card">
-                                    <h3 class="section-title">
-                                        <i class="fas fa-envelope"></i> Contact
-                                    </h3>
-                                    
-                                    <div class="contact-item">
-                                        <i class="fas fa-paper-plane text-primary"></i>
-                                        <a href="mailto:luky.lucky24@gmail.com" class="ms-2">
-                                            ahmadluky@sd.itera.ac.id
-                                        </a>
-                                    </div>
-                                    
-                                    <div class="contact-item">
-                                        <i class="fab fa-instagram text-info"></i>
-                                        <a href="#" class="ms-2" target="_blank">ahmadluky</a>
-                                    </div>
-                                    
-                                    <div class="contact-item">
-                                        <i class="fab fa-github text-dark"></i>
-                                        <a href="#" class="ms-2" target="_blank">GitHub</a>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                    <!-- Footer -->
-                    <div class="text-center p-3 bg-light">
-                        <p class="mb-0 text-muted">
-                            <i class="fas fa-heart text-danger"></i> Made with passion for academic excellence
-                        </p>
-                        <small class="text-muted">&copy; 2026 Ahmad Luky. All rights reserved.</small>
-                    </div>
-                    
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="mailto:ahmadluky@sd.itera.ac.id" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" title="Instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" title="GitHub" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
                 </div>
             </div>
+            
+            <!-- Navigation -->
+            <nav class="nav-simple">
+                <a class="nav-link active" href="index.html">Home</a>
+                <a class="nav-link" href="teaching.html">Teaching</a>
+            </nav>
+            
+            <!-- Main Content -->
+            <div class="content-section">
+                <div class="row">
+                    <!-- About -->
+                    <div class="col-md-7 mb-3">
+                        <h2 class="section-title">About Me</h2>
+                        <div class="info-card">
+                            <p class="mb-2" style="font-size: 0.9rem;">
+                                Academic researcher focused on bridging theory and practice. Dedicated to knowledge discovery, 
+                                education, and mentoring future scholars in various research methodologies.
+                            </p>
+                            <div>
+                                <span class="skill-tag">Research</span>
+                                <span class="skill-tag">Writing</span>
+                                <span class="skill-tag">Data Analysis</span>
+                                <span class="skill-tag">Teaching</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact -->
+                    <div class="col-md-5 mb-3">
+                        <h2 class="section-title">Contact</h2>
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fas fa-envelope me-2" style="color: #667eea;"></i>
+                                <a href="mailto:ahmadluky@sd.itera.ac.id">ahmadluky@sd.itera.ac.id</a>
+                            </li>
+                            <li>
+                                <i class="fab fa-instagram me-2" style="color: #667eea;"></i>
+                                <a href="#">@ahmadluky</a>
+                            </li>
+                            <li>
+                                <i class="fab fa-github me-2" style="color: #667eea;"></i>
+                                <a href="#">GitHub Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <p class="mb-0">&copy; 2026 Ahmad Luky. All rights reserved.</p>
+            </div>
+            
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        function downloadCV() {
-            alert('CV download feature will be implemented soon!');
-        }
-        
-        // Simple fade in animation
-        window.addEventListener('load', function() {
-            const cards = document.querySelectorAll('.section-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    card.style.transition = 'all 0.5s ease';
-                    
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 100);
-                }, index * 100);
-            });
-        });
-    </script>
 </body>
 </html>

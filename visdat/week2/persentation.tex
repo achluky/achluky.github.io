@@ -82,6 +82,60 @@
         \end{column}
     \end{columns}
 \end{frame}
+% ---------------------------------------
+
+\begin{frame}{Data Mentah vs. Semantik (Makna)}
+    \begin{center}
+        \textit{"Raw data has no meaning without semantics."}
+    \end{center}
+
+    \begin{itemize}
+        \item \textbf{Data Mentah:} 14, 2.6, 30, 30, 15, 100001.
+        \item \textbf{Pertanyaan Abstraksi:} 
+        \begin{itemize}
+            \item Apakah ini \textit{Geometry} (titik 3D)?
+            \item Apakah ini \textit{Network} (node, links, dan weights)?
+        \end{itemize}
+        \item Pentingnya Konteks untuk Menentukan Tipe Atribut
+        \begin{itemize}
+        	 \item \textbf{Interpretasi 1 (Spasial):} Jika angka-angka tersebut adalah "dua titik di ruang 3D", maka kita mengabstraksikannya sebagai Geometry atau Position.
+
+			 \item \textbf{Interpretasi 2 (Network):} Jika ada angka yang berarti "links" dan "weight", maka kita mengabstraksikannya sebagai Network/Trees dengan atribut pada links.
+
+			 \item \textbf{Interpretasi 3 (Kategorikal):} Kata "Basil" bisa berarti nama tanaman (kategori makanan), nama lokasi (kategori spasial), atau nama tikus lab (kategori subjek).
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Data Mentah vs. Semantik (Makna)}
+
+    \begin{itemize}
+        \item \textbf{Pentingnya Metadata:} Kita membutuhkan informasi tambahan untuk menentukan apakah sebuah atribut bersifat \textbf{Categorical}, \textbf{Ordinal}, atau \textbf{Quantitative}.
+        
+    \end{itemize}
+    
+    \begin{block}{Kesimpulan untuk Desainer}
+        Visualisasi data bukan sekadar memetakan angka ke gambar, tetapi memetakan \textbf{makna (semantics)} ke dalam \textbf{abstraksi data} yang tepat.
+    \end{block}
+    
+\end{frame}
+
+% ---------------------------------------
+
+\begin{frame}{Data Mentah vs. Semantik (Makna)}
+    \begin{itemize}
+    	\item Tujuan utama dari Abstraksi Data dalam desain visualisasi adalah menghilangkan ambiguitas
+        \item Sebelum membuat grafik, desainer harus menerjemahkan data mentah tersebut menjadi:
+            \begin{itemize}
+			\item Items: Apa entitas utamanya? (Misal: Tikus lab bernama Basil).
+			\item Attributes: Apa yang diukur? (Misal: 7 kali percobaan, S sebagai arah selatan).
+		 	\end{itemize}
+
+		\item Tanpa mengetahui apakah "S" berarti "South" (Arah/Siklik) atau "Small" (Ordinal), desainer tidak bisa memilih saluran visual (visual channels) yang tepat.
+    \end{itemize}
+\end{frame}
 
 % ---------------------------------------
 
@@ -104,6 +158,7 @@
 \end{frame}
 
 
+
 % -------------------------------
 
 \begin{frame}{Dataset Types and Attributes}
@@ -124,6 +179,7 @@
 %------------------------
 
 \begin{frame}{Data Types}
+    Munzner membagi Data Type menjadi empat tipe utama:
     \begin{itemize}
         \item \textbf{Items:} Entitas individu yang sedang diamati (Baris dalam tabel, Node dalam grafik).
         \item \textbf{Attributes:} Karakteristik atau fitur dari sebuah item (misal: Nama, Umur, Gaji).
@@ -131,7 +187,6 @@
         \item \textbf{Positions:} Data lokasi secara spasial (garis lintang/bujur)[cite: 6].
     \end{itemize}
 \end{frame}
-
 
 %-----------------------
 
@@ -143,6 +198,93 @@
         \item \textbf{Fields:} Data yang kontinu di ruang fisik (sering ditemukan dalam data spasial atau medis seperti MRI).
         \item \textbf{Geometry:} Informasi tentang bentuk fisik 2D atau 3D.
     \end{enumerate}
+\end{frame}
+
+%-----------------------
+
+
+\begin{frame}{Dataset Types - Date Type}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\textwidth, height=0.4\textheight, keepaspectratio]{tabel.png}    
+        \label{fig:framework}
+    \end{figure}
+
+    \vspace{-0.2cm}
+    \begin{itemize}
+        \item \textbf{Flat Table:} Struktur paling umum dalam visualisasi.
+        \item \textbf{Items:} Baris mewakili individu/entitas (Contoh: Orang).
+        \item \textbf{Attributes:} Kolom mewakili dimensi data (Contoh: Umur, Nama).
+    \end{itemize}    
+\end{frame}
+
+\begin{frame}{Dataset Types - Date Type}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth, height=0.7\textheight, keepaspectratio]{tabel-md.png}    
+        \label{fig:framework}
+    \end{figure}
+
+    \vspace{-0.2cm}
+    \begin{itemize}
+        \item \textbf{Multidimentional Table:} Struktur paling umum dalam visualisasi.
+        \item Indexing based on multiple keys seperti: jenis kelamin, tahun
+    \end{itemize}    
+\end{frame}
+
+
+\begin{frame}{Dataset Types - Date Type}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth, height=0.7\textheight, keepaspectratio]{network.png}    
+        \label{fig:framework}
+    \end{figure}
+
+    \vspace{-0.2cm}
+    \begin{itemize}
+        \item \textbf{Networks:} Fokus pada hubungan (\textit{links}) antar entitas (\textit{nodes}).
+        \item \textbf{Trees:} Jaringan hierarkis tanpa siklus. often have roots and are directed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Dataset Types: Fields}
+    \begin{block}{Definisi}
+        Dataset \textbf{Fields} mengandung atribut yang diukur secara kontinu di seluruh ruang fisik.
+    \end{block}
+
+    \textbf{Elemen Pembentuk:}
+    \begin{itemize}
+        \item \textbf{Grids:} Strategi pengambilan sampel untuk membagi ruang kontinu menjadi titik-titik diskrit.
+        \item \textbf{Position:} Lokasi spasial tempat data diambil (misal: koordinat x, y, z).
+        \item \textbf{Attributes:} Nilai kuantitatif yang diukur pada posisi tersebut (misal: suhu, tekanan).
+    \end{itemize}
+
+    \begin{exampleblock}{Contoh Fields}
+        Data Medis (MRI/CT-Scan), Data Meteorologi (Peta Tekanan Udara), dan Simulasi Aliran Fluida (Aerodinamika).
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Fields vs Tables}
+    \centering
+    \begin{tabular}{@{}ll@{}}
+        \toprule
+        \textbf{Tables} & \textbf{Fields} \\ \midrule
+        Data bersifat diskrit/independen & Data bersifat kontinu \\
+        Baris adalah item & Posisi ditentukan oleh grid \\
+        Fokus pada hubungan atribut & Fokus pada distribusi spasial \\
+        \bottomrule
+    \end{tabular}  
+      
+    \vspace{0.2cm}
+    \textit{Kunci utama Fields adalah \textbf{Interpolasi}: Menentukan nilai di antara titik sampel.}
+    
+    \vspace{-0.2cm}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth, height=0.5\textheight, keepaspectratio]{field.png}    
+        \label{fig:framework}
+    \end{figure}
+    
 \end{frame}
 
 %----------------------
