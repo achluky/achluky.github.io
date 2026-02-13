@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaching - Ahmad Luky</title>
+    <title>Publications & Presentations - Ahmad Luky</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -292,6 +292,51 @@
             font-size: 0.85rem;
             border-radius: 0 0 8px 8px;
         }
+        
+        .publication-list {
+            font-size: 0.9rem;
+            line-height: 1.1;
+            padding-left: 25px;
+        }
+        
+        .publication-list li {
+            margin-bottom: 4px;
+            padding: 4px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .publication-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .pub-title {
+            flex: 1;
+            color: #333;
+        }
+        
+        .pdf-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 4px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+        
+        .pdf-link:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .pdf-link i {
+            margin-right: 4px;
+        }
     </style>
     </style>
 </head>
@@ -302,8 +347,8 @@
             
             <!-- Header Section -->
             <div class="header-section">
-                <h1 class="profile-name">Ahmad Luky Ramdani</h1>
-                <p class="profile-title">Academic Researcher & Educator</p>
+                <h1 class="profile-name">Publications & Presentations</h1>
+                <p class="profile-title">Ahmad Luky Ramdani</p>
                 
                 <!-- Social Links -->
                 <div class="social-links">
@@ -313,7 +358,7 @@
                     <a href="#" title="Instagram" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" title="GitHub" target="_blank">
+                    <a href="https://github.com/achluky" title="GitHub" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
                 </div>
@@ -322,44 +367,61 @@
             <!-- Navigation -->
             <nav class="nav-simple">
                 <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a class="nav-link active" href="teaching.html"><i class="fas fa-chalkboard-teacher"></i> Teaching</a>
-                <a class="nav-link" href="article_presentation.html"><i class="fas fa-file-alt"></i> Publications</a>
+                <a class="nav-link" href="teaching.html"><i class="fas fa-chalkboard-teacher"></i> Teaching</a>
+                <a class="nav-link active" href="article_presentation.html"><i class="fas fa-file-alt"></i> Publications</a>
             </nav>
             
             <!-- Content -->
             <div class="p-3">
                 
-                <!-- Current Courses -->
+                <!-- Journal Publications -->
                 <div class="section-card">
                     <h3 class="section-title">
-                        Courses I'm Teaching
+                        <i class="fas fa-book"></i> Journal Publications
                     </h3>
                     
-                    <div class="course-card">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <h5>Data Visualization</h5>
-                                <p class="text-muted mb-1">Data visualization is a technique for creating interactive and informative visual representations of data.</p>
-                                <p class="mb-0 text-muted ">Reference: Visualization Analysis and Design, Tamara Munzne <a href="https://www.cs.ubc.ca/~tmm/vadbook/" target="_blank">Book</a></p>
-                            </div>
-                            <span class="course-level">
-                                <a href="visdat/index.html" class="text-white text-decoration-none">Details</a>
-                            </span>
-                        </div>
-                    </div>
+                    <ol class="publication-list">
+                        <li>
+                            <span class="pub-title">Title of Your Journal Article</span>
+                            <a href="#" class="pdf-link" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                        </li>
+                        <li>
+                            <span class="pub-title">Another Publication Title</span>
+                            <a href="#" class="pdf-link" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                        </li>
+                    </ol>
+                </div>
 
-                    <div class="course-card">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <h5>Functional Programming</h5>
-                                <p class="text-muted mb-1">Functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions.</p>
-                                <p class="mb-0 text-muted "></p>
-                            </div>
-                            <span class="course-level">
-                                <a href="pbf/index.html" class="text-white text-decoration-none">Details</a>
-                            </span>
-                        </div>
-                    </div>
+                <!-- Conference Proceedings -->
+                <div class="section-card">
+                    <h3 class="section-title">
+                        <i class="fas fa-file-alt"></i> Conference Proceedings
+                    </h3>
+                    
+                    <ol class="publication-list">
+                        <li>
+                            <span class="pub-title">Conference Paper Title</span>
+                            <a href="#" class="pdf-link" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Presentations -->
+                <div class="section-card">
+                    <h3 class="section-title">
+                        <i class="fas fa-presentation"></i> Presentations & Talks
+                    </h3>
+                    
+                    <ol class="publication-list">
+                        <li>
+                            <span class="pub-title">Presentation Title at Event</span>
+                            <a href="#" class="pdf-link" target="_blank"><i class="fas fa-file-powerpoint"></i> Slides</a>
+                        </li>
+                        <li>
+                            <span class="pub-title">Another Presentation Title</span>
+                            <a href="#" class="pdf-link" target="_blank"><i class="fas fa-file-powerpoint"></i> Slides</a>
+                        </li>
+                    </ol>
                 </div>
                         
             </div>
