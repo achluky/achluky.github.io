@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.2.2)  9 FEB 2026 06:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.2.2)  18 FEB 2026 16:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -761,6 +761,15 @@ LaTeX Warning: Label `fig:framework' multiply defined.
 
 LaTeX Warning: Label `fig:framework' multiply defined.
 
+
+LaTeX Warning: Label `fig:framework' multiply defined.
+
+
+LaTeX Warning: Label `fig:framework' multiply defined.
+
+
+LaTeX Warning: Label `fig:framework' multiply defined.
+
 )
 \openout1 = `persentation.aux'.
 
@@ -945,12 +954,12 @@ Dictionary: translator-theorem-dictionary, Language: English
 [8
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 177
+LaTeX Font Info:    Trying to load font information for U+msa on input line 178
 .
  (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 177
+LaTeX Font Info:    Trying to load font information for U+msb on input line 178
 .
 
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -971,7 +980,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <tabel.png, id=379, 604.2575pt x 438.63875pt>
 File: tabel.png Graphic file (type png)
 <use tabel.png>
-Package pdftex.def Info: tabel.png  used on input line 219.
+Package pdftex.def Info: tabel.png  used on input line 220.
 (pdftex.def)             Requested size: 136.91096pt x 99.38553pt.
 
 
@@ -981,14 +990,14 @@ Package pdftex.def Info: tabel.png  used on input line 219.
 <tabel-md.png, id=410, 612.03656pt x 237.13594pt>
 File: tabel-md.png Graphic file (type png)
 <use tabel-md.png>
-Package pdftex.def Info: tabel-md.png  used on input line 233.
+Package pdftex.def Info: tabel-md.png  used on input line 235.
 (pdftex.def)             Requested size: 239.59917pt x 92.83362pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{fig:framework
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.233 \end{frame}
+l.235 \end{frame}
                  
 
 [13
@@ -997,14 +1006,14 @@ l.233 \end{frame}
 <network.png, id=439, 1209.51875pt x 357.335pt>
 File: network.png Graphic file (type png)
 <use network.png>
-Package pdftex.def Info: network.png  used on input line 248.
+Package pdftex.def Info: network.png  used on input line 251.
 (pdftex.def)             Requested size: 239.5925pt x 70.78416pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{fig:framework
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.248 \end{frame}
+l.251 \end{frame}
                  
 
 [14
@@ -1015,48 +1024,41 @@ l.248 \end{frame}
 
 ]
 
-LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/b/it' instead on input line 288.
+[16
 
+]
 
-LaTeX Font Warning: Font shape `OT1/cmss/b/it' undefined
-(Font)              using `OT1/cmss/b/n' instead on input line 288.
+[17
 
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 288.
-
-<field.png, id=522, 492.84125pt x 315.1775pt>
-File: field.png Graphic file (type png)
-<use field.png>
-Package pdftex.def Info: field.png  used on input line 288.
-(pdftex.def)             Requested size: 171.15091pt x 109.45293pt.
+]
+<field2.png, id=589, 503.8825pt x 311.1625pt>
+File: field2.png Graphic file (type png)
+<use field2.png>
+Package pdftex.def Info: field2.png  used on input line 321.
+(pdftex.def)             Requested size: 136.91121pt x 84.54677pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{fig:framework
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.288 \end{frame}
+l.321 \end{frame}
                  
+<field.png, id=590, 492.84125pt x 315.1775pt>
+File: field.png Graphic file (type png)
+<use field.png>
+Package pdftex.def Info: field.png  used on input line 321.
+(pdftex.def)             Requested size: 136.91922pt x 87.56137pt.
 
-[16
-
- <./field.png>]
-
-[17
-
-]
+pdfTeX warning (ext4): destination with the same identifier (name{fig:framework
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.321 \end{frame}
+                 
 
 [18
 
-]
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/b/it' instead on input line 336.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/it' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 336.
-
-
+ <./field2.png> <./field.png>]
 
 [19
 
@@ -1075,6 +1077,94 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/it' in size <10.95> not available
 ]
 
 [23
+
+]
+
+[24
+
+]
+
+[25
+
+]
+
+[26
+
+]
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
+(Font)              using `OT1/cmss/b/it' instead on input line 488.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/b/it' undefined
+(Font)              using `OT1/cmss/b/n' instead on input line 488.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 488.
+
+
+
+[27
+
+]
+
+[28
+
+]
+<sequential.png, id=933, 644.4075pt x 284.06125pt>
+File: sequential.png Graphic file (type png)
+<use sequential.png>
+Package pdftex.def Info: sequential.png  used on input line 527.
+(pdftex.def)             Requested size: 205.37881pt x 90.53302pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:framework
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.527 \end{frame}
+                 
+
+[29
+
+ <./sequential.png>]
+
+[30
+
+]
+<divergen.png, id=991, 806.01125pt x 536.0025pt>
+File: divergen.png Graphic file (type png)
+<use divergen.png>
+Package pdftex.def Info: divergen.png  used on input line 554.
+(pdftex.def)             Requested size: 308.05847pt x 204.8608pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:framework
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.554 \end{frame}
+                 
+
+[31
+
+ <./divergen.png>]
+
+[32
+
+]
+
+[33
+
+]
+
+[34
+
+]
+
+[35
+
+]
+
+[36
 
 ]
 \tf@nav=\write6
@@ -1102,26 +1192,28 @@ Package rerunfilecheck Info: File `persentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 21884 strings out of 474662
- 426685 string characters out of 5751110
- 786918 words of memory out of 5000000
- 44439 multiletter control sequences out of 15000+600000
- 570357 words of font info for 78 fonts, out of 8000000 for 9000
+ 21982 strings out of 474662
+ 428514 string characters out of 5751110
+ 788919 words of memory out of 5000000
+ 44510 multiletter control sequences out of 15000+600000
+ 570698 words of font info for 79 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  101i,15n,107p,404b,883s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/mac/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/
-tcss1095.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmss10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025basic/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on persentation.pdf (23 pages, 1343583 bytes).
+tcss1000.600pk> </Users/mac/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour
+/jknappen/ec/tcss1095.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025basic/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025basic/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025basic/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025b
+asic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on persentation.pdf (36 pages, 3540231 bytes).
 PDF statistics:
- 827 PDF objects out of 1000 (max. 8388607)
- 684 compressed objects within 7 object streams
- 48 named destinations out of 1000 (max. 500000)
- 417 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1242 PDF objects out of 1440 (max. 8388607)
+ 1042 compressed objects within 11 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 540 words of extra memory for PDF output out of 10000 (max. 10000000)
 

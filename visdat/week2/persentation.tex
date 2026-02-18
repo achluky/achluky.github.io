@@ -108,6 +108,7 @@
 
 \end{frame}
 
+% ---------------------------------------
 
 \begin{frame}{Data Mentah vs. Semantik (Makna)}
 
@@ -203,7 +204,7 @@
 %-----------------------
 
 
-\begin{frame}{Dataset Types - Date Type}
+\begin{frame}{Dataset Types - Tabel}
     \begin{figure}
         \centering
         \includegraphics[width=0.4\textwidth, height=0.4\textheight, keepaspectratio]{tabel.png}    
@@ -217,8 +218,9 @@
         \item \textbf{Attributes:} Kolom mewakili dimensi data (Contoh: Umur, Nama).
     \end{itemize}    
 \end{frame}
+% ---------------------------------------
 
-\begin{frame}{Dataset Types - Date Type}
+\begin{frame}{Dataset Types - Tabel}
     \begin{figure}
         \centering
         \includegraphics[width=0.7\textwidth, height=0.7\textheight, keepaspectratio]{tabel-md.png}    
@@ -231,9 +233,10 @@
         \item Indexing based on multiple keys seperti: jenis kelamin, tahun
     \end{itemize}    
 \end{frame}
+% ---------------------------------------
 
 
-\begin{frame}{Dataset Types - Date Type}
+\begin{frame}{Dataset Types - Network}
     \begin{figure}
         \centering
         \includegraphics[width=0.7\textwidth, height=0.7\textheight, keepaspectratio]{network.png}    
@@ -246,23 +249,79 @@
         \item \textbf{Trees:} Jaringan hierarkis tanpa siklus. often have roots and are directed
     \end{itemize}
 \end{frame}
+% ---------------------------------------
 
-\begin{frame}{Dataset Types: Fields}
+\begin{frame}{Dataset Types - Fields}
     \begin{block}{Definisi}
-        Dataset \textbf{Fields} mengandung atribut yang diukur secara kontinu di seluruh ruang fisik.
+        Dataset \textbf{Fields} mengandung atribut yang diukur secara kontinu di seluruh ruang fisik. Dataset tipe Fields digunakan ketika kita ingin merepresentasikan nilai yang ada di setiap titik dalam suatu ruang fisik. Nilai ini tidak "terputus", melainkan mengalir.
     \end{block}
+    
+    Contoh Dunia Nyata: Tekanan udara di atmosfer, suhu di dalam mesin mobil, atau aliran darah dalam pembuluh darah.
+
+\end{frame}
+% ---------------------------------------
+
+
+\begin{frame}{Dataset Types - Fields}
 
     \textbf{Elemen Pembentuk:}
     \begin{itemize}
-        \item \textbf{Grids:} Strategi pengambilan sampel untuk membagi ruang kontinu menjadi titik-titik diskrit.
-        \item \textbf{Position:} Lokasi spasial tempat data diambil (misal: koordinat x, y, z).
-        \item \textbf{Attributes:} Nilai kuantitatif yang diukur pada posisi tersebut (misal: suhu, tekanan).
+        \item \textbf{Grids:} Strategi pengambilan sampel untuk membagi ruang kontinu menjadi titik-titik diskrit. Hal ini,  karena kita tidak mungkin mengukur data di setiap titik atom di ruang nyata, kita menggunakan Grid untuk membagi ruang tersebut menjadi sel-sel kecil.
+        \begin{itemize}
+        	\item Fungsi: Menentukan di mana data diukur.
+			\item Jenis: Bisa berupa uniform grid (kotak-kotak rapi seperti piksel) atau irregular grid (bentuk yang menyesuaikan lekukan objek).
+        \end{itemize}
+        \item \textbf{Position:} Lokasi spasial tempat data diambil (misal: koordinat x, y, z). Posisi adalah lokasi spasial yang menjadi tempat pengambilan sampel data.
+        \begin{itemize}
+			\item Dalam Fields, posisi sering kali bersifat implisit berdasarkan struktur grid.
+			\item Misal: Pada peta cuaca, posisi didefinisikan oleh koordinat Lintang dan Bujur.
+        \end{itemize}
+
     \end{itemize}
 
+    
+\end{frame}
+% ---------------------------------------
+
+\begin{frame}{Dataset Types - Fields}
+    \begin{itemize}
+        \item \textbf{Attributes:} Nilai kuantitatif yang diukur pada posisi tersebut (misal: suhu, tekanan).
+        \begin{itemize}
+        	\item Atribut ini biasanya bersifat Quantitative (angka).
+        	\item Contoh: Pada grid cuaca, atributnya bisa berupa Suhu ($25^\circ\text{C}$) atau Kecepatan Angin ($10 \text{ km/jam}$).
+        \end{itemize}
+    \end{itemize}
+    
+    
+    \begin{exampleblock}{Visualisasi Fields (Interpolasi)}
+		Kunci utama dari dataset Fields adalah Interpolasi. Karena data hanya diambil di titik-titik grid, komputer harus "menebak" nilai di antara titik tersebut agar terlihat mulus (kontinu).    
+	\end{exampleblock}
+        
     \begin{exampleblock}{Contoh Fields}
         Data Medis (MRI/CT-Scan), Data Meteorologi (Peta Tekanan Udara), dan Simulasi Aliran Fluida (Aerodinamika).
     \end{exampleblock}
+    
 \end{frame}
+% ---------------------------------------
+
+\begin{frame}{Dataset Types - Fields}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\textwidth, height=0.4\textheight, keepaspectratio]{field2.png}    
+        \label{fig:framework}
+    \end{figure}
+        \vspace{0.2cm}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\textwidth, height=0.4\textheight, keepaspectratio]{field.png}    
+        \label{fig:framework}
+    \end{figure}
+
+\end{frame}
+
+
+% ---------------------------------------
 
 \begin{frame}{Fields vs Tables}
     \centering
@@ -275,22 +334,70 @@
         \bottomrule
     \end{tabular}  
       
-    \vspace{0.2cm}
-    \textit{Kunci utama Fields adalah \textbf{Interpolasi}: Menentukan nilai di antara titik sampel.}
-    
-    \vspace{-0.2cm}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.5\textwidth, height=0.5\textheight, keepaspectratio]{field.png}    
-        \label{fig:framework}
-    \end{figure}
-    
 \end{frame}
 
 %----------------------
 
+\begin{frame}{Dataset Types - Geometry}
+
+\begin{exampleblock}{Definisi}
+Geometry adalah tipe yang paling spesifik karena berkaitan langsung dengan bentuk fisik atau representasi spasial benda di dunia nyata.
+\end{exampleblock}
+
+
+\begin{itemize}
+	\item Elemen Utama Geometry. Dataset Geometry terdiri dari dua elemen kunci:
+	\begin{itemize}
+		\item Items: Merupakan entitas objek fisik (misalnya: sebuah gedung, organ jantung, atau komponen mesin).
+		\item Positions: Informasi koordinat spesifik dalam ruang 2D atau 3D yang membentuk objek tersebut.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dataset Types - Geometry}
+	\begin{itemize}
+		
+	\item Karakteristik Penting
+	\begin{itemize}
+		\item Spasial secara Intrinsik: Tidak seperti tabel (di mana kita bisa menukar posisi baris tanpa mengubah makna), pada Geometry, posisi adalah data utama. Jika posisi diubah, bentuk objek akan hancur atau maknanya hilang.
+		\item Bentuk (Shape): Dataset ini menyimpan informasi tentang titik (points), garis (lines), kurva, hingga poligon yang membentuk permukaan atau volume objek.
+		\item Visualisasi Langsung: Karena datanya sudah berupa bentuk fisik, tugas utama visualisasi sering kali adalah memproyeksikan bentuk 3D tersebut ke layar 2D dengan pencahayaan dan sudut pandang yang tepat agar mudah dipahami manusia.
+	\end{itemize}
+	
+	\item Contoh Penggunaan. 
+	\begin{itemize}
+		\item Arsitektur dan Teknik: Model CAD (Computer-Aided Design) untuk rancangan bangunan atau jembatan.
+		\item Medis: Model 3D hasil rekonstruksi organ tubuh dari data CT-Scan (tulang, pembuluh darah).
+	\end{itemize}
+	
+	\end{itemize}
+\end{frame}
+
+% ----------------------------------------- 
+
+\begin{frame}{Perbedaan Utama: Geometry vs. Fields}
+    \centering
+    \small
+    \begin{tabular}{@{}ll@{}}
+        \toprule
+        \textbf{Fields} & \textbf{Geometry} \\ \midrule
+        Nilai yang mengalir di ruang & bentuk fisik objek itu sendiri \\
+        Contoh: Suhu udara di dalam ruangan & Contoh: Bentuk furnitur di ruangan \\
+        Data diambil pada titik-titik \textit{grid} & Data berupa titik, garis, atau poligon \\
+        \bottomrule
+    \end{tabular}
+    \vfill
+    \textit{"Fields memberitahu kita apa yang terjadi DI DALAM ruang, \\ sedangkan Geometry memberitahu kita APA isi ruang tersebut."}
+\end{frame}
+
+% ----------------------------------------- 
+
 \begin{frame}{Attribute Types}
-    Atribut adalah variabel atau kolom data yang diukur. Munzner membaginya berdasarkan sifat matematikanya:
+	\begin{exampleblock}{Defnisi}
+    Tipe Atribut adalah fondasi paling krusial bagi seorang desainer visualisasi. Atribut adalah variabel atau kolom data yang diukur, dan tipenya menentukan saluran visual (channels) mana yang efektif digunakan (seperti warna, posisi, atau ukuran).
+	\end{exampleblock}
+
+ Munzner membaginya berdasarkan sifat matematikanya:
     
     \vspace{0.4cm}
     \begin{enumerate}
@@ -304,6 +411,51 @@
 \end{frame}
 
 % ----------------------------------------- 
+
+\begin{frame}{Attribute Types}
+
+    \begin{enumerate}
+    	\item \textbf{Categorical (Kategorikal / Nominal)} \\
+    	Atribut kategorikal digunakan untuk membedakan identitas atau keanggotaan dalam suatu grup.
+    	\begin{itemize}
+    		\item \textbf{Sifat:} Hanya bisa dibandingkan apakah suatu item "sama" atau "berbeda" ($=$ atau $\neq$). Tidak ada urutan yang melekat secara alami.
+    		\item \textbf{Contoh:} Jenis kelamin, nama negara, jenis sensor, merek mobil.
+    		\item \textbf{Strategi Visual:} Gunakan Spatial Grouping (pengelompokan posisi), Color Hue (warna yang berbeda), atau Shape (bentuk)
+    	\end{itemize}
+    	
+    	\item \textbf{Ordered (Terurut)} \\
+    	Atribut ini memiliki urutan atau peringkat yang jelas. Munzner membaginya lagi menjadi dua:
+    	\begin{itemize}
+    		\item Ordinal \\ 
+    		Memiliki urutan logis, tetapi jarak atau interval antar nilai tidak dapat dihitung secara pasti atau tidak seragam.
+    		\item Quantitative (Kuantitatif) \\
+    		Atribut berupa angka murni di mana jarak antar nilai bersifat konsisten dan bermakna secara matematis.
+		\end{itemize}    	    	
+    \end{enumerate}
+    
+\end{frame}
+
+% ----------------------------------------- 
+\begin{frame}{Attribute Types}
+\begin{itemize}
+	\item \textbf{Ordinal}
+	\begin{itemize}
+		\item Sifat: Kita bisa menentukan mana yang "lebih besar" atau "lebih kecil" ($<$ atau $>$), tetapi tidak bisa melakukan operasi aritmatika.
+		\item Contoh: Ukuran baju (S, M, L, XL), tingkat kepuasan (Puas, Cukup, Tidak Puas), tingkat kepedasan.
+		\item Strategi Visual: Gunakan Color Saturation (kepekatan warna) atau Size (ukuran).
+	\end{itemize}
+	
+	\item \textbf{Quantitative (Kuantitatif)}
+	\begin{itemize}
+		\item Sifat: Kita bisa melakukan operasi aritmatika seperti penjumlahan atau perkalian ($+,-,\times,/$).
+		\item Contoh: Berat badan, harga saham, suhu, jumlah populasi.
+		\item Strategi Visual: Gunakan saluran yang paling akurat bagi mata manusia: Position on common scale (Posisi pada sumbu X atau Y)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+% ----------------------------------------- 
+
 \begin{frame}{Tabel: Perbandingan dan Contoh Atribut}
     \centering
     \small
@@ -338,6 +490,7 @@
 
 % ----------------------------------------- ---
 \begin{frame}{Ordering Direction}
+	Ordering Direction membahas tentang struktur atau pola aliran dari data yang terurut (Ordered Data). Memahami arah ini sangat penting karena menentukan jenis palet warna atau skala visual yang harus digunakan agar tidak menyesatkan pembaca.\\    
     Untuk atribut yang terurut (\textit{Ordered}), kita harus memahami ke mana arah data tersebut mengalir:
     
     \vspace{0.4cm}
@@ -348,10 +501,76 @@
     \end{enumerate}
 \end{frame}
 
+
 % ----------------------------------------- ---
-\begin{frame}{Detail Karakteristik dan Contoh}
-    \small
-    \begin{itemize}
+\begin{frame}{Ordering Direction - Sequential}
+\begin{itemize}
+	\item Sequential (Sekuensial). Data yang mengalir dalam satu arah, biasanya dari nilai minimum ke nilai maksimum.
+	
+	\begin{itemize}
+		\item Karakteristik: Tidak memiliki titik tengah yang dianggap sebagai netral. Fokusnya adalah intensitas atau besaran dari rendah ke tinggi.
+		\item Contoh: Jumlah penduduk (0 hingga jutaan), usia (0 hingga 100 tahun), atau harga barang.
+		\item Penerapan Visual: Menggunakan gradasi satu warna yang berubah intensitasnya (misal: biru muda ke biru tua).
+	\end{itemize}
+	
+	
+	\vspace{0.3cm}
+	
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth, height=0.6\textheight, keepaspectratio]{sequential.png}    
+        \label{fig:framework}
+    \end{figure}
+    
+	
+\end{itemize}
+\end{frame}
+% ----------------------------------------- ---
+
+
+\begin{frame}{Ordering Direction - Divergen}
+\begin{itemize}
+	
+	\item Diverging (Divergen). Data yang memiliki dua arah berlawanan yang bertemu atau berpangkal di satu titik tengah yang krusial (titik nol atau nilai referensi).
+	\begin{itemize}
+		\item Karakteristik: Fokusnya adalah seberapa jauh nilai menyimpang dari titik tengah ke arah positif atau negatif.
+		\item Contoh: Laba dan rugi perusahaan (titik nol adalah impas), suhu udara (titik tengah 0°C), atau hasil survei (titik tengah "Netral").
+		\item Penerapan Visual: Menggunakan dua warna yang kontras untuk masing-masing arah (misal: merah untuk negatif, biru untuk positif) yang keduanya memudar ke arah warna netral (seperti putih atau abu-abu) di tengah.
+	\end{itemize}
+	
+\end{itemize}
+\end{frame}
+% ----------------------------------------- ---
+
+
+\begin{frame}{Ordering Direction - Divergen}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\textwidth, height=0.9\textheight, keepaspectratio]{divergen.png}    
+        \label{fig:framework}
+    \end{figure}
+    
+\end{frame}
+
+\begin{frame}{Ordering Direction - Cyclic}
+\begin{itemize}
+
+	\item Cyclic (Siklik) \\
+	Data yang urutannya berulang kembali ke titik awal setelah mencapai akhir periode.
+	\begin{itemize}
+		\item Karakteristik: Tidak memiliki nilai "paling tinggi" atau "paling rendah" secara absolut karena sifatnya yang melingkar.
+		\item Contoh: Waktu (jam dalam sehari), bulan dalam setahun, atau arah mata angin (derajat kompas).
+		\item Penerapan Visual: Menggunakan palet warna melingkar (Circular color maps) di mana warna pada titik $360^\circ$ sama dengan warna pada titik $0^\circ$.
+	
+\end{itemize}		
+\end{itemize}
+
+\end{frame}
+
+% ----------------------------------------- ---
+\begin{frame}{Ordering Directio - Karakteristik dan Contoh }
+    \begin{enumerate}
         \item \textbf{Sequential (Satu Arah)}
             \begin{itemize}
                 \item Contoh: Jumlah penduduk, tinggi badan, harga saham.
@@ -367,7 +586,7 @@
                 \item Contoh: Jam, bulan, arah angin (derajat).
                 \item \textit{Warna:} Palet melingkar (\textit{Circular color maps}).
             \end{itemize}
-    \end{itemize}
+    \end{enumerate}
     
     \begin{block}{Pesan Utama}
         Menggunakan palet \textbf{Sequential} untuk data \textbf{Diverging} akan menyembunyikan titik tengah yang penting (misal: kita tidak bisa melihat dengan cepat mana perusahaan yang rugi).
@@ -375,22 +594,28 @@
 \end{frame}
 
 % ----------------------------------------- ---
-\begin{frame}{Mengapa Ini Penting?}
-    \begin{columns}[t]
-        \begin{column}{0.5\textwidth}
-            \textbf{Kesalahan Umum:} \\
-            Menggunakan warna pelangi (\textit{Rainbow colormaps}) untuk data sequential. 
-            \vspace{0.2cm}
-            \\ \textit{Akibatnya:} Otak sulit menentukan mana yang lebih besar/kecil karena tidak ada urutan intensitas warna yang alami.
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{Solusi Terbaik:} \\
-            Sesuaikan palet dengan struktur data. \\
-            $\rightarrow$ Diverging = Menonjolkan ekstrem. \\
-            $\rightarrow$ Sequential = Menonjolkan gradasi.
-        \end{column}
-    \end{columns}
+\begin{frame}{When to use sequential?}
+\textbf{Use a sequential color scale for a more intuitive reading}
+\begin{itemize}
+	\item Kemudahannya untuk langsung dipahami tanpa harus berpikir keras atau melihat legenda secara detail.
+	\item Intuisi Alami (Tanpa Legenda) \\
+	Skala sekuensial mengikuti pola "terang ke gelap" (atau sebaliknya). Otak manusia secara alami mengasosiasikan warna yang lebih gelap atau lebih pekat dengan nilai yang lebih tinggi/besar, dan warna yang lebih terang dengan nilai yang lebih rendah
+
+	\item Bebas Ambiguitas \\
+Skala sekuensial menghilangkan kebingungan ini karena hanya ada satu alur intensitas warna. tidak terdapat masalah "Mana yang lebih tinggi? Biru atau Merah?", "Apakah Merah berarti buruk/rendah atau justru sangat tinggi?"
+	
+	\item Fokus pada Satu Cerita Utama \\
+	Sekuensial: Cocok jika Anda ingin menekankan nilai tertinggi (puncak data). Fokusnya adalah "di mana konsentrasi terbesarnya?"
+	
+\end{itemize}
 \end{frame}
+
+
+% ----------------------------------------- ---
+
+\begin{frame}{when to use diverging color scales?}
+\end{frame}
+
 
 % ----------------------------------------- ---
 \begin{frame}{Ringkasan Abstraksi Data}
