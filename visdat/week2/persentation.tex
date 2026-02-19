@@ -597,38 +597,117 @@ Geometry adalah tipe yang paling spesifik karena berkaitan langsung dengan bentu
 \begin{frame}{When to use sequential?}
 \textbf{Use a sequential color scale for a more intuitive reading}
 \begin{itemize}
-	\item Kemudahannya untuk langsung dipahami tanpa harus berpikir keras atau melihat legenda secara detail.
 	\item Intuisi Alami (Tanpa Legenda) \\
-	Skala sekuensial mengikuti pola "terang ke gelap" (atau sebaliknya). Otak manusia secara alami mengasosiasikan warna yang lebih gelap atau lebih pekat dengan nilai yang lebih tinggi/besar, dan warna yang lebih terang dengan nilai yang lebih rendah
+	Skala sekuensial mengikuti pola "terang ke gelap" (atau sebaliknya). Otak manusia secara alami mengasosiasikan warna yang lebih gelap atau lebih pekat dengan nilai yang lebih tinggi/besar, dan warna yang lebih terang dengan nilai yang lebih rendah. Kemudahannya untuk langsung dipahami tanpa harus berpikir keras atau melihat legenda secara detail.
 
-	\item Bebas Ambiguitas \\
-Skala sekuensial menghilangkan kebingungan ini karena hanya ada satu alur intensitas warna. tidak terdapat masalah "Mana yang lebih tinggi? Biru atau Merah?", "Apakah Merah berarti buruk/rendah atau justru sangat tinggi?"
-	
-	\item Fokus pada Satu Cerita Utama \\
-	Sekuensial: Cocok jika Anda ingin menekankan nilai tertinggi (puncak data). Fokusnya adalah "di mana konsentrasi terbesarnya?"
-	
+	\begin{itemize}
+		\item Maknanya: Jika Anda melihat peta dengan warna biru muda hingga biru tua berlabel "PDB per Kapita", Anda akan langsung tahu bahwa area yang paling gelap adalah yang paling kaya, bahkan sebelum Anda membaca angka di legenda
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
+% ----------------------------------------- ---
+
+\begin{frame}{When to use sequential?}
+\begin{itemize}
+
+	\item Bebas Ambiguitas \\
+Skala sekuensial menghilangkan kebingungan ini karena hanya ada satu alur intensitas warna. tidak terdapat masalah "Mana yang lebih tinggi? Biru atau Merah?", "Apakah Merah berarti buruk/rendah atau justru sangat tinggi?" yang umumnya terdapat pada skala Divergen
+	
+	\item Fokus pada Satu Cerita Utama \\
+	Sekuensial: Cocok jika Anda ingin menekankan nilai tertinggi (puncak data). Fokusnya adalah "di mana konsentrasi terbesarnya?" \\
+	Divergen: Digunakan jika Anda ingin menekankan dua sisi ekstrem (misal: Sangat Miskin vs Sangat Kaya).
+	
+	\end{itemize}
+\end{frame}
+
+
+% ----------------------------------------- ---
+
+\begin{frame}{When to use sequential?}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=1\textwidth, height=1\textheight, keepaspectratio]{sequention_3.png}    
+        \label{fig:framework}
+    \end{figure}
+    
+\end{frame}
 
 % ----------------------------------------- ---
 
 \begin{frame}{when to use diverging color scales?}
+Skala warna pada data divergen
+\begin{itemize}
+	\item Skala warna divergen digunakan ketika Anda ingin menonjolkan bagaimana data menyimpang dari suatu titik pusat atau nilai referensi tertentu. 
+	\item Berbeda dengan skala sekuensial yang hanya bergerak satu arah (rendah ke tinggi), skala divergen bergerak ke dua arah berlawanan dari sebuah titik tengah.
+
+\end{itemize}
+
+kapan harus menggunakan skala warna divergen?
+
+\begin{itemize}
+	\item Terdapat Titik Tengah yang Bermakna (Meaningful Middle Point)
+	\item Untuk Menonjolkan Nilai Ekstrem (Emphasize Extremes)
+	\item Memungkinkan Pembaca Melihat Lebih Banyak Perbedaan
+	\item Pilihan Editorial
+
+\end{itemize}
+\end{frame}
+
+% ----------------------------------------- ---
+
+\begin{frame}{When to use sequential?}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth, height=0.8\textheight, keepaspectratio]{sequention_2.png}    
+        \label{fig:framework}
+    \end{figure}
+    
+\end{frame}
+
+
+% --- Final page ---
+\begin{frame}[c]
+    \centering
+    \Huge{Terima Kasih} % 
+    
+    \vspace{1.5cm}
+    \normalsize
+    \textbf{Ahmad Luky Ramdani} \\ % 
+    \href{mailto:ahmadluky@sd.itera.ac.id}{ahmadluky@sd.itera.ac.id} % 
 \end{frame}
 
 
 % ----------------------------------------- ---
-\begin{frame}{Ringkasan Abstraksi Data}
-    \begin{block}{Pesan Utama}
-        Sebelum membuat grafik, kita harus mengidentifikasi:
-        \begin{enumerate}
-            \item Apa tipe dataset-nya? (Table, Network, dsb)
-            \item Apa saja atributnya? (Categorical vs Ordered)
-            \item Bagaimana karakteristik datanya? (Sequential vs Diverging)
-        \end{enumerate}
+\begin{frame}{Tugas Individu: Abstraksi Data}
+    \textbf{Skenario:} \\
+    "Sebuah rumah sakit mencatat data pasien COVID-19 yang mencakup: Nama Pasien, ID Pasien, Suhu Tubuh (°C), Tingkat Keparahan (Ringan, Sedang, Berat), Koordinat Tempat Tinggal (Lat/Long), dan Daftar Kontak Erat (siapa bertemu siapa)."\\
+    \textbf{Data Pasien RS mencakup:} \\
+    Nama, ID, Suhu (°C), Keparahan (Ringan/Sedang/Berat), Alamat (Lat/Long), dan Jaringan Kontak Erat.
+    
+    \textbf{Soal 1 (Analitik):}
+    Identifikasi elemen-elemen berikut dalam bentuk tabel:
+    \begin{itemize}
+        \item Sebutkan mana yang merupakan \textbf{Items}, \textbf{Attributes}, dan \textbf{Links}.
+        \item Klasifikasikan atribut Suhu dan Tingkat Keparahan berdasarkan \textit{Attribute Type} dan \textit{Ordering Direction}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Tugas Individu: Aplikasi Skala Warna}
+    \textbf{Soal 2 (Praktek):}
+    Anda memiliki data pertumbuhan ekonomi (-5\% s/d +5\%).
+    
+    \begin{enumerate}
+        \item Pilih skala warna terbaik untuk menonjolkan \textbf{provinsi tersukses}. Berikan alasan!
+        \item Pilih skala warna terbaik untuk membedakan \textbf{wilayah krisis vs wilayah stabil}. Tentukan titik nolnya!
+    \end{enumerate}
+    
+    \vspace{0.4cm}
+    \begin{block}{Format Pengumpulan}
+        Tuliskan analisis Anda dalam maksimal 2 halaman PDF, sertakan contoh palet warna yang diusulkan (bisa menggunakan ColorBrewer atau Datawrapper).
     \end{block}
-    \vfill
-    Pilihan visualisasi yang salah (misal: menggunakan gradasi warna untuk data kategori) akan membingungkan audiens secara kognitif.
 \end{frame}
 
 
