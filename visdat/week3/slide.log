@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.2.2)  20 FEB 2026 11:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.2.2)  23 FEB 2026 12:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -822,32 +822,80 @@ File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 raries/tikzlibrarytrees.code.tex
 File: tikzlibrarytrees.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/tools/array.sty
+Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
+\col@sep=\dimen321
+\ar@mcellbox=\box82
+\extrarowheight=\dimen322
+\NC@list=\toks48
+\extratabsurround=\skip66
+\backup@length=\skip67
+\ar@cellbox=\box83
+)
+\TX@col@width=\dimen323
+\TX@old@table=\dimen324
+\TX@old@col=\dimen325
+\TX@target=\dimen326
+\TX@delta=\dimen327
+\TX@cols=\count358
+\TX@ftn=\toks49
+)
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/ragged2e/ragged2e.sty
+Package: ragged2e 2023/06/22 v3.6 ragged2e Package
+\CenteringLeftskip=\skip68
+\RaggedLeftLeftskip=\skip69
+\RaggedRightLeftskip=\skip70
+\CenteringRightskip=\skip71
+\RaggedLeftRightskip=\skip72
+\RaggedRightRightskip=\skip73
+\CenteringParfillskip=\skip74
+\RaggedLeftParfillskip=\skip75
+\RaggedRightParfillskip=\skip76
+\JustifyingParfillskip=\skip77
+\CenteringParindent=\skip78
+\RaggedLeftParindent=\skip79
+\RaggedRightParindent=\skip80
+\JustifyingParindent=\skip81
+)
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
 ef
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count358
-\l__pdf_internal_box=\box82
-) (./slide.aux)
+\l__color_backend_stack_int=\count359
+\l__pdf_internal_box=\box84
+) (./slide.aux
+
+LaTeX Warning: Label `fig:framework' multiply defined.
+
+
+LaTeX Warning: Label `fig:framework' multiply defined.
+
+
+LaTeX Warning: Label `fig:framework' multiply defined.
+
+)
 \openout1 = `slide.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -885,17 +933,17 @@ LaTeX Font Info:    ... okay on input line 24.
 
 (/usr/local/texlive/2025basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count359
-\scratchdimen=\dimen321
-\scratchbox=\box83
-\nofMPsegments=\count360
-\nofMParguments=\count361
-\everyMPshowfont=\toks48
-\MPscratchCnt=\count362
-\MPscratchDim=\dimen322
-\MPnumerator=\count363
-\makeMPintoPDFobject=\count364
-\everyMPtoPDFconversion=\toks49
+\scratchcounter=\count360
+\scratchdimen=\dimen328
+\scratchbox=\box85
+\nofMPsegments=\count361
+\nofMParguments=\count362
+\everyMPshowfont=\toks50
+\MPscratchCnt=\count363
+\MPscratchDim=\dimen329
+\MPnumerator=\count364
+\makeMPintoPDFobject=\count365
+\everyMPtoPDFconversion=\toks51
 )
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.s
 ty
@@ -907,53 +955,53 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 24.
+Package hyperref Info: Link coloring OFF on input line 27.
  (./slide.out) (./slide.out)
 \@outlinefile=\write5
 \openout5 = `slide.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 24.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 27.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 24.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 27.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 24.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 24.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 24.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 24.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 27.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 24.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 24.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 24.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 27.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 24.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 24.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 24.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 27.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 24.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 24.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 27.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 24.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 27.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 24.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 24.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 24.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 24.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 24.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 27.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 24.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 27.
 
 (/usr/local/texlive/2025basic/texmf-dist/tex/latex/translator/translator-basic-
 dictionary-English.dict
@@ -983,37 +1031,243 @@ Dictionary: translator-theorem-dictionary, Language: English
 [1
 
 {/usr/local/texlive/2025basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
-
-
-(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
-
-
-(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
 
 [2
 
 ]
-Overfull \hbox (21.53801pt too wide) in paragraph at lines 73--73
- [] 
+<1.png, id=90, 915.42pt x 554.07pt>
+File: 1.png Graphic file (type png)
+<use 1.png>
+Package pdftex.def Info: 1.png  used on input line 53.
+(pdftex.def)             Requested size: 239.59596pt x 145.0186pt.
+
+Overfull \vbox (0.76767pt too high) detected at line 53
  []
 
 
 
 [3
 
-]
+ <./1.png>]
 
 [4
 
 ]
+<2.png, id=151, 1037.8775pt x 731.73375pt>
+File: 2.png Graphic file (type png)
+<use 2.png>
+Package pdftex.def Info: 2.png  used on input line 84.
+(pdftex.def)             Requested size: 239.59366pt x 168.92047pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:framework
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.84 \end{frame}
+                
 
 [5
+
+ <./2.png>]
+<3.png, id=180, 583.17876pt x 372.39125pt>
+File: 3.png Graphic file (type png)
+<use 3.png>
+Package pdftex.def Info: 3.png  used on input line 98.
+(pdftex.def)             Requested size: 239.60315pt x 152.9996pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:framework
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.98 \end{frame}
+                
+
+[6
+
+ <./3.png>]
+<4.png, id=209, 514.92375pt x 343.2825pt>
+File: 4.png Graphic file (type png)
+<use 4.png>
+Package pdftex.def Info: 4.png  used on input line 112.
+(pdftex.def)             Requested size: 239.60207pt x 159.7347pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:framework
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.112 \end{frame}
+                 
+
+[7
+
+ <./4.png>]
+<5.png, id=239, 712.6625pt x 612.2875pt>
+File: 5.png Graphic file (type png)
+<use 5.png>
+Package pdftex.def Info: 5.png  used on input line 123.
+(pdftex.def)             Requested size: 151.5883pt x 130.23782pt.
+
+
+[8
+
+ <./5.png>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 139
+.
+
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 139
+.
+
+(/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+[9
+
+]
+
+[10
+
+]
+
+[11
+
+]
+
+[12
+
+]
+
+[13
+
+]
+Underfull \hbox (badness 3168) in paragraph at lines 234--234
+[]|\OT1/cmss/m/n/10 "Lihat pola harga emas
+ []
+
+
+Overfull \vbox (24.24579pt too high) detected at line 234
+ []
+
+
+
+[14
+
+]
+
+[15
+
+]
+
+[16
+
+]
+
+[17
+
+]
+
+[18
+
+]
+
+[19
+
+]
+
+[20
+
+]
+
+[21
+
+]
+
+[22
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 430--430
+[]|\OT1/cmss/m/n/10.95 Melihat-lihat tren pen-jualan di
+ []
+
+
+Overfull \hbox (3.58717pt too wide) in paragraph at lines 430--430
+ [] 
+ []
+
+
+
+[23
+
+]
+
+[24
+
+]
+
+[25
+
+]
+
+[26
+
+]
+
+[27
+
+]
+
+[28
+
+]
+
+[29
+
+]
+
+[30
+
+]
+
+[31
+
+]
+
+[32
+
+]
+
+[33
+
+]
+
+[34
+
+]
+
+[35
+
+]
+
+[36
+
+]
+
+[37
+
+]
+
+[38
+
+]
+
+[39
+
+]
+
+[40
 
 ]
 \tf@nav=\write6
@@ -1030,29 +1284,37 @@ Overfull \hbox (21.53801pt too wide) in paragraph at lines 73--73
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `slide.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 24807 strings out of 474662
- 496598 string characters out of 5751110
- 860796 words of memory out of 5000000
- 47357 multiletter control sequences out of 15000+600000
- 566667 words of font info for 64 fonts, out of 8000000 for 9000
+ 25327 strings out of 474662
+ 506409 string characters out of 5751110
+ 859769 words of memory out of 5000000
+ 47794 multiletter control sequences out of 15000+600000
+ 571212 words of font info for 81 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 101i,15n,107p,397b,1154s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss1
+ 101i,15n,107p,496b,676s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
 0.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mss12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmss17.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmss8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb>
-Output written on slide.pdf (5 pages, 101046 bytes).
+mss10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmss12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmss17.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmss8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmss9.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025basic/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2025basic/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025basic/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on slide.pdf (40 pages, 5622280 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
- 184 compressed objects within 2 object streams
- 11 named destinations out of 1000 (max. 500000)
- 199 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1349 PDF objects out of 1440 (max. 8388607)
+ 1142 compressed objects within 12 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 512 words of extra memory for PDF output out of 10000 (max. 10000000)
 

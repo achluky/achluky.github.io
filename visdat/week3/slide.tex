@@ -6,7 +6,10 @@
 \usepackage{graphicx} % Untuk \resizebox
 \usepackage{tikz}
 \usetikzlibrary{trees}
-
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{ragged2e} % Untuk perataan teks yang lebih rapi
 
 \title[Visualisasi Data - Pertemuan 1]{Why: Task Abstraction?}
 
@@ -27,6 +30,97 @@
 
 \frame{\titlepage}
 
+% ------------------------------
+\begin{frame}{Key Principles Data visualization}
+\center
+\vspace{2.5cm}
+	\textit{"Desain tidak efektif terjadi ketika desainer memilih ”jalan pintas” (menggunakan *default* dari *software*) tanpa melakukan analisis tugas"}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Key Principles Data visualization}
+    \begin{enumerate}
+        \item Strive for forms and functions (Kualitas vs. Estetika) \\
+        Form versus function or style over substance? \\
+        "Form follows function - that has been misunderstood. Form and function should be one, joined in a spiritual union" - Frank Lloyd Wright
+    \end{enumerate}
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth, height=0.7\textheight, keepaspectratio]{1.png}    
+        \label{fig:framework}
+    \end{figure}
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Key Principles Data visualization}
+    \begin{enumerate}
+        \item Justifying the selection of everything we do \\
+        Everything you do is thoroughly:
+        \begin{itemize}
+        	\item planned (what and why)
+        	\item understood (what and why)
+        	\item and reasoned  (how)
+        \end{itemize}
+        Every single mark, characteristic, and design feature is done for a reason. Design features include:
+        \begin{itemize}
+			\item the use of a shape
+			\item the selection of a color pallet
+			\item the position of a label
+			\item or the use of an interaction
+        \end{itemize}
+        
+    \end{enumerate}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Key Principles Data visualization}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth, height=0.7\textheight, keepaspectratio]{2.png}    
+        \label{fig:framework}
+    \end{figure}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Key Principles Data visualization}
+    \begin{enumerate}
+        \item Creating accessibility through intuitive design \\
+        Overload, clutter, and confusion are not attributes of information, they are failures of design
+    \end{enumerate}
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth, height=0.7\textheight, keepaspectratio]{3.png}    
+        \label{fig:framework}
+    \end{figure}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Key Principles Data visualization}
+    \begin{enumerate}
+        \item Never deceive the receiver \\
+        Visualization ethics relates to the potential deception that can be created. Sometimes it can be through a simple lack of understanding of visual perception
+        
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth, height=0.7\textheight, keepaspectratio]{4.png}    
+        \label{fig:framework}
+    \end{figure}
+    \end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Key Principles Data visualization}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth, height=0.5\textheight, keepaspectratio]{5.png}
+    \end{center}
+    
+    \begin{center}
+        \textit{"Most designs are ineffective because they don't account for the strengths and weaknesses of the human visual system."}
+    \end{center}
+\end{frame}
 
 % ------------------------------
 \begin{frame}{Why: Task Abstraction?}
@@ -45,41 +139,537 @@
 \end{frame}
 
 % ------------------------------
-
-
 \begin{frame}{Why: Task Abstraction?}
     \vspace{-0.3cm}
     \begin{block}{Task Abstraction}
         	Tentang memahami niat di balik sebuah visualisasi. Jika pertemuan sebelumnya bertanya "Data apa yang kita punya?", maka saat ini bertanya "Apa yang ingin dicapai pengguna dengan data tersebut?".
     \end{block}
-    \vspace{-0.3cm}
-    \begin{center}
-    \begin{tikzpicture}[edge from parent fork down, sibling distance=4cm, level distance=1.5cm, every node/.style={fill=blue!10, rounded corners, draw, align=center, font=\small}]
-        \node {Why: Task Abstraction}
-            child {node {Actions \\ (Tindakan)}
-                child {node {Analyze \\ \scriptsize Consume, Produce}}
-                child {node {Search \\ \scriptsize Lookup, Locate, \\ \scriptsize Browse, Explore}}
-                child {node {Query \\ \scriptsize Identify, Compare, \\ \scriptsize Summarize}}
-            }
-            child {node {Targets \\ (Sasaran)}
-                child {node {All Data \\ \scriptsize Trends, Outliers, \\ \scriptsize Features}}
-                child {node {Attributes \\ \scriptsize Distribution, \\ \scriptsize Extremes, Correlation}}
-            };
-    \end{tikzpicture}
-    \end{center}
+    \vspace{0.3cm}
+	\begin{itemize}
+		\item Why: Task Abstraction
+		\begin{itemize}
+			\item Actions (Tindakan)
+				\begin{itemize}
+					\item Analyze (Consume, Produce)
+					\item Search (Lookup, Locate, Browse, Explore)
+					\item Query (Identify, Compare, Summarize)
+				\end{itemize}
+			\item Targets (Sasaran)
+				\begin{itemize}
+					\item All Data (Trends, Outliers, Features)
+					\item Attributes (Distribution, Extremes, Correlation)
+				\end{itemize}
+		\end{itemize}
+	\end{itemize}	    
+    
     \centering \textit{"Abstraksi tugas memungkinkan kita merancang visualisasi yang berfokus pada tujuan pengguna, bukan hanya pada ketersediaan data."}
+\end{frame}
 
-   
+% ------------------------------
+\begin{frame}{Mengapa Abstraksi Tugas Diperlukan?}
+    \begin{block}{Tujuan Utama}
+        Mentransformasi kebutuhan pengguna dari \textit{Domain-Specific} menjadi \textit{Abstract Tasks}.
+    \end{block}
+
+    \vspace{0.3cm}
+    \textbf{Keuntungan Utama:}
+    \begin{itemize}
+        \item \textbf{Generalisasi:} Solusi untuk masalah keuangan dapat diterapkan pada masalah medis jika struktur tugasnya sama.
+        \item \textbf{Kosakata Umum:} Memungkinkan desainer dan pengguna dari latar belakang berbeda untuk berkomunikasi.
+        \item \textbf{Efisiensi Desain:} Mempersempit pilihan teknik visualisasi ke arah yang paling efektif secara kognitif.
+        \item \textbf{Analisis Komparatif:} Memudahkan evaluasi apakah sebuah \textit{tool} benar-benar menyelesaikan masalah inti pengguna.
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \centering \textit{"Analyze the task, not just the data."}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Mengapa Abstraksi Tugas Diperlukan?}
+	\begin{enumerate}
+		\item Menghindari "Reinventing the Wheel" (Mencegah Pengulangan) \\
+		Terlihat berbeda, padahal secara struktural sama. \\ \textbf{Contoh:} Seorang analis bursa saham ingin mencari "lonjakan harga yang aneh", sementara seorang ahli epidemiologi ingin mencari "wilayah dengan lonjakan kasus penyakit yang tidak biasa". \\ \textbf{Abstraksi:} Keduanya memiliki tugas yang sama, yaitu Locate Outliers. Dengan abstraksi, kita bisa menggunakan solusi visual yang sudah terbukti efektif untuk outliers di satu bidang ke bidang lainnya tanpa memulai dari nol.
+		\item Memungkinkan Perbandingan Lintas Domain \\
+		Menyediakan kosakata umum (shared vocabulary). Kosakata umum ini, peneliti visualisasi dapat membandingkan sistem yang dirancang untuk ahli biologi dengan sistem yang dirancang untuk ahli jaringan komputer guna melihat kesamaan performa dan efektivitasnya.
+	\end{enumerate}
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Mengapa Abstraksi Tugas Diperlukan?}
+	\begin{enumerate}
+		\item Membantu Pemilihan Teknik yang Tepat \\
+		Membantu desainer memetakan kebutuhan pengguna ke Visual Channel yang paling sesuai. 
+		\begin{itemize}
+			\item Jika tugas diabstraksikan sebagai Identify Distribution, maka histogram mungkin sangat efektif.
+			\item Jika tugas diabstraksikan sebagai Identify Correlation, maka scatterplot lebih unggul.
+			\item Tanpa abstraksi, mungkin hanya membuat grafik berdasarkan "apa yang biasa dipakai di bidang itu", bukan berdasarkan apa yang secara kognitif paling efektif bagi mata manusia.
+		\end{itemize}
+		\item Menentukan Ruang Desain (Design Space) \\
+		Abstraksi membatasi pilihan. Mengetahui bahwa tugas pengguna adalah Compare Trends, kita bisa langsung mengeliminasi banyak jenis grafik yang tidak mendukung perbandingan tren, sehingga proses desain menjadi lebih fokus dan efisien.
+	\end{enumerate}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Domain Task vs. Abstract Task}
+    \begin{block}{Definisi}
+        \textbf{Domain Task:} Kebutuhan pengguna dalam bahasa sehari-hari/bidang spesifik. \\
+        \textbf{Abstract Task:} Terjemahan tugas ke dalam kosakata kerangka kerja Munzner.
+    \end{block}
+
+    \vspace{0.3cm}
+    \centering
+    \small
+    \begin{tabular}{lp{4cm}p{4cm}}
+        \toprule
+        \textbf{Domain} & \textbf{Domain Task} & \textbf{Abstract Task} \\ \midrule
+        Kesehatan & "Cari pasien dengan suhu tubuh aneh." & \textbf{Locate Outliers} \\ \addlinespace
+        Ekonomi & "Lihat pola harga emas tahunan." & \textbf{Identify Trends} \\ \addlinespace
+        Sosial & "Siapa teman dari si Budi?" & \textbf{Explore Topology} \\ \addlinespace
+        Retail & "Bandingkan penjualan Cabang A dan B." & \textbf{Compare Attributes} \\ \bottomrule
+    \end{tabular}
+    
+    \vspace{0.4cm}
+    \textit{Kesimpulan: Abstraksi membantu kita menemukan alat visual yang tepat tanpa peduli apa bidangnya.}
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Who: Designer or User?}
+\begin{itemize}
+	\item Peran Desainer vs. Pengguna
+	\begin{itemize}
+		\item Pengguna (User): Fokus pada masalah domain mereka. Mereka bicara tentang "gen", "profit", "pasien", atau "keamanan jaringan". Mereka biasanya menjelaskan tugas dalam kalimat yang sangat spesifik dan terkadang tidak terstruktur.
+		\item Desainer (Designer): Fokus pada penerjemahan. Tugas desainer bukan sekadar "menggambar grafik", tetapi menganalisis niat pengguna dan mengubahnya menjadi Abstract Task (seperti Compare, Summarize, atau Locate)
+	\end{itemize}
+	\item Tantangan: "The Gap" (Celah Pemahaman)
+	\begin{itemize}
+		\item Pengguna mungkin tidak tahu apa yang mungkin dilakukan. Mereka meminta tabel karena mereka tidak tahu bahwa Scatterplot bisa menunjukkan korelasi lebih cepat.
+		\item Desainer mungkin tidak paham konteks domain. Tanpa abstraksi, desainer mungkin membuat grafik yang secara estetika bagus, tapi tidak menjawab pertanyaan inti sang dokter atau analis keuangan.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Contoh Nyata: Designer vs. User}
+    \begin{exampleblock}{Kasus: Analisis Penjualan E-Commerce}
+        \textbf{User (Manajer Penjualan):} \\
+        "Saya ingin tahu kenapa bulan lalu kita rugi besar di wilayah Jawa Barat."
+    \end{exampleblock}
+
+    \vspace{0.3cm}
+    \textbf{Proses Abstraksi oleh Designer (Mahasiswa):}
+    \begin{enumerate}
+        \item \textbf{Menganalisis Niat:} User ingin melakukan \textit{Discovery} (Mencari penyebab).
+        \item \textbf{Menerjemahkan ke Tugas Abstrak:}
+            \begin{itemize}
+                \item \textbf{Identify Outliers:} Cari transaksi dengan kerugian ekstrem.
+                \item \textbf{Compare Attributes:} Bandingkan biaya kirim vs. harga jual.
+            \end{itemize}
+        \item \textbf{Solusi Visual:} Membuat \textit{Diverging Bar Chart} (Profit vs Loss) dan \textit{Spatial Map}.
+    \end{enumerate}
+    
+    \vspace{0.3cm}
+    \textit{Designer membantu User melihat apa yang sebelumnya tidak terlihat.}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Who: Designer or User?}
+\begin{itemize}
+	\item Siapa yang Melakukan Abstraksi? \\
+	Desainer-lah yang bertanggung jawab melakukan abstraksi. Namun, Munzner juga menyebutkan bahwa ada alat bantu (tools) yang dirancang agar pengguna bisa melakukan abstraksinya sendiri secara implisit (misal: Tableau atau Power BI, di mana pengguna memilih "Compare" dan sistem memberikan opsi bar chart).
+\end{itemize}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Who: Designer or User?}
+    \begin{block}{Perspektif Peran}
+        Abstraksi tugas adalah jembatan komunikasi antara kebutuhan praktis dan solusi visual.
+    \end{block}
+    \vspace{0.4cm}
+    \begin{columns}[t]
+        \begin{column}{0.45\textwidth}
+            \textbf{Target User (The Domain Expert)}
+            \begin{itemize}
+                \item Menguasai konteks data.
+                \item Menggunakan bahasa domain (\textit{Gen, Profit, Kasus}).
+                \item Seringkali sulit mendefinisikan kebutuhan secara abstrak.
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.45\textwidth}
+            \textbf{The Designer (Visualization Expert)}
+            \begin{itemize}
+                \item Bertugas melakukan \textbf{Task Abstraction}.
+                \item Menerjemahkan kebutuhan menjadi \textit{Actions} \& \textit{Targets}.
+                \item Menjamin efektivitas kognitif dari visualisasi.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Proses Kolaborasi}
+    \centering
+    \textit{"A designer must observe and interview users to extract the 'Why' behind their domain-specific questions."}
+    
+    \vspace{0.5cm}
+    \begin{exampleblock}{Prinsip Utama}
+        Desainer tidak hanya bertanya \textbf{"Apa yang ingin Anda lihat?"}, \\
+        tetapi harus menggali \textbf{"Apa yang ingin Anda capai (tugas abstrak)?"}
+    \end{exampleblock}
 \end{frame}
 
 % ------------------------------
 
 
-\begin{frame}{Why: Task Abstraction?}
-    \begin{block}{Task Abstraction}
+\begin{frame}{Roleplay: Menjadi Translator Data (5 Menit)}
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Aktor A: Sang User (Manajer)}
+            \begin{itemize}
+                \item Gunakan bahasa "Pusing", "Banyak", "Lama".
+                \item Fokus pada masalah bisnis: Antrean panjang, staf stres, komplain pelanggan.
+                \item Minta "tabel data" (Permintaan umum user).
+            \end{itemize}
+        \end{column}
         
+        \begin{column}{0.48\textwidth}
+            \textbf{Aktor B: Sang Designer}
+            \begin{itemize}
+                \item Jangan langsung setuju buat tabel!
+                \item Tanya: "Apakah kita mencari pola (\textit{Trends}) atau anomali (\textit{Outliers})?"
+                \item Tentukan \textit{Action}: Discover, Locate, Compare.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.4cm}
+    \begin{alertblock}{Misi Utama Designer}
+        Ubahlah keluhan "Saya pusing" menjadi abstraksi tugas: \textbf{Locate Outliers} dan \textbf{Identify Correlation}.
+    \end{alertblock}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Actions: Hierarki Tindakan Pengguna}
+    \begin{block}{Definisi}
+        \textit{Actions} mendefinisikan \textbf{bagaimana} pengguna berinteraksi dengan data, mulai dari niat umum hingga pertanyaan spesifik.
     \end{block}
-   
+
+    \vspace{0.3cm}
+    \begin{columns}[t]
+        \begin{column}{0.31\textwidth}
+            \textbf{1. Analyze} \\
+            \scriptsize (Niat Umum)
+            \begin{itemize}
+                \item \textbf{Consume:} Discover, Present, Enjoy.
+                \item \textbf{Produce:} Annotate, Record, Derive.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.31\textwidth}
+            \textbf{2. Search} \\
+            \scriptsize (Cara Menemukan)
+            \begin{itemize}
+                \item \textbf{Lookup:} Tahu target \& lokasi.
+                \item \textbf{Locate:} Tahu target, cari lokasi.
+                \item \textbf{Browse/Explore.}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.31\textwidth}
+            \textbf{3. Query} \\
+            \scriptsize (Kedalaman Pertanyaan)
+            \begin{itemize}
+                \item \textbf{Identify:} Satu item.
+                \item \textbf{Compare:} Antar item.
+                \item \textbf{Summarize:} Semua data.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Actions: Hierarki Tindakan Pengguna - Analyze}
+Niat paling mendasar pengguna. Dibagi menjadi dua jalur
+\begin{itemize}
+	\item Consume (Mengonsumsi): Menggunakan visualisasi yang sudah ada.
+	\begin{itemize}
+		\item Discover: Mencari wawasan baru yang belum diketahui sebelumnya (Eksploratif).
+		\item Present: Menyampaikan temuan yang sudah diketahui kepada orang lain (Komunikasi/Storytelling).
+		\item Enjoy: Mengamati data untuk kesenangan atau ketertarikan personal (Casual Viz).
+	\end{itemize}
+	\item Produce (Memproduksi): Pengguna menghasilkan informasi baru saat berinteraksi dengan visualisasi.
+	\begin{itemize}
+		\item Annotate: Menambahkan catatan atau label pada elemen visual.
+		\item Record: Menyimpan riwayat jejak analisis atau membuat screenshot temuan untuk digunakan nanti.
+		\item Derive: Membuat atribut baru dari data yang ada (misal: menghitung selisih harga dari kolom harga asli).
+	\end{itemize}
+\end{itemize}
+\end{frame}
+% ------------------------------
+
+\begin{frame}{Actions: Hierarki Tindakan Pengguna - Search}
+Bagaimana cara pengguna menemukan target? Munzner membedakannya berdasarkan apakah pengguna tahu apa yang dicari (Target) dan di mana letaknya (Location).
+\vspace{-0.2cm}
+\begin{table}
+    \begin{tabular}{@{} lcc p{6cm} @{}}
+        \toprule
+        \textbf{Tipe Search} & \textbf{Target?} & \textbf{Lokasi ?} & \textbf{Contoh Analogi} \\ 
+        \midrule
+        \textbf{Lookup} & Ya & Ya & Mencari harga saham Apple di tanggal hari ini. \\ \addlinespace
+        \textbf{Locate} & Ya & Tidak & Mencari di mana letak koordinat kota yang suhunya $> 40^\circ$C. \\ \addlinespace
+        \textbf{Browse} & Tidak & Ya & Melihat-lihat tren penjualan di wilayah Jawa Barat saja. \\ \addlinespace
+        \textbf{Explore} & Tidak & Tidak & Menjelajah seluruh data untuk melihat apakah ada yang menarik. \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Actions: Hierarki Tindakan Pengguna - Query (Bertanya)}
+Apa yang dilakukan terhadap item tersebut?
+\begin{itemize}
+	\item Identify: Hanya melihat karakteristik dari satu item tunggal.
+	\item Compare: Melihat perbedaan atau persamaan antara dua atau lebih item.
+	\item Summarize: Melihat gambaran besar dari seluruh data yang tersedia.
+\end{itemize}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Implementasi Actions: Heatmap Penjualan}
+    \textbf{Dataset:} Transaksi per jam selama satu minggu.
+    
+    \begin{itemize}
+        \item \textbf{Search - Locate:} 
+        Mata pengguna mencari sel dengan warna paling merah (paling laku) untuk mengetahui kapan jam puncak terjadi.
+        
+        \item \textbf{Query - Compare:} 
+        Membandingkan intensitas warna antara baris "Senin" dan baris "Minggu" untuk melihat perbedaan perilaku belanja.
+        
+        \item \textbf{Analyze - Derive:} 
+        Mengubah data mentah transaksi menjadi data "Rata-rata Kunjungan per Jam" sebelum ditampilkan di heatmap.
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    \begin{quote}
+        "Visualisasi yang efektif memungkinkan pengguna melakukan \textit{Locate} dan \textit{Compare} dengan beban kognitif yang rendah."
+    \end{quote}
+\end{frame}
+
+
+% ------------------------------
+
+\begin{frame}{Implementasi Actions: Analyze }
+    \textbf{Dataset:} dataset penjualan selama 1 tahun.
+    \begin{itemize}
+    	\item Consume $\rightarrow$ Discover: Seorang analis melihat line chart penjualan bulanan dan baru menyadari bahwa ada lonjakan drastis setiap bulan Oktober (menemukan wawasan baru: ternyata ada tren musiman).
+    	\item Consume $\rightarrow$ Present: Manajer menggunakan grafik yang sama untuk membuktikan kepada direksi bahwa strategi diskon mereka berhasil menaikkan profit.
+    	\item Produce $\rightarrow$ Derive: Dari data "Harga Jual" dan "Harga Modal", analis membuat atribut baru yaitu "Profit" ($Profit = Jual - Modal$) untuk kemudian divisualisasikan.
+    \end{itemize}
+    
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Implementasi Actions: Search }
+Visualisasi Heatmap Penjualan (Sumbu X: Jam, Sumbu Y: Hari).
+\begin{itemize}
+	\item Lookup. "Berapa penjualan pada hari Sabtu jam 8 malam?" (Target tahu: Sabtu jam 8, Lokasi tahu: baris Sabtu, kolom jam 20.00).
+	\item Locate. "Jam berapa yang penjualannya paling sepi (warna paling terang)?" (Target tahu: nilai terendah, Lokasi tidak tahu: harus mencari di seluruh kotak heatmap).
+	\item Browse. "Bagaimana pola penjualan khusus di akhir pekan (Sabtu-Minggu)?" (Lokasi tahu: dua baris terbawah, Target tidak pasti: hanya ingin melihat-lihat pola di area tersebut).
+	\item Explore. "Apakah ada sesuatu yang aneh atau menarik dari seluruh heatmap ini?" (Target dan lokasi tidak tahu: memindai seluruh visualisasi tanpa tujuan spesifik).
+\end{itemize}
+\end{frame}
+
+
+% ------------------------------
+
+\begin{frame}{Implementasi Actions: Query }
+\begin{itemize}
+	\item Identify: "Oh, ternyata di titik ini (Senin jam 10 pagi) penjualannya hanya Rp 500.000." (Fokus pada satu sel).
+	\item Compare: "Mana yang lebih ramai, Senin pagi atau Jumat pagi?" (Membandingkan dua sel atau lebih).
+	\item Summarize: "Secara keseluruhan, toko kita paling ramai di hari kerja pada jam makan siang." (Menyimpulkan seluruh area heatmap).
+\end{itemize}
+
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Targets: Apa yang Dicari?}
+    \begin{block}{Definisi}
+        \textit{Targets} adalah aspek spesifik dari data yang ingin diperiksa/ditemukan/ diamati oleh pengguna melalui visualisasi.
+    \end{block}
+
+    \vspace{0.3cm}
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{High-Level Targets - Target Seluruh Data:}
+            \begin{itemize}
+                \item \textbf{Trends:} Pola kenaikan/penurunan.
+                \item \textbf{Outliers:} Data yang menyimpang.
+                \item \textbf{Features:} Struktur unik data.
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \textbf{Target Atribut:}
+            \begin{itemize}
+                \item \textbf{Distribution:} Sebaran nilai.
+                \item \textbf{Extremes:} Nilai Max/Min.
+                \item \textbf{Correlation:} Hubungan antar variabel.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Targets: Apa yang Dicari?}
+\textbf{High-Level Targets - Target Seluruh Data}
+\begin{itemize}
+	\item Trends: Pola umum atau kecenderungan data (misal: naik, turun, stabil, atau siklik).\\
+	Contoh: "Penjualan iPhone selalu meningkat di kuartal keempat setiap tahun."
+	\item Outliers: Titik data yang menyimpang secara signifikan dari pola umum.\\
+	Contoh: "Ada satu transaksi senilai 1 Miliar di toko kecil, sementara rata-rata transaksi lainnya hanya 100 ribu."
+	\item Features: Karakteristik atau bentuk khusus yang menarik (misal: ada dua gundukan pada distribusi data).\\
+	Contoh: "Data menunjukkan adanya dua kelompok pembeli yang berbeda (bimodal)."
+\end{itemize}
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Targets: Apa yang Dicari?}
+\textbf{Target Atribut}
+\begin{itemize}
+	\item One Attribute:\\
+	Distribution: Bagaimana nilai-nilai tersebar (apakah berkumpul di tengah atau menyebar merata?).\\
+	Extremes: Mencari nilai absolut tertinggi (maksimum) atau terendah (minimum).
+	\item Many Attributes: \\
+	Correlation: Apakah dua atribut saling memengaruhi? (Jika X naik, apakah Y juga naik?). \\
+	Similarity: Mencari item-item yang memiliki kemiripan karakteristik. \\
+\end{itemize}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Targets: Apa yang Dicari?}
+\textbf{Targets Terkait Data Relasional (Network/Tree)}. Jika dataset kita berupa jaringan (siapa berteman dengan siapa).
+\begin{itemize}
+	\item Topology: Memahami struktur hubungan (siapa pusatnya, siapa yang terisolasi, atau bagaimana kelompok-kelompok terbentuk).
+	\item Paths: Mencari jalur atau koneksi antara dua titik dalam jaringan.
+\end{itemize}
+
+\textbf{Targets Terkait Data Spasial (Spatial Data)}.Jika data memiliki bentuk fisik atau lokasi.
+\begin{itemize}
+	\item Shape: Memahami bentuk geografis atau struktur 3D (misal: bentuk tumor pada data medis atau bentuk pegunungan pada peta).
+\end{itemize}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Targets: Apa yang Dicari?}
+\begin{itemize}
+	\item Skenario: Analisis Keamanan Siber.
+		\begin{itemize}
+			\item Action: Locate (Mencari sesuatu yang spesifik).
+			\item Target: Outliers (Aktivitas login yang tidak wajar).
+		\end{itemize}
+	\item Skenario: Analisis Saham.
+		\begin{itemize}
+			\item Action: Summarize (Melihat gambaran besar).
+			\item Target: Trends (Arah pergerakan pasar tahunan).
+		\end{itemize}
+	\item Skenario: Analisis Marketing.
+		\begin{itemize}
+			\item Action: Compare (Membandingkan).
+			\item Target: Correlation (Apakah biaya iklan berbanding lurus dengan jumlah klik?).
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Matriks Panduan: Hubungan Action \& Target}
+    \centering
+    \tiny
+    \begin{tabular}{@{} llll @{}}
+        \toprule
+        \textbf{Action (How?)} & \textbf{Target (What?)} & \textbf{Pertanyaan Kunci} & \textbf{Visualisasi Rekomendasi} \\ 
+        \midrule
+        \textcolor{blue}{Summarize} & Trends & "Bagaimana polanya dari waktu ke waktu?" & Line / Area Chart \\ \addlinespace
+        \textcolor{blue}{Locate} & Outliers & "Mana data yang aneh/menyimpang?" & Scatterplot / Box Plot \\ \addlinespace
+        \textcolor{blue}{Identify} & Distribution & "Bagaimana sebaran nilainya?" & Histogram / Density Plot \\ \addlinespace
+        \textcolor{blue}{Compare} & Extremes & "Siapa yang paling tinggi atau rendah?" & Bar Chart (Sorted) \\ \addlinespace
+        \textcolor{blue}{Identify} & Correlation & "Apakah variabel X dan Y berhubungan?" & Scatterplot \\ \addlinespace
+        \textcolor{blue}{Browse} & Topology & "Siapa terhubung dengan siapa?" & Network Diagram \\ \addlinespace
+        \textcolor{blue}{Summarize} & Similarity & "Kelompok mana yang punya kemiripan?" & Heatmap / Cluster Plot \\ 
+        \bottomrule
+    \end{tabular}
+    
+    \vspace{0.4cm}
+    \normalsize
+    \begin{alertblock}{Tips Proyek}
+        Tentukan \textbf{Action} dan \textbf{Target} sebelum memilih grafik. Jangan pilih grafik hanya karena "bagus", tapi karena ia menjawab tugas (\textit{Task}) tersebut.
+    \end{alertblock}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Contoh project visualisasi}
+\textbf{Project Visualisasi Data Kesehatan: Analisis Pengeluaran Kesehatan Global vs. Kualitas Hidup.}
+
+\begin{itemize}
+	\item Identifikasi Domain dan Dataset
+	\begin{itemize}	
+		\item Dataset: World Health Organization (WHO) Data.
+		\item Atribut: Nama Negara (Nominal), Tahun (Quantitative), Pengeluaran Kesehatan per Kapita (Quantitative), Angka Harapan Hidup (Quantitative).
+	\end{itemize}
+	\item Tasks abstraction
+	
+	\begin{itemize}	
+		\item Level Analyze. Consume $\rightarrow$ Discover: Ingin mencari tahu apakah negara yang menghabiskan uang paling banyak pasti memiliki rakyat yang paling sehat?. Produce $\rightarrow$ Derive: Kita tidak hanya melihat pengeluaran total, tapi kita membuat atribut baru: "Health Efficiency Score" ($Efficiency = \frac{Life Expectancy}{Health Expenditure}$).
+		
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Contoh project visualisasi}
+\begin{itemize}
+	\item Tasks abstraction
+	\begin{itemize}
+		\item Level Search.\\
+		 Locate (Target: Known, Location: Unknown): Mencari di mana posisi Indonesia di antara negara-negara Asia Tenggara lainnya dalam hal efisiensi kesehatan. \\
+		 Explore (Target: Unknown, Location: Unknown): Menelusuri seluruh data untuk melihat apakah ada pola unik antara negara maju (G7) dibandingkan negara berkembang.
+		\item Level Query \\
+		Identify: Berapa tepatnya angka harapan hidup di negara dengan pengeluaran kesehatan terendah? \\
+		Compare: Membandingkan tren kenaikan harapan hidup antara Amerika Serikat dan Jepang selama 20 tahun terakhir. \\
+		Summarize: Memberikan gambaran umum hubungan global antara kekayaan negara dan kesehatan rakyatnya.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Contoh project visualisasi}
+\begin{table}[h]
+    \centering
+    \tiny
+    \caption{Matriks Penerapan Project: Abstraksi Tugas Visualisasi}
+    \vspace{0.3cm}
+    \begin{tabularx}{\textwidth}{@{} c >{\RaggedRight\arraybackslash}X l l >{\RaggedRight\arraybackslash}X @{}}
+        \toprule
+        \textbf{No.} & \textbf{User Question (Domain)} & \textbf{Action (Abstract)} & \textbf{Target (Abstract)} & \textbf{Visual Mapping} \\ 
+        \midrule
+        1 & "Apakah pengeluaran tinggi selalu berkorelasi dengan umur panjang?" & Analyze: Discover & Correlation & Scatterplot (X: Spending, Y: Life Exp) \\ \addlinespace
+        2 & "Negara mana yang sangat boros tapi rakyatnya tetap tidak sehat?" & Search: Locate & Outliers & Annotation pada titik terjauh di Scatterplot. \\ \addlinespace
+        3 & "Bagaimana pola kenaikan kesehatan dunia dari tahun ke tahun?" & Query: Summarize & Trends & Animated Bubble Chart (Play button over years). \\ \addlinespace
+        4 & "Mana 5 negara dengan sistem kesehatan paling efisien?" & Query: Compare & Extremes & Sorted Bar Chart (Top 5 efficiency score). \\ 
+        \bottomrule
+    \end{tabularx}
+\end{table}
 \end{frame}
 
 
@@ -92,6 +682,31 @@
     \normalsize
     \textbf{Ahmad Luky Ramdani} \\ % 
     \href{mailto:ahmadluky@sd.itera.ac.id}{ahmadluky@sd.itera.ac.id} % 
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Tugas Individu}
+\textbf{Petunjuk Pengerjaan}
+\begin{itemize}
+    \item Bacalah skenario yang diberikan dengan teliti.
+    \item Sebutkan Action (Analyze) yang dilakukan
+    \item Sebutkan Target utama yang ingin dicari
+    \item Sebutkan Action (Query) yang dilakukan untuk membandingkan
+    \item Rancanglah satu visualisasi (sebutkan sumbu X, sumbu Y, dan warna) yang bisa menjawab pertanyaan klien tersebut sekaligus.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Tugas Individu}
+\textbf{Skenario Analisis}
+
+\begin{enumerate}
+    \item \textbf{Skenario A} \\
+    Klien berkata: "Toko saya menjual 50 jenis produk. Saya ingin melihat apakah ada hubungan antara jumlah diskon yang saya berikan dengan jumlah barang yang terjual. Apakah benar kalau diskon ditambah, penjualan pasti naik? Selain itu, saya ingin melihat apakah pola ini berlaku sama di semua cabang saya."
+     \item \textbf{Skenario B} \\
+     Klien berkata: "Saya sedang memantau lalu lintas data di server perusahaan. Saya ingin tahu apakah ada satu komputer yang tiba-tiba mengirim data dalam jumlah yang sangat tidak wajar dibandingkan komputer lainnya hari ini. Jika ada, saya ingin tahu siapa dia agar bisa segera diputus koneksinya."
+
+\end{enumerate}
 \end{frame}
 
 \end{document}
