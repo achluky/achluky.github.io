@@ -63,8 +63,6 @@
 			\item Risiko: Pengguna ingin melihat Trends, tapi Anda malah fokus mencari Outliers.
 			\item Validasi: Mintalah feedback dari pengguna apakah abstraksi Anda sudah sesuai dengan niat mereka.
 		\end{itemize}
-	\item Visual Encoding/Interaction Idiom (Desain Visual)
-	\item Algorithm (Implementasi Teknik)
 	\end{itemize}
 \end{frame}
 
@@ -142,13 +140,205 @@
 			\item Bahasa Domain: "Saya ingin tahu kenapa stok obat antibiotik cepat habis."
 			\item Bahasa Desainer: (Belum ada di sini, ini nanti masuk ke level Abstraksi).
 		\end{itemize}
-	
+\item Cara validasi level domin situation
+		\begin{itemize}
+			\item Wawancara: Tanyakan langsung ke pengguna tentang masalah mereka.
+			\item Observasi: Lihat bagaimana mereka bekerja sehari-hari untuk menemukan masalah yang mungkin tidak mereka sadari.
+			\item Studi Lapangan: Kunjungi tempat kerja mereka untuk memahami konteksnya lebih dalam.
+			\item Validasi ini penting untuk memastikan kita benar-benar memahami masalah yang ingin kita selesaikan.
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 		
+% ------------------------------
+
+\begin{frame}{Four Levels of Design - Domain Situation}
+	\begin{table}[h]
+    \centering
+    \small
+    \caption{Studi Kasus: Level 1 - Domain Situation (Logistik)}
+    \vspace{0.3cm}
+    \begin{tabularx}{\textwidth}{@{} l >{\RaggedRight\arraybackslash}X @{}}
+        \toprule
+        \textbf{Elemen} & \textbf{Detail Level 1 (Domain Situation)} \\ 
+        \midrule
+        \textbf{Siapa Penggunanya?} & Manajer Operasional Gudang. \\ \addlinespace
+        \textbf{Data Domain} & Daftar alamat, plat nomor truk, jam berangkat, dan jam sampai. \\ \addlinespace
+        \textbf{Masalah Nyata} & "Sopir sering mengeluh rute yang saya berikan terlalu macet di jam-jam tertentu, sehingga barang sampai terlambat." \\ \addlinespace
+        \textbf{Kebutuhan Pengguna} & Mereka butuh cara untuk memantau titik kemacetan historis agar bisa menjadwal ulang pengiriman. \\ 
+        \bottomrule
+    \end{tabularx}
+	\end{table}
+
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Four Levels of Design - Data/Task Abstraction}
+\begin{block}{Definisi}
+        Menerjemahkan masalah spesifik domain ke dalam bahasa formal visualisasi (Items, Attributes, Actions, Targets).
+    \end{block}
+
+    \textbf{Proses Utama:}
+    \begin{itemize}
+        \item \textbf{Data:} Apa tipenya? (Quantitative, Categorical, Network, Spatial).
+        \item \textbf{Task:} Apa tindakannya? (Identify, Compare, Summarize).
+    \end{itemize}
+
+    \textbf{Ancaman (Threat):}
+    \begin{itemize}
+        \item \textbf{Wrong Abstraction:} Anda mendesain sistem untuk mencari \textit{Correlation}, padahal \textit{User} butuh mencari \textit{Trends}.
+    \end{itemize}
+
+    \begin{exampleblock}{Analogi}
+        User bilang: "Saya ingin tahu siapa pelanggan paling royal." \\
+        Abstraksi: \textbf{Action: Identify Extremes} pada \textbf{Attribute: Total Spend (Quant)}.
+    \end{exampleblock}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Four Levels of Design - Data/Task Abstraction}
+	\begin{itemize}
+		\item Cara Validasi Level Abstraction
+		\begin{itemize}
+			\item Tanyakan kembali ke pengguna: "Apakah Anda ingin melihat tren penjualan dari waktu ke waktu, atau Anda ingin melihat pelanggan mana yang paling banyak berbelanja?"
+			\item Pastikan bahwa abstraksi yang Anda buat (misal: "Identify Extremes") benar-benar mencerminkan niat pengguna.
+			\item Jika pengguna ingin melihat tren, tapi Anda malah fokus mencari outliers, maka Anda sudah salah di level ini.
+			\item Memberikan Prototipe Rendah (Low-fidelity)
+			\item Konfirmasi Terminologi
+		\end{itemize}
+		\item Ancaman terbesar di level ini adalah \textbf{Wrong Abstraction}, yaitu ketika Anda salah menerjemahkan kebutuhan pengguna ke dalam bahasa formal visualisasi. Misalnya, jika pengguna ingin melihat tren, tapi Anda malah mendesain untuk mencari outliers, maka Anda sudah salah di level ini.
+	\end{itemize}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Four Levels of Design - Data/Task Abstraction}
+
+	\begin{table}[h]
+    \centering
+    \small
+    \caption{Studi Kasus: Level 2 - Data/Task Abstraction (Logistik)}
+    \vspace{0.3cm}
+    \begin{tabularx}{\textwidth}{@{} l >{\RaggedRight\arraybackslash}X @{}}
+        \toprule
+        \textbf{Elemen} & \textbf{Detail Level 2 (Data/Task Abstraction)} \\ 
+        \midrule
+        \textbf{Data Abstraction} & Items: Perjalanan truk. Attributes: Durasi (Quant), Waktu Berangkat (Cyclic), Lokasi (Spatial). \\ \addlinespace
+        \textbf{Action (Why)} & Search: Locate (Mencari di mana titik macet). Query: Compare (Membandingkan jam berangkat A vs B). \\ \addlinespace
+        \textbf{Target (What)} & Outliers (Waktu tempuh yang jauh lebih lama dari biasanya). \\ \addlinespace
+        \textbf{Transform (Derive)} & Membuat atribut baru: "Delay Score" (Waktu nyata - Waktu estimasi). \\ 
+        \bottomrule
+    \end{tabularx}
+	\end{table}
+
+
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Four Levels of Design - Visual Encoding/Interaction Idiom}
+	\begin{block}{Definisi}
+		Menentukan spesifikasi desain konkret tentang bagaimana data ditampilkan (Visual) dan bagaimana pengguna berinteraksi dengannya (Interaction).
+	\end{block}
+	Terdapat dua komponen utama dalam level ini:
+	\begin{itemize}
+		\item Visual Encoding Idiom: Cara Anda merepresentasikan data secara statis. Ini melibatkan pemilihan Marks (titik, garis, area) dan Channels (warna, posisi, ukuran, orientasi).
+		
+		\item Interaction Idiom: Cara pengguna memanipulasi visualisasi tersebut. Apakah bisa di-zoom? Apakah bisa di-filter? Apa yang terjadi jika sebuah elemen diklik?
+	\end{itemize}
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Four Levels of Design - Visual Encoding/Interaction Idiom}
+	\begin{itemize}
+		\item Fokus Utama: Efektivitas Persepsi \\
+		aturan utamanya bukan lagi tentang keinginan pengguna, melainkan tentang biologi mata manusia. Anda harus memilih desain yang paling mudah diproses oleh otak tanpa menimbulkan salah tafsir.
+
+		\item Ancaman (Threat): Salah memilih grafik atau warna yang membingungkan. Misalnya, menggunakan warna merah untuk menunjukkan "baik" dan hijau untuk "buruk" bisa membingungkan bagi orang yang buta warna.
+	\end{itemize}
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Four Levels of Design - Visual Encoding/Interaction Idiom}
+	\begin{itemize}
+		\item Cara Validasi Level Visual Encoding/Interaction Idiom
+		\begin{itemize}
+			\item Gunakan prinsip persepsi: Pastikan grafik yang Anda pilih sesuai dengan jenis data dan tugas yang ingin diselesaikan. Misalnya, gunakan scatterplot untuk melihat korelasi, dan gunakan bar chart untuk membandingkan kategori.
+			\item Lakukan User Study: Tunjukkan desain Anda ke orang lain (bisa teman, kolega, atau bahkan pengguna asli) dan minta mereka untuk menjelaskan apa yang mereka lihat. Jika mereka salah mengartikan grafik Anda, maka desainnya belum efektif.
+			\item Pertimbangkan aksesibilitas: Pastikan desain Anda bisa dipahami oleh orang dengan berbagai kondisi, termasuk mereka yang buta warna.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
 
 
+% ------------------------------
+\begin{frame}{Four Levels of Design - Visual Encoding/Interaction Idiom}
+
+	\begin{table}[h]
+    \centering
+    \small
+    \caption{Studi Kasus: Level 2 - Visual Encoding/Interaction Idiom}
+    \vspace{0.3cm}
+    \begin{tabularx}{\textwidth}{@{} l >{\RaggedRight\arraybackslash}X @{}}
+        \toprule
+        \textbf{Elemen} & \textbf{Detail Level 3 (Visual Encoding/Interaction Idiom)} \\ 
+        \midrule
+        \textbf{Visual Encoding} & Menggunakan Map Base (Spatial). Rute digambar sebagai Line Marks. Atribut Delay Score di-encode ke dalam Color Channel (Hijau = Lancar, Merah = Macet Parah). \\ \addlinespace
+        \textbf{Interaction} & Tooltip/Hover: Saat kursor di atas rute, muncul detail plat nomor truk (Identify). Filter: Slider untuk memilih rentang waktu keberangkatan (Reduce). \\ \addlinespace
+        \textbf{Justifikasi Desain} & Posisi rute di peta memberikan konteks lokasi (Spatial), sedangkan warna merah yang kontras memudahkan pengguna melakukan Locate Outliers. \\ \addlinespace
+        \bottomrule
+    \end{tabularx}
+	\end{table}
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Four Levels of Design - Visual Encoding/Interaction Idiom}
+	Bagaimana kita membuktikan desain kita bagus?
+	\begin{itemize}
+		\item Design Justification: Menjelaskan alasan pemilihan grafik berdasarkan teori persepsi (misal: "Saya menggunakan posisi karena itu adalah channel paling akurat untuk data kuantitatif").
+
+		\item User Testing: Meminta orang mencoba visualisasi Anda dan melihat apakah mereka bisa menjawab pertanyaan dengan cepat dan benar.
+
+		\item Heuristic Evaluation: Mengecek desain berdasarkan daftar aturan standar (seperti: "Jangan gunakan lebih dari 7 warna dalam satu kategori").
+	\end{itemize}
+
+	\begin{block}{Pesan Penting}
+	"Di level ini, kalian adalah seorang Arsitek Visual. Kalian tidak boleh asal memilih grafik karena 'terlihat keren'. Setiap warna dan setiap garis harus punya alasan ilmiah mengapa mereka ada di sana."
+	\end{block}
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Four Levels of Design - Algorithm}
+	\begin{block}{Definsi}
+		Implementasi kode program untuk menjalankan idiom dan interaksi yang telah dirancang di Level 3 secara otomatis
+	\end{block}
+	\begin{itemize}
+		\item Fokus Utama: Efisiensi Komputasi \\
+		Di level ini, kita sudah punya desain visual yang bagus, tapi bagaimana dengan performanya? Apakah visualisasi bisa muncul dalam waktu yang wajar? Apakah memori yang digunakan tidak terlalu besar?
+
+		\item Ancaman (Threat): Kode lambat atau tidak efisien. Misalnya, jika Anda menggunakan algoritma yang memiliki kompleksitas $O(n^2)$ untuk dataset besar, maka visualisasi Anda mungkin butuh waktu 5 menit untuk muncul, yang tentu saja tidak praktis.
+	\end{itemize}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Four Levels of Design - Algorithm}
+	\begin{itemize}
+		\item Cara Validasi Level Algorithm
+		\begin{itemize}
+			\item Complexity Analysis : Menganalisis secara teoritis performa algoritma (menggunakan Big O Notation).
+			\item Performance Benchmarking : Mengukur waktu eksekusi (detik/milidetik) dan penggunaan memori (MB/GB) saat aplikasi dijalankan dengan beban data yang besar.
+		\end{itemize}
+		\item Perbedaan mendasar antara Level 3 dan Level 4
+		\begin{itemize}
+			\item Kesalahan Level 3 (Idiom): "Grafiknya benar secara kode, tapi manusia sulit membacanya."
+			\item Kesalahan Level 4 (Algorithm): "Grafiknya benar secara desain, tapi komputer kewalahan menjalankannya."
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
 
 
@@ -163,29 +353,19 @@
     \href{mailto:ahmadluky@sd.itera.ac.id}{ahmadluky@sd.itera.ac.id} % 
 \end{frame}
 
+
+
 % ------------------------------
 \begin{frame}{Tugas Individu}
 \textbf{Petunjuk Pengerjaan}
 \begin{itemize}
-    \item Bacalah skenario yang diberikan dengan teliti.
-    \item Sebutkan Action (Analyze) yang dilakukan
-    \item Sebutkan Target utama yang ingin dicari
-    \item Sebutkan Action (Query) yang dilakukan untuk membandingkan
-    \item Rancanglah satu visualisasi (sebutkan sumbu X, sumbu Y, dan warna) yang bisa menjawab pertanyaan klien tersebut sekaligus.
+    \item Baca buku "Visualization Analysis and Design" oleh Tamara Munzner, khususnya Bab 4 tentang "Four Levels of Design and Validation Sub bagian 4.7. Validation Examples".
+    \item Pilih satu studi kasus dari buku tersebut yang menarik bagi Anda.
+	\item Analisis studi kasus tersebut dengan menggunakan konsep Four Levels of Design and Validation yang telah kita bahas di pertemuan ini. Jelaskan bagaimana setiap level (Domain Situation, Data/Task Abstraction, Visual Encoding/Interaction Idiom, Algorithm) diterapkan dalam studi kasus tersebut.
+	\item Buatlah presentasi singkat (5-10 menit) yang menjelaskan analisis Anda. Gunakan slide untuk membantu menjelaskan poin-poin utama Anda.
+	\item Kirimkan presentasi Anda melalui form yang tersedia.
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}{Tugas Individu}
-\textbf{Skenario Analisis}
-
-\begin{enumerate}
-    \item \textbf{Skenario A} \\
-    Klien berkata: "Toko saya menjual 50 jenis produk. Saya ingin melihat apakah ada hubungan antara jumlah diskon yang saya berikan dengan jumlah barang yang terjual. Apakah benar kalau diskon ditambah, penjualan pasti naik? Selain itu, saya ingin melihat apakah pola ini berlaku sama di semua cabang saya."
-     \item \textbf{Skenario B} \\
-     Klien berkata: "Saya sedang memantau lalu lintas data di server perusahaan. Saya ingin tahu apakah ada satu komputer yang tiba-tiba mengirim data dalam jumlah yang sangat tidak wajar dibandingkan komputer lainnya hari ini. Jika ada, saya ingin tahu siapa dia agar bisa segera diputus koneksinya."
-
-\end{enumerate}
-\end{frame}
 
 \end{document}
