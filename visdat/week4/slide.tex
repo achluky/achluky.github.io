@@ -1,0 +1,191 @@
+\documentclass[t]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{booktabs} % Untuk garis \toprule, \midrule, \bottomrule
+\usepackage{graphicx} % Untuk \resizebox
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{ragged2e} % Untuk perataan teks yang lebih rapi
+
+\title[Visualisasi Data - Pertemuan 4]{Four Levels of Validation}
+
+\author{Ahmad Luky Ramdani}
+\subtitle{Matakuliah Visualisasi Data (Data visualization)}
+\author[Ahmad Luky Ramdani]{Ahmad Luky Ramdani \and Ira Safitri \and Dimas Dwi Randa}
+\institute[ITERA]
+{
+  Program Studi Data Sains\\
+  Fakultas Sains \\
+  Institut Teknologi Sumatera
+}
+
+\date{Bandung, \today}
+\begin{document}
+
+
+
+\frame{\titlepage}
+
+% ------------------------------
+
+\begin{frame}{Gambarn Umum}
+	\begin{itemize}
+	\item Membuat visualisasi itu penuh risiko: kita bisa salah mengerti kebutuhan pengguna, salah memilih grafik, atau kodenya lambat. Di sini, kita akan membahas Four Levels of Design \& Validation. \\
+	
+	\item 4 Level Desain \& Validasi
+
+	\begin{itemize}
+		\item Domain Situation (Konteks Pengguna)
+		\item Data/Task Abstraction (Bahasa Analitik)
+		\item Visual Encoding/Interaction Idiom (Desain Visual)
+		\item Algorithm (Implementasi Teknik)
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Gambarn Umum}		
+	\begin{itemize}
+	\item Domain Situation (Konteks Pengguna)		
+	\begin{itemize}
+		\item Masalah: Apakah Anda benar-benar memahami masalah si pengguna? (Misal: Apakah Anda tahu apa yang dibutuhkan seorang dokter bedah?).
+		\item Risiko: Anda membuat solusi untuk masalah yang sebenarnya tidak ada.
+		\item Validasi: Melakukan wawancara, observasi, dan studi lapangan ke tempat kerja pengguna.
+	\end{itemize}
+	\item Data/Task Abstraction (Bahasa Analitik)
+		\begin{itemize}
+			\item Masalah: Apakah Anda sudah menerjemahkan keluhan pengguna ke dalam Actions dan Targets (Chapter 3) dengan benar?
+			\item Risiko: Pengguna ingin melihat Trends, tapi Anda malah fokus mencari Outliers.
+			\item Validasi: Mintalah feedback dari pengguna apakah abstraksi Anda sudah sesuai dengan niat mereka.
+		\end{itemize}
+	\item Visual Encoding/Interaction Idiom (Desain Visual)
+	\item Algorithm (Implementasi Teknik)
+	\end{itemize}
+\end{frame}
+
+
+% ------------------------------
+
+\begin{frame}{Gambarn Umum}		
+	\begin{itemize}
+	\item Visual Encoding/Interaction Idiom (Desain Visual)
+		\begin{itemize}
+			\item Masalah: Bagaimana cara Anda menggambar datanya? (Misal: Pakai warna apa? Pakai Scatterplot atau Bar Chart?).
+			\item Risiko: Anda memilih grafik yang membingungkan atau warna yang tidak bisa dibaca oleh orang buta warna.
+			\item Validasi: Menggunakan prinsip persepsi (misal: aturan Marks \& Channels) atau melakukan User Study (tes ke orang lain).
+		\end{itemize}
+	\item Algorithm (Implementasi Teknik)
+	\begin{itemize}
+		\item Masalah: Bagaimana kode program Anda bekerja?
+		\item Risiko: Visualisasinya benar, tapi butuh waktu 5 menit untuk muncul karena kodenya lambat (tidak efisien).
+		\item Validasi: Mengukur waktu komputasi (Computational Complexity) dan memori yang digunakan.
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+% ------------------------------
+\begin{frame}{Gambarn Umum}
+    \centering
+    \small
+    \begin{tabular}{lp{4cm}p{4cm}}
+        \toprule
+        \textbf{Level} & \textbf{Ancaman (Threat)} & \textbf{Validasi (Cara Cek)} \\ 
+        \midrule
+        \textbf{Domain} & Masalah salah/tidak relevan. & Wawancara \& Observasi. \\ \addlinespace
+        \textbf{Abstraction} & Salah target/tujuan. & Konfirmasi ulang ke \textit{User}. \\ \addlinespace
+        \textbf{Idiom} & Grafik membingungkan. & Teori persepsi \& \textit{User Test}. \\ \addlinespace
+        \textbf{Algorithm} & Kode lambat/tidak efisien. & Ukur waktu \& memori. \\ 
+        \bottomrule
+    \end{tabular}
+    
+    \vspace{0.4cm}
+    \begin{alertblock}{Aturan Emas}
+        Validasi harus dilakukan sesuai levelnya. Kecepatan algoritma (Level 4) tidak membuktikan kebenaran desain (Level 3).
+    \end{alertblock}
+\end{frame}
+
+
+
+% ------------------------------
+\begin{frame}{Four Levels of Design - Domain Situation}
+	\begin{itemize}
+		\item Apa itu Domain Situation? 
+		
+		\begin{itemize}
+		\item \textbf{Domain Situation} adalah situasi spesifik di mana target pengguna Anda berada. Ini mencakup:\\
+		\item \textbf{Siapa kelompok penggunanya?} (Dokter, analis saham, petugas logistik, dll.) \\
+		\item \textbf{Apa bidang ilmunya?} (Kesehatan, keuangan, transportasi, dll.) \\
+		\item \textbf{Apa masalah nyata} yang mereka hadapi setiap hari? \\
+		\item  \textbf{Bagaimana bahasa/istilah} yang mereka gunakan? (Jargon domain).
+		\end{itemize}
+		\item Wrong Problem \\
+		Ancaman terbesar di level ini adalah membangun solusi untuk masalah yang tidak ada atau tidak penting bagi pengguna.
+					
+		
+	\end{itemize}
+\end{frame}
+
+% ------------------------------
+
+\begin{frame}{Four Levels of Design - Domain Situation}
+	\begin{itemize}
+\item Komponen dalam Domain Situation
+		\begin{itemize}
+			\item Target Users: Mengetahui tingkat keahlian mereka. Apakah mereka pakar data atau orang awam?
+			\item Domain Tasks: Masalah yang diceritakan pengguna dalam bahasa mereka sendiri.
+			\item Bahasa Domain: "Saya ingin tahu kenapa stok obat antibiotik cepat habis."
+			\item Bahasa Desainer: (Belum ada di sini, ini nanti masuk ke level Abstraksi).
+		\end{itemize}
+	
+	\end{itemize}
+\end{frame}
+		
+
+
+
+
+
+
+% --- Final page ---
+\begin{frame}[c]
+    \centering
+    \Huge{Terima Kasih} % 
+    
+    \vspace{1.5cm}
+    \normalsize
+    \textbf{Ahmad Luky Ramdani} \\ % 
+    \href{mailto:ahmadluky@sd.itera.ac.id}{ahmadluky@sd.itera.ac.id} % 
+\end{frame}
+
+% ------------------------------
+\begin{frame}{Tugas Individu}
+\textbf{Petunjuk Pengerjaan}
+\begin{itemize}
+    \item Bacalah skenario yang diberikan dengan teliti.
+    \item Sebutkan Action (Analyze) yang dilakukan
+    \item Sebutkan Target utama yang ingin dicari
+    \item Sebutkan Action (Query) yang dilakukan untuk membandingkan
+    \item Rancanglah satu visualisasi (sebutkan sumbu X, sumbu Y, dan warna) yang bisa menjawab pertanyaan klien tersebut sekaligus.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Tugas Individu}
+\textbf{Skenario Analisis}
+
+\begin{enumerate}
+    \item \textbf{Skenario A} \\
+    Klien berkata: "Toko saya menjual 50 jenis produk. Saya ingin melihat apakah ada hubungan antara jumlah diskon yang saya berikan dengan jumlah barang yang terjual. Apakah benar kalau diskon ditambah, penjualan pasti naik? Selain itu, saya ingin melihat apakah pola ini berlaku sama di semua cabang saya."
+     \item \textbf{Skenario B} \\
+     Klien berkata: "Saya sedang memantau lalu lintas data di server perusahaan. Saya ingin tahu apakah ada satu komputer yang tiba-tiba mengirim data dalam jumlah yang sangat tidak wajar dibandingkan komputer lainnya hari ini. Jika ada, saya ingin tahu siapa dia agar bisa segera diputus koneksinya."
+
+\end{enumerate}
+\end{frame}
+
+\end{document}
