@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Perhitungan Target Angka Kredit (AK) Dosen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Simulasi Perhitungan Target Angka Kredit (AK)</h1>
+            <p class="subtitle">Pengajuan Kenaikan Jabatan Dosen - Kepmen Nomor 39/M/KEP/2026</p>
+        </header>
+
+        <div class="card">
+            <h2>Data Dasar Dosen</h2>
+            <div class="form-group">
+                <label for="namaDosen">Nama Dosen:</label>
+                <input type="text" id="namaDosen" placeholder="Contoh: Ibu Dina">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="jabatanSekarang">Jabatan Saat Ini:</label>
+                    <select id="jabatanSekarang">
+                        <option value="">-- Pilih --</option>
+                        <option value="Asisten Ahli">Asisten Ahli</option>
+                        <option value="Lektor">Lektor</option>
+                        <option value="Lektor Kepala">Lektor Kepala</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="akSekarang">AK Saat Ini:</label>
+                    <input type="number" id="akSekarang" placeholder="Contoh: 150" step="0.01">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="jabatanTarget">Jabatan Target:</label>
+                    <select id="jabatanTarget">
+                        <option value="">-- Pilih --</option>
+                        <option value="Lektor">Lektor</option>
+                        <option value="Lektor Kepala">Lektor Kepala</option>
+                        <option value="Profesor">Profesor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="akTarget">Target AK:</label>
+                    <input type="number" id="akTarget" placeholder="Contoh: 200" step="0.01">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Data SKP (2 Tahun Terakhir)</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="skpTahun1">Tahun 2023:</label>
+                    <select id="skpTahun1">
+                        <option value="">-- Pilih Predikat --</option>
+                        <option value="Sangat Baik">Sangat Baik (150%)</option>
+                        <option value="Baik">Baik (100%)</option>
+                        <option value="Cukup">Cukup (75%)</option>
+                        <option value="Kurang">Kurang (50%)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="skpTahun2">Tahun 2024:</label>
+                    <select id="skpTahun2">
+                        <option value="">-- Pilih Predikat --</option>
+                        <option value="Sangat Baik">Sangat Baik (150%)</option>
+                        <option value="Baik">Baik (100%)</option>
+                        <option value="Cukup">Cukup (75%)</option>
+                        <option value="Kurang">Kurang (50%)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Daftar Penelitian / Publikasi</h2>
+            <p class="subtitle" style="margin-bottom: 15px; color: #666; font-size: 13px;">Tanggal Periode Penarikan Data: 2023-2024</p>
+            <div id="penelitianList"></div>
+            <button type="button" class="btn btn-secondary" onclick="tambahPenelitian()">+ Tambah Penelitian</button>
+        </div>
+
+        <div class="button-group">
+            <button type="button" class="btn btn-primary" onclick="hitungAK()">Hitung Angka Kredit</button>
+            <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+        </div>
+
+        <div id="hasilSection" class="card hasil-section" style="display: none;">
+            <h2>Hasil Perhitungan</h2>
+            
+            <div class="hasil-box">
+                <h3>1. AK Konversi (Dari SKP)</h3>
+                <div id="hasilSKP"></div>
+            </div>
+
+            <div class="hasil-box">
+                <h3>2. AK Prestasi (Dari Penelitian)</h3>
+                <div id="hasilPenelitian"></div>
+            </div>
+
+            <div class="hasil-box">
+                <h3>3. Rekapitulasi AK Kumulatif</h3>
+                <div id="hasilRekapitulasi"></div>
+            </div>
+
+            <div class="hasil-box">
+                <h3>4. Pengecekan Syarat Khusus dan Proporsi</h3>
+                <div id="hasilSyarat"></div>
+            </div>
+
+            <div id="hasilStatus" class="status-box"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
