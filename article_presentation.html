@@ -337,7 +337,69 @@
         .pdf-link i {
             margin-right: 4px;
         }
-    </style>
+        
+        .stats-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .stat-item i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .stat-item strong {
+            font-size: 1.8rem;
+            display: block;
+            margin: 5px 0;
+        }
+        
+        .stat-item span {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        
+        .stat-item small {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+        
+        .pub-content {
+            flex: 1;
+        }
+        
+        .pub-details {
+            margin-top: 5px;
+        }
+        
+        .loading-spinner {
+            text-align: center;
+            padding: 30px;
+            color: #667eea;
+        }
+        
+        .loading-spinner i {
+            font-size: 2rem;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -374,20 +436,25 @@
             <!-- Content -->
             <div class="p-3">
                 
+                <!-- Statistics -->
+                <div id="stats-container" class="mb-3">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner"></i>
+                        <p>Memuat data...</p>
+                    </div>
+                </div>
+                
                 <!-- Journal Publications -->
                 <div class="section-card">
                     <h3 class="section-title">
-                        Journal Publications or Conference Proceedings
+                        <i class="fas fa-graduation-cap"></i> Journal Publications & Conference Proceedings
                     </h3>
                     
-                    <ol class="publication-list">
+                    <ol class="publication-list" id="publications-container">
                         <li>
-                            <span class="pub-title">Title of Your Journal Article</span>
-                            <a href="#" class="pdf-link" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                        </li>
-                        <li>
-                            <span class="pub-title">Another Publication Title</span>
-                            <a href="#" class="pdf-link" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <div class="loading-spinner">
+                                <i class="fas fa-spinner"></i>
+                            </div>
                         </li>
                     </ol>
                 </div>
@@ -399,14 +466,11 @@
                         <i class="fas fa-presentation"></i> Presentations & Talks
                     </h3>
                     
-                    <ol class="publication-list">
+                    <ol class="publication-list" id="presentations-container">
                         <li>
-                            <span class="pub-title">Presentation Title at Event</span>
-                            <a href="#" class="pdf-link" target="_blank"><i class="fas fa-file-powerpoint"></i> Slides</a>
-                        </li>
-                        <li>
-                            <span class="pub-title">Another Presentation Title</span>
-                            <a href="#" class="pdf-link" target="_blank"><i class="fas fa-file-powerpoint"></i> Slides</a>
+                            <div class="loading-spinner">
+                                <i class="fas fa-spinner"></i>
+                            </div>
                         </li>
                     </ol>
                 </div>
@@ -423,5 +487,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Publications Loader -->
+    <script src="js/publications.js"></script>
 </body>
 </html>
