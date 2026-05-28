@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.8)  15 MAR 2026 07:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.8)  28 MAY 2026 11:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -773,52 +773,109 @@ Dictionary: translator-theorem-dictionary, Language: English
 
 ] [3
 
-] [4
-
-] [5
-
-] [6
-
 ]
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 121.
-
-[7
-
-] [8
-
-]
-<image.png, id=260, 749.80125pt x 400.49625pt>
+<image.png, id=119, 749.80125pt x 400.49625pt>
 File: image.png Graphic file (type png)
 <use image.png>
-Package pdftex.def Info: image.png  used on input line 157.
+Package pdftex.def Info: image.png  used on input line 68.
 (pdftex.def)             Requested size: 273.83728pt x 146.26852pt.
- [9
+ [4
 
  <./image.png>]
-<image2.png, id=290, 912.40875pt x 437.635pt>
+<image2.png, id=150, 912.40875pt x 437.635pt>
 File: image2.png Graphic file (type png)
 <use image2.png>
-Package pdftex.def Info: image2.png  used on input line 167.
+Package pdftex.def Info: image2.png  used on input line 78.
 (pdftex.def)             Requested size: 273.83728pt x 131.34492pt.
- [10
+ [5
 
  <./image2.png>]
-<image3.png, id=319, 895.345pt x 421.575pt>
+<image3.png, id=179, 895.345pt x 421.575pt>
 File: image3.png Graphic file (type png)
 <use image3.png>
-Package pdftex.def Info: image3.png  used on input line 178.
+Package pdftex.def Info: image3.png  used on input line 89.
 (pdftex.def)             Requested size: 273.83728pt x 128.9372pt.
- [11
+ [6
 
- <./image3.png>] [12
+ <./image3.png>]
+<image4.png, id=208, 797.98125pt x 540.0175pt>
+File: image4.png Graphic file (type png)
+<use image4.png>
+Package pdftex.def Info: image4.png  used on input line 100.
+(pdftex.def)             Requested size: 273.83728pt x 185.30919pt.
+ [7
+
+ <./image4.png>] [8
+
+] [9
+
+] [10
+
+]
+<image5.png, id=320, 569.12625pt x 97.36375pt>
+File: image5.png Graphic file (type png)
+<use image5.png>
+Package pdftex.def Info: image5.png  used on input line 163.
+(pdftex.def)             Requested size: 273.83728pt x 46.84845pt.
+<image6.png, id=321, 504.88625pt x 359.3425pt>
+File: image6.png Graphic file (type png)
+<use image6.png>
+Package pdftex.def Info: image6.png  used on input line 163.
+(pdftex.def)             Requested size: 273.83728pt x 194.89742pt.
+
+Overfull \vbox (63.29492pt too high) detected at line 163
+ []
+
+[11
+
+ <./image5.png> <./image6.png>]
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
+(Font)              using `OT1/cmss/bx/n' instead on input line 179.
+
+[12
 
 ] [13
 
 ] [14
 
-] [15
+]
+<image7.png, id=436, 1014.79124pt x 399.4925pt>
+File: image7.png Graphic file (type png)
+<use image7.png>
+Package pdftex.def Info: image7.png  used on input line 223.
+(pdftex.def)             Requested size: 308.06367pt x 121.27507pt.
+ [15
+
+ <./image7.png>]
+<image8.png, id=465, 1027.84pt x 561.09625pt>
+File: image8.png Graphic file (type png)
+<use image8.png>
+Package pdftex.def Info: image8.png  used on input line 231.
+(pdftex.def)             Requested size: 308.06367pt x 168.1675pt.
+ [16
+
+ <./image8.png>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 248.
+ (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 248.
+ (/usr/local/texlive/2025basic/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [17
+
+] [18
+
+]
+<image9.png, id=550, 1027.84pt x 561.09625pt>
+File: image9.png Graphic file (type png)
+<use image9.png>
+Package pdftex.def Info: image9.png  used on input line 267.
+(pdftex.def)             Requested size: 342.2953pt x 186.85753pt.
+ [19
+
+ <./image9.png>] [20
 
 ]
 \tf@nav=\write6
@@ -843,18 +900,18 @@ Package rerunfilecheck Info: File `slide.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 24982 strings out of 468944
- 498795 string characters out of 5454000
- 871175 words of memory out of 5000000
- 53177 multiletter control sequences out of 15000+600000
- 632060 words of font info for 54 fonts, out of 8000000 for 9000
+ 25061 strings out of 468944
+ 499520 string characters out of 5454000
+ 870176 words of memory out of 5000000
+ 53232 multiletter control sequences out of 15000+600000
+ 635452 words of font info for 67 fonts, out of 8000000 for 9000
  374 hyphenation exceptions out of 8191
- 101i,15n,107p,518b,621s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb>
-Output written on slide.pdf (15 pages, 1020620 bytes).
+ 101i,15n,107p,439b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </Users/mac/Library/texlive/2025basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss1000.600pk></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on slide.pdf (20 pages, 1751154 bytes).
 PDF statistics:
- 501 PDF objects out of 1000 (max. 8388607)
- 427 compressed objects within 5 object streams
- 31 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 656 PDF objects out of 1000 (max. 8388607)
+ 560 compressed objects within 6 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 
