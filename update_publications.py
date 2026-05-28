@@ -15,9 +15,10 @@ Author: Ahmad Luky Ramdani
 import json
 from datetime import datetime
 import os
+import time
 
 # Uncomment after installing scholarly:
-from scholarly import scholarly
+from scholarly import scholarly, ProxyGenerator
 
 def get_scholar_profile(scholar_id):
     """
@@ -32,11 +33,13 @@ def get_scholar_profile(scholar_id):
     try:
         # Uncomment these lines after installing scholarly:
         search_query = scholarly.search_author_id(scholar_id)
+        print(f"search_query {search_query}")
         author = scholarly.fill(search_query)
-        
+        print(f"author {author}")
         publications_list = []
         for pub in author['publications']:
             pub_filled = scholarly.fill(pub)
+            print(f"title {pub_filled['bib']['title']}")
             publications_list.append({
                 'title': pub_filled['bib']['title'],
                 'authors': pub_filled['bib'].get('author', ''),
@@ -46,17 +49,10 @@ def get_scholar_profile(scholar_id):
                 'pdfUrl': pub_filled.get('eprint_url', ''),
                 'type': 'journal' if 'journal' in pub_filled['bib'].get('venue', '').lower() else 'conference'
             })
-        
         return {
             'totalCitations': author.get('citedby', 0),
             'publications': publications_list
         }
-        
-        # Temporary placeholder - replace with actual data
-        print("⚠️  Scholarly library not installed.")
-        print("Install with: pip install scholarly")
-        return None
-        
     except Exception as e:
         print(f"Error fetching Scholar data: {e}")
         return None
@@ -66,15 +62,12 @@ def update_publications_json(scholar_id, output_file='data/publications.json'):
     Update publications.json file with latest data from Google Scholar
     """
     print(f"🔍 Fetching publications for Scholar ID: {scholar_id}")
-    
     scholar_data = get_scholar_profile(scholar_id)
-    
     if scholar_data is None:
         print("❌ Could not fetch data. Using manual mode.")
         print("\n📝 Please manually edit data/publications.json")
         print("   See the example structure in the file.")
         return False
-    
     # Load existing data to preserve presentations
     existing_data = {}
     if os.path.exists(output_file):
@@ -83,7 +76,6 @@ def update_publications_json(scholar_id, output_file='data/publications.json'):
                 existing_data = json.load(f)
         except:
             pass
-    
     # Merge data
     updated_data = {
         'lastUpdated': datetime.now().strftime('%Y-%m-%d'),
