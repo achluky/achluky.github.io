@@ -145,10 +145,10 @@ git push
 ## ✅ Checklist Setelah Update
 
 - [ ] File `data/publications.json` ada dan valid
-- [ ] Test di browser: `http://localhost:8888/article_presentation.html`
+- [ ] Test di browser: `http://localhost:8888/https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en`
 - [ ] Data tampil dengan benar
 - [ ] Commit dan push ke GitHub
-- [ ] Verifikasi di: `https://achluky.github.io/article_presentation.html`
+- [ ] Verifikasi di: `https://achluky.github.io/https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en`
 
 ---
 

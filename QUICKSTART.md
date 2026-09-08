@@ -35,7 +35,7 @@ git push
 
 ### 3️⃣ Lihat Hasil
 
-Buka: https://achluky.github.io/article_presentation.html
+Buka: https://achluky.github.io/https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en
 
 ---
 

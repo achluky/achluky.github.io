@@ -18,7 +18,7 @@ achluky.github.io/
 ├── js/
 │   └── publications.js            # Script untuk menampilkan data
 ├── update_publications.py         # Script Python untuk update data
-└── article_presentation.html      # Halaman publikasi
+└── https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en      # Halaman publikasi
 ```
 
 ## 🔧 Cara Update Publikasi
@@ -149,7 +149,7 @@ Menampilkan:
    ```
 
 4. **Verifikasi di website**
-   - Buka: https://achluky.github.io/article_presentation.html
+   - Buka: https://achluky.github.io/https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en
    - Refresh halaman untuk melihat update
 
 ## 🛠️ Troubleshooting
@@ -187,7 +187,7 @@ cd achluky.github.io
 python3 -m http.server 8000
 
 # Buka browser
-open http://localhost:8000/article_presentation.html
+open http://localhost:8000/https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en
 ```
 
 ## 🎯 Tips & Best Practices
