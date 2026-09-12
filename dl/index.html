@@ -31,222 +31,24 @@
             </div>
         </nav>
 
-        <!-- Course header -->
+        <!-- Course header (filled by js/course.js from data.json) -->
         <div class="course-page-head">
             <p class="eyebrow">Course</p>
-            <h1 class="name">Deep Learning</h1>
-            <div class="course-badges">
-                <span class="badge">Ganjil 2026/2025</span>
-                <span class="badge">Sains Data</span>
-            </div>
-            <p class="bio">Mata kuliah ini membahas teknik dan prinsip deep learning untuk membuat model yang dapat belajar dan membuat prediksi dari data.</p>
+            <h1 class="name" id="course-title">&nbsp;</h1>
+            <div class="course-badges" id="course-badges"></div>
+            <p class="bio" id="course-bio"></p>
         </div>
 
         <!-- Course Information -->
         <div class="info-panel">
             <h3>Informasi Mata Kuliah</h3>
-            <div class="info-grid">
-                <div class="info-cell">
-                    <span class="info-label">Dosen</span>
-                    Ahmad Luky Ramdani dll.
-                </div>
-                <div class="info-cell">
-                    <span class="info-label">Waktu</span>
-                    &nbsp;
-                </div>
-                <div class="info-cell">
-                    <span class="info-label">Ruangan</span>
-                    Ruangan kelas perkuliahn di ITERA
-                </div>
-                <div class="info-cell">
-                    <span class="info-label">Semester</span>
-                    Ganjil 2026/2025
-                </div>
-            </div>
+            <div class="info-grid" id="info-grid"></div>
         </div>
 
         <!-- RPS Per Week Section -->
         <h2 class="block-title">Rencana Pembelajaran Semester (RPS)</h2>
-
-        <!-- Week 12 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 0</span>
-                <h4 class="week-title">Building Blocks of Deep Learning</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Memahami konsep dasar Deep learning
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Linear layers</li>
-                        <li>Nonlinearitas</li>
-                        <li>Convolutional Layers</li>
-                        <li>Residual (skip) Connections</li>
-                        <li>Normalization Layers</li>
-                        <li>Dropout Layers</li>
-                        <li>Adaptive Bias Layers</li>
-                        <li>Pooling Layers</li>
-                        <li>Attention Layers</li>
-                        <li>Recurrent Layers</li>
-                        <li>Multiplicative Layers</li>
-                        <li>Implicit Layers</li>
-                        <li>Gradient Descent vs Gradient Descent</li>
-                        <li>Backpropagation</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 12</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong>
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 12 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 12</span>
-                <h4 class="week-title">Transformer</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami konsep dasar self-attention dan transformer dalam konteks deep learning, serta bagaimana arsitektur ini digunakan dalam berbagai aplikasi seperti NLP dan computer vision.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Distance dan similarity</li>
-                        <li>Self-Attention</li>
-                        <li>Transformer Architecture</li>
-                        <li>Applications of Transformers</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 12</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong>
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 13 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 13</span>
-                <h4 class="week-title">GAN: Generative Adversarial Networks</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami konsep generative adversarial networks (GANs), termasuk arsitektur dasar, cara kerja, dan aplikasinya dalam menghasilkan data baru yang realistis.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Introduction to GANs</li>
-                        <li>Architecture of GANs</li>
-                        <li>Training Process</li>
-                        <li>Applications of GANs</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 13</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong>
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 14 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 14</span>
-                <h4 class="week-title">Reinforcement Learning Vs  Deep Reinforcement Learning</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami konsep reinforcement learning dan deep reinforcement learning, termasuk perbedaan antara keduanya, serta bagaimana algoritma ini digunakan untuk mengajarkan agen dalam lingkungan tertentu untuk membuat keputusan optimal.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Introduction to Reinforcement Learning</li>
-                        <li>Markov Decision Processes (MDPs)</li>
-                        <li>Bellman Equations</li>
-                        <li>Q-Learning</li>
-                        <li>Policy Gradient Methods</li>
-                        <li>Deep Reinforcement Learning</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 1</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong>
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 15 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 15</span>
-                <h4 class="week-title">Autoencoders</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami konsep autoencoders, termasuk arsitektur dasar, cara kerja, dan aplikasinya dalam kompresi data, denoising, dan representasi fitur.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Introduction to Autoencoders</li>
-                        <li>Architecture of Autoencoders</li>
-                        <li>Applications of Autoencoders</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 1</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong>
-                </div>
-            </div>
+        <div id="weeks-container">
+            <p style="color: var(--muted); font-size: .9rem;">Memuat RPS&hellip;</p>
         </div>
 
         <!-- Footer -->
@@ -256,23 +58,7 @@
         </footer>
     </div>
 
-    <script>
-        function toggleWeek(element) {
-            const weekCard = element.parentElement;
-            weekCard.classList.toggle('active');
-        }
-
-        // Optional: Close other weeks when opening one
-        document.querySelectorAll('.week-header').forEach(header => {
-            header.addEventListener('click', function() {
-                const currentCard = this.parentElement;
-                document.querySelectorAll('.week-card').forEach(card => {
-                    if (card !== currentCard) {
-                        card.classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
+    <script>window.COURSE_DATA_URL = 'data.json';</script>
+    <script src="../js/course.js"></script>
 </body>
 </html>

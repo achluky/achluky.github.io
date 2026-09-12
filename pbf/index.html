@@ -31,229 +31,24 @@
             </div>
         </nav>
 
-        <!-- Course header -->
+        <!-- Course header (filled by js/course.js from data.json) -->
         <div class="course-page-head">
             <p class="eyebrow">Course</p>
-            <h1 class="name">Pemrograman Berbasis Fungsi</h1>
-            <div class="course-badges">
-                <span class="badge">SD25-xxxxx</span>
-                <span class="badge">3 (2-1) SKS</span>
-                <span class="badge">Genap 2025/2026</span>
-                <span class="badge">Sains Data</span>
-            </div>
-            <p class="bio">Mata kuliah ini membahas paradigma pemrograman berbasis fungsi (functional programming) dengan fokus pada konsep-konsep fundamental seperti fungsi murni, immutability, higher-order functions, dan penerapannya dalam pengembangan perangkat lunak modern.</p>
+            <h1 class="name" id="course-title">&nbsp;</h1>
+            <div class="course-badges" id="course-badges"></div>
+            <p class="bio" id="course-bio"></p>
         </div>
 
         <!-- Course Information -->
         <div class="info-panel">
             <h3>Informasi Mata Kuliah</h3>
-            <div class="info-grid">
-                <div class="info-cell">
-                    <span class="info-label">Dosen</span>
-                    Ahmad Luky Ramdani
-                </div>
-                <div class="info-cell">
-                    <span class="info-label">Waktu</span>
-                    [Sesuaikan dengan jadwal]
-                </div>
-                <div class="info-cell">
-                    <span class="info-label">Ruangan</span>
-                    Ruangan kelas perkuliahan di ITERA
-                </div>
-                <div class="info-cell">
-                    <span class="info-label">Semester</span>
-                    Genap 2025/2026
-                </div>
-            </div>
+            <div class="info-grid" id="info-grid"></div>
         </div>
 
         <!-- RPS Per Week Section -->
         <h2 class="block-title">Rencana Pembelajaran Semester (RPS)</h2>
-
-        <!-- Week 11 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 11</span>
-                <h4 class="week-title">Teknik Decorator Design</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami dan mengimplementasikan pola desain decorator dalam konteks pemrograman fungsional untuk menambahkan fungsionalitas pada fungsi secara dinamis tanpa mengubah struktur aslinya.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Konsep Decorator Pattern dalam Functional Programming</li>
-                        <li>Implementasi Decorator menggunakan Python</li>
-                        <li>Function Wrapping dan Closure</li>
-                        <li>Decorator dengan Parameter</li>
-                        <li>Studi Kasus: Logging, Timing, dan Authentication</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="https://docs.google.com/presentation/d/1FhNotGtxwQ8nD1ZJQDkNZWY0dt37BcoEGygtD740oTI/edit?usp=sharing" class="link-btn" target="_blank"><i class="fas fa-file-pdf"></i> Slide Pertemuan 11</a>
-                    <a href="week11/decorator.ipynb" class="link-btn"><i class="fas fa-code"></i> Contoh Code</a>
-                    <a href="week11/decorator.pdf" class="link-btn"><i class="fas fa-file-pdf"></i> Contoh Code</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong> Implementasikan decorator untuk melakukan caching hasil fungsi dan monitoring waktu eksekusi.
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 12 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 12</span>
-                <h4 class="week-title">Functional Design Patterns: Teknik PyMonad Library</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami konsep monad dalam pemrograman fungsional dan menggunakan PyMonad library untuk menangani operasi kompleks seperti error handling dan side effects secara fungsional.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Pengenalan Monad dan Functor</li>
-                        <li>PyMonad Library: Maybe, Either, dan List Monad</li>
-                        <li>Composing Monadic Operations</li>
-                        <li>Railway Oriented Programming</li>
-                        <li>Error Handling secara Fungsional</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="#" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 12</a>
-                    <a href="#" class="link-btn"><i class="fas fa-code"></i> Contoh Code</a>
-                    <a href="https://pypi.org/project/PyMonad/" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i> PyMonad Documentation</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong> Implementasikan pipeline data processing menggunakan PyMonad untuk menangani error dan transformasi data secara fungsional.
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 13 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 13</span>
-                <h4 class="week-title">Concurrency dan Parallel Functional Programming</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami dan mengimplementasikan konsep concurrency dan parallelisme dalam pemrograman fungsional untuk meningkatkan performa aplikasi.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Immutability dan Thread Safety</li>
-                        <li>Parallel Map, Filter, dan Reduce</li>
-                        <li>Multiprocessing dalam Functional Programming</li>
-                        <li>Futures dan Promises</li>
-                        <li>Async/Await dengan Functional Approach</li>
-                        <li>Race Conditions dan Deadlock Prevention</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="#" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 13</a>
-                    <a href="#" class="link-btn"><i class="fas fa-code"></i> Contoh Code</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong> Implementasikan program untuk memproses dataset besar secara paralel menggunakan functional programming approach.
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 14 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 14</span>
-                <h4 class="week-title">Functional Programming in Big Data and Real World Application</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu menerapkan konsep pemrograman fungsional dalam konteks big data dan aplikasi dunia nyata, serta memahami keunggulan pendekatan fungsional dalam skenario produksi.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Apache Spark dan Functional Programming</li>
-                        <li>MapReduce Paradigm</li>
-                        <li>Stream Processing dengan Functional Approach</li>
-                        <li>Data Pipeline Design</li>
-                        <li>Real World Case Studies</li>
-                        <li>Best Practices dalam Production</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="#" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 14</a>
-                    <a href="#" class="link-btn"><i class="fas fa-code"></i> Contoh Code</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong> Analisis dan presentasikan studi kasus penggunaan functional programming dalam aplikasi big data di industri.
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 15 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 15</span>
-                <h4 class="week-title">Pengantar Scala dan Functional Programming</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami dasar-dasar bahasa pemrograman Scala dan bagaimana Scala menggabungkan paradigma pemrograman fungsional dengan object-oriented programming.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Sintaks Dasar Scala</li>
-                        <li>Functional Programming di Scala</li>
-                        <li>Pattern Matching dan Case Classes</li>
-                        <li>Collections dan Higher-Order Functions</li>
-                        <li>For Comprehensions</li>
-                        <li>Perbandingan Python vs Scala untuk Functional Programming</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="#" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 15</a>
-                    <a href="#" class="link-btn"><i class="fas fa-code"></i> Contoh Code</a>
-                    <a href="https://docs.scala-lang.org/" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i> Scala Documentation</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong> Implementasikan sebuah program sederhana dalam Scala menggunakan konsep-konsep functional programming yang telah dipelajari.
-                </div>
-            </div>
+        <div id="weeks-container">
+            <p style="color: var(--muted); font-size: .9rem;">Memuat RPS&hellip;</p>
         </div>
 
         <!-- Footer -->
@@ -263,23 +58,7 @@
         </footer>
     </div>
 
-    <script>
-        function toggleWeek(element) {
-            const weekCard = element.parentElement;
-            weekCard.classList.toggle('active');
-        }
-
-        // Optional: Close other weeks when opening one
-        document.querySelectorAll('.week-header').forEach(header => {
-            header.addEventListener('click', function() {
-                const currentCard = this.parentElement;
-                document.querySelectorAll('.week-card').forEach(card => {
-                    if (card !== currentCard) {
-                        card.classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
+    <script>window.COURSE_DATA_URL = 'data.json';</script>
+    <script src="../js/course.js"></script>
 </body>
 </html>

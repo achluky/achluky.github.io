@@ -1,0 +1,104 @@
+{
+    "title": "Pemrograman Berbasis Fungsi",
+    "badges": ["SD25-xxxxx", "3 (2-1) SKS", "Genap 2025/2026", "Sains Data"],
+    "description": "Mata kuliah ini membahas paradigma pemrograman berbasis fungsi (functional programming) dengan fokus pada konsep-konsep fundamental seperti fungsi murni, immutability, higher-order functions, dan penerapannya dalam pengembangan perangkat lunak modern.",
+    "info": {
+        "Dosen": ["Ahmad Luky Ramdani"],
+        "Waktu": ["[Sesuaikan dengan jadwal]"],
+        "Ruangan": ["Ruangan kelas perkuliahan di ITERA"],
+        "Semester": ["Genap 2025/2026"]
+    },
+    "weeks": [
+        {
+            "number": "Minggu 11",
+            "title": "Teknik Decorator Design",
+            "objective": "Mahasiswa mampu memahami dan mengimplementasikan pola desain decorator dalam konteks pemrograman fungsional untuk menambahkan fungsionalitas pada fungsi secara dinamis tanpa mengubah struktur aslinya.",
+            "topics": [
+                "Konsep Decorator Pattern dalam Functional Programming",
+                "Implementasi Decorator menggunakan Python",
+                "Function Wrapping dan Closure",
+                "Decorator dengan Parameter",
+                "Studi Kasus: Logging, Timing, dan Authentication"
+            ],
+            "materials": [
+                { "label": "Slide Pertemuan 11", "href": "https://docs.google.com/presentation/d/1FhNotGtxwQ8nD1ZJQDkNZWY0dt37BcoEGygtD740oTI/edit?usp=sharing", "icon": "fas fa-file-pdf", "external": true },
+                { "label": "Contoh Code", "href": "week11/decorator.ipynb", "icon": "fas fa-code" },
+                { "label": "Contoh Code", "href": "week11/decorator.pdf", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": "Implementasikan decorator untuk melakukan caching hasil fungsi dan monitoring waktu eksekusi."
+        },
+        {
+            "number": "Minggu 12",
+            "title": "Functional Design Patterns: Teknik PyMonad Library",
+            "objective": "Mahasiswa mampu memahami konsep monad dalam pemrograman fungsional dan menggunakan PyMonad library untuk menangani operasi kompleks seperti error handling dan side effects secara fungsional.",
+            "topics": [
+                "Pengenalan Monad dan Functor",
+                "PyMonad Library: Maybe, Either, dan List Monad",
+                "Composing Monadic Operations",
+                "Railway Oriented Programming",
+                "Error Handling secara Fungsional"
+            ],
+            "materials": [
+                { "label": "Slide Pertemuan 12", "href": "#", "icon": "fas fa-file-pdf" },
+                { "label": "Contoh Code", "href": "#", "icon": "fas fa-code" },
+                { "label": "PyMonad Documentation", "href": "https://pypi.org/project/PyMonad/", "icon": "fas fa-external-link-alt", "external": true }
+            ],
+            "assessment": "Implementasikan pipeline data processing menggunakan PyMonad untuk menangani error dan transformasi data secara fungsional."
+        },
+        {
+            "number": "Minggu 13",
+            "title": "Concurrency dan Parallel Functional Programming",
+            "objective": "Mahasiswa mampu memahami dan mengimplementasikan konsep concurrency dan parallelisme dalam pemrograman fungsional untuk meningkatkan performa aplikasi.",
+            "topics": [
+                "Immutability dan Thread Safety",
+                "Parallel Map, Filter, dan Reduce",
+                "Multiprocessing dalam Functional Programming",
+                "Futures dan Promises",
+                "Async/Await dengan Functional Approach",
+                "Race Conditions dan Deadlock Prevention"
+            ],
+            "materials": [
+                { "label": "Slide Pertemuan 13", "href": "#", "icon": "fas fa-file-pdf" },
+                { "label": "Contoh Code", "href": "#", "icon": "fas fa-code" }
+            ],
+            "assessment": "Implementasikan program untuk memproses dataset besar secara paralel menggunakan functional programming approach."
+        },
+        {
+            "number": "Minggu 14",
+            "title": "Functional Programming in Big Data and Real World Application",
+            "objective": "Mahasiswa mampu menerapkan konsep pemrograman fungsional dalam konteks big data dan aplikasi dunia nyata, serta memahami keunggulan pendekatan fungsional dalam skenario produksi.",
+            "topics": [
+                "Apache Spark dan Functional Programming",
+                "MapReduce Paradigm",
+                "Stream Processing dengan Functional Approach",
+                "Data Pipeline Design",
+                "Real World Case Studies",
+                "Best Practices dalam Production"
+            ],
+            "materials": [
+                { "label": "Slide Pertemuan 14", "href": "#", "icon": "fas fa-file-pdf" },
+                { "label": "Contoh Code", "href": "#", "icon": "fas fa-code" }
+            ],
+            "assessment": "Analisis dan presentasikan studi kasus penggunaan functional programming dalam aplikasi big data di industri."
+        },
+        {
+            "number": "Minggu 15",
+            "title": "Pengantar Scala dan Functional Programming",
+            "objective": "Mahasiswa mampu memahami dasar-dasar bahasa pemrograman Scala dan bagaimana Scala menggabungkan paradigma pemrograman fungsional dengan object-oriented programming.",
+            "topics": [
+                "Sintaks Dasar Scala",
+                "Functional Programming di Scala",
+                "Pattern Matching dan Case Classes",
+                "Collections dan Higher-Order Functions",
+                "For Comprehensions",
+                "Perbandingan Python vs Scala untuk Functional Programming"
+            ],
+            "materials": [
+                { "label": "Slide Pertemuan 15", "href": "#", "icon": "fas fa-file-pdf" },
+                { "label": "Contoh Code", "href": "#", "icon": "fas fa-code" },
+                { "label": "Scala Documentation", "href": "https://docs.scala-lang.org/", "icon": "fas fa-external-link-alt", "external": true }
+            ],
+            "assessment": "Implementasikan sebuah program sederhana dalam Scala menggunakan konsep-konsep functional programming yang telah dipelajari."
+        }
+    ]
+}

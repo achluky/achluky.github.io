@@ -1,0 +1,85 @@
+{
+    "title": "Deep Learning",
+    "badges": ["Ganjil 2026/2025", "Sains Data"],
+    "description": "Mata kuliah ini membahas teknik dan prinsip deep learning untuk membuat model yang dapat belajar dan membuat prediksi dari data.",
+    "info": {
+        "Dosen": ["Ahmad Luky Ramdani dll."],
+        "Waktu": [],
+        "Ruangan": ["Ruangan kelas perkuliahn di ITERA"],
+        "Semester": ["Ganjil 2026/2025"]
+    },
+    "weeks": [
+        {
+            "number": "Minggu 0",
+            "title": "Building Blocks of Deep Learning",
+            "objective": "Memahami konsep dasar Deep learning",
+            "topics": [
+                "Linear layers",
+                "Nonlinearitas",
+                "Convolutional Layers",
+                "Residual (skip) Connections",
+                "Normalization Layers",
+                "Dropout Layers",
+                "Adaptive Bias Layers",
+                "Pooling Layers",
+                "Attention Layers",
+                "Recurrent Layers",
+                "Multiplicative Layers",
+                "Implicit Layers",
+                "Gradient Descent vs Gradient Descent",
+                "Backpropagation"
+            ],
+            "materials": [
+                { "label": "Slide Pertemuan 12", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 12",
+            "title": "Transformer",
+            "objective": "Mahasiswa mampu memahami konsep dasar self-attention dan transformer dalam konteks deep learning, serta bagaimana arsitektur ini digunakan dalam berbagai aplikasi seperti NLP dan computer vision.",
+            "topics": ["Distance dan similarity", "Self-Attention", "Transformer Architecture", "Applications of Transformers"],
+            "materials": [
+                { "label": "Slide Pertemuan 12", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 13",
+            "title": "GAN: Generative Adversarial Networks",
+            "objective": "Mahasiswa mampu memahami konsep generative adversarial networks (GANs), termasuk arsitektur dasar, cara kerja, dan aplikasinya dalam menghasilkan data baru yang realistis.",
+            "topics": ["Introduction to GANs", "Architecture of GANs", "Training Process", "Applications of GANs"],
+            "materials": [
+                { "label": "Slide Pertemuan 13", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 14",
+            "title": "Reinforcement Learning Vs  Deep Reinforcement Learning",
+            "objective": "Mahasiswa mampu memahami konsep reinforcement learning dan deep reinforcement learning, termasuk perbedaan antara keduanya, serta bagaimana algoritma ini digunakan untuk mengajarkan agen dalam lingkungan tertentu untuk membuat keputusan optimal.",
+            "topics": [
+                "Introduction to Reinforcement Learning",
+                "Markov Decision Processes (MDPs)",
+                "Bellman Equations",
+                "Q-Learning",
+                "Policy Gradient Methods",
+                "Deep Reinforcement Learning"
+            ],
+            "materials": [
+                { "label": "Slide Pertemuan 1", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 15",
+            "title": "Autoencoders",
+            "objective": "Mahasiswa mampu memahami konsep autoencoders, termasuk arsitektur dasar, cara kerja, dan aplikasinya dalam kompresi data, denoising, dan representasi fitur.",
+            "topics": ["Introduction to Autoencoders", "Architecture of Autoencoders", "Applications of Autoencoders"],
+            "materials": [
+                { "label": "Slide Pertemuan 1", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        }
+    ]
+}

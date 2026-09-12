@@ -31,247 +31,24 @@
             </div>
         </nav>
 
-        <!-- Course header -->
+        <!-- Course header (filled by js/course.js from data.json) -->
         <div class="course-page-head">
             <p class="eyebrow">Course</p>
-            <h1 class="name">Data Visualization</h1>
-            <div class="course-badges">
-                <span class="badge">SD25-32001</span>
-                <span class="badge">3 (2-1) SKS</span>
-                <span class="badge">Genap 2025/2026</span>
-                <span class="badge">Sains Data</span>
-            </div>
-            <p class="bio">Mata kuliah ini membahas teknik dan prinsip visualisasi data untuk membuat representasi visual yang interaktif dan informatif dari data.</p>
+            <h1 class="name" id="course-title">&nbsp;</h1>
+            <div class="course-badges" id="course-badges"></div>
+            <p class="bio" id="course-bio"></p>
         </div>
 
         <!-- Course Information -->
         <div class="info-panel">
             <h3>Informasi Mata Kuliah</h3>
-            <div class="info-grid">
-                <div class="info-cell">
-                    <span class="info-label">Dosen</span>
-                    Ahmad Luky Ramdani<br>
-                    Ira Safitri<br>
-                    Dimas Dwi Randa
-                </div>
-                <div class="info-cell">
-                    <span class="info-label">Waktu</span>
-                    Senin, 13:00 - 14:30<br>
-                    Selasa, 13:00 - 14:30<br>
-                    Rabu, 13:00 - 14:30
-                </div>
-                <div class="info-cell">
-                    <span class="info-label">Ruangan</span>
-                    Ruangan kelas perkuliahn di ITERA
-                </div>
-                <div class="info-cell">
-                    <span class="info-label">Semester</span>
-                    Genap 2025/2026
-                </div>
-            </div>
+            <div class="info-grid" id="info-grid"></div>
         </div>
 
         <!-- RPS Per Week Section -->
         <h2 class="block-title">Rencana Pembelajaran Semester (RPS)</h2>
-
-        <!-- Week 1 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 1</span>
-                <h4 class="week-title">What's Vis, and Why Do It?</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami konsep dasar visualisasi data secara umum dan pentingnya dalam analisis data. Memahami konsep Humman in the Loop, visual recognition, dan preattentive processing.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Fondasi Visualisasi</li>
-                        <li>Mengapa Menggunakan Visual?</li>
-                        <li>Tantangan Desain</li>
-                        <li>Metodologi & Batasan</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="./week1/1.Week_1_Visualisasi_Data.pdf" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 1</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong> Cari 1 contoh visualisasi data di internet dan jelaskan mengapa visualisasi tersebut menarik atau buruk di internet.
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 2 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 2</span>
-                <h4 class="week-title">What: Data Abstraction</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    Mahasiswa mampu memahami pentingnya data abstraction dalam visualisasi.
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Tipe dataset</li>
-                        <li>Tipe data</li>
-                        <li>Dimensi data</li>
-                        <li>Data abstraction dalam visualisasi</li>
-                        <li>Semantik data</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="week2/persentation.tex" class="link-btn"><i class="fas fa-file-code"></i> LaTeX Source</a>
-                    <a href="week2/persentation.pdf" class="link-btn"><i class="fas fa-file-pdf"></i> Slide PDF</a>
-                    <a href="https://forms.gle/2xh7uCPKBQVTaniT8" target="_blank" class="link-btn"><i class="fas fa-file-pdf"></i> Link pengumpulan tugas</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong> Detail tugas dapat dilihat pada halam terakhir dari slide presentasi (Slide).
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 3 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 3</span>
-                <h4 class="week-title">Why: Task Abstraction?</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    <ul class="topic-list">
-                        <li>Menerjemahkan (Translate): Mengubah deskripsi tugas yang sangat spesifik dari suatu domain (misal: ekonomi, biologi) menjadi bahasa abstraksi tugas yang umum.</li>
-                        <li>Mengidentifikasi (Identify): Mengenali pola tindakan pengguna (actions) dan sasaran data (targets) yang ingin dicapai.</li>
-                        <li>Menganalisis (Analyze): Membedakan antara tujuan penggunaan visualisasi (apakah untuk presentasi, penemuan, atau sekadar menikmati data).</li>
-                        <li>Mendesain (Design): Memilih teknik visualisasi yang paling sesuai berdasarkan jenis tugas yang telah diabstraksikan.</li>
-                    </ul>
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Actions (Tindakan): Apa yang dilakukan pengguna? - Analyze (Menganalisis), Search (Mencari) dan Query (Menanyakan)</li>
-                        <li>Targets (Target): Apa yang dicari di dalam data? - High-level (Seluruh Data), Atribut, Data Relasional (Networks/Trees) dan Data Spasial</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="week3/slide.tex" class="link-btn"><i class="fas fa-file-code"></i> LaTeX Source</a>
-                    <a href="week3/slide.pdf" class="link-btn"><i class="fas fa-file-pdf"></i> Slide PDF</a>
-                    <a href="https://forms.gle/U1kFa2671z1up1HD8" target="_blank" class="link-btn"><i class="fas fa-file-pdf"></i> Link pengumpulan tugas</a>
-                </div>
-
-                <div class="assessment-box">
-                    <strong>Tugas:</strong> Detail tugas dapat dilihat pada halam terakhir dari slide presentasi (Slide).
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 4 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 4</span>
-                <h4 class="week-title">Analysis: Four Levels for Validation</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    <p style="margin: 6px 0 0;">Menganalisis dan memvalidasi visualisasi data menggunakan metode yang tepat.</p>
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Level Domain Situation: Memahami konteks dan situasi pengguna untuk memastikan visualisasi yang dibuat relevan dan efektif.</li>
-                        <li>Level Data Validation: Memastikan data yang digunakan sesuai dengan tujuan visualisasi.</li>
-                        <li>Level Visual Validation: Memastikan visualisasi yang dibuat sesuai dengan tujuan pengguna.</li>
-                        <li>Level Algorithm Validation: Memastikan algoritma yang digunakan untuk membuat visualisasi benar-benar menghasilkan output yang diinginkan.</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="week4/slide.tex" class="link-btn"><i class="fas fa-file-code"></i> LaTeX Source</a>
-                    <a href="week4/slide.pdf" class="link-btn"><i class="fas fa-file-pdf"></i> Slide PDF</a>
-                    <a href="https://forms.gle/U1kFa2671z1up1HD8" target="_blank" class="link-btn"><i class="fas fa-file-pdf"></i> Link pengumpulan tugas</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 5 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 5</span>
-                <h4 class="week-title">Marks and Channels</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    <p style="margin: 6px 0 0;">Memahami konsep marks dan channels dalam visualisasi data serta bagaimana memilihnya untuk membuat visualisasi yang efektif.</p>
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Marks: Elemen dasar dalam visualisasi yang digunakan untuk merepresentasikan data, seperti titik, garis, dan area.</li>
-                        <li>Channels: Cara-cara untuk memodifikasi marks agar dapat menyampaikan informasi lebih efektif, seperti posisi, ukuran, warna, bentuk, dan orientasi.</li>
-                        <li>Prinsip Pemilihan Marks dan Channels: Memilih marks dan channels yang sesuai dengan jenis data dan tujuan visualisasi untuk meningkatkan pemahaman pengguna.</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="./week5/slide.pdf" class="link-btn"><i class="fas fa-file-pdf"></i> Slide Pertemuan 3</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Week 7 -->
-        <div class="week-card">
-            <div class="week-header" onclick="toggleWeek(this)">
-                <span class="week-number">Minggu 15</span>
-                <h4 class="week-title">Analysis Case Studies & Task</h4>
-                <i class="fas fa-chevron-down week-icon"></i>
-            </div>
-            <div class="week-content">
-                <div class="learning-objective">
-                    <strong>Tujuan Pembelajaran:</strong>
-                    <p style="margin: 6px 0 0;">Menganalisis studi kasus visualisasi data dan menyelesaikan tugas yang diberikan.</p>
-                </div>
-
-                <div class="learning-objective">
-                    <strong>Topik Bahasan</strong>
-                    <ul class="topic-list">
-                        <li>Studi Kasus Visualisasi Data: Menganalisis berbagai studi kasus visualisasi data untuk memahami pendekatan yang digunakan dan hasil yang dicapai.</li>
-                        <li>Tugas Analisis: Menyelesaikan tugas analisis berdasarkan studi kasus yang telah dipelajari, dengan fokus pada penerapan konsep-konsep visualisasi data yang telah dibahas selama perkuliahan.</li>
-                    </ul>
-                </div>
-
-                <div class="material-links">
-                    <h6>Materi & Link:</h6>
-                    <a href="https://docs.google.com/document/d/1h2rOfaNzvp53qSJPMSVRHtZmCakfBXl17r7gwbglKBg/edit?usp=sharing" class="link-btn"><i class="fas fa-file-pdf"></i> Deskripsi Tugas</a>
-                    <a href="https://forms.gle/jggvA3NqSqT4rjH1A" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i> Link pengumpulan tugas</a>
-                </div>
-            </div>
+        <div id="weeks-container">
+            <p style="color: var(--muted); font-size: .9rem;">Memuat RPS&hellip;</p>
         </div>
 
         <!-- Footer -->
@@ -281,23 +58,7 @@
         </footer>
     </div>
 
-    <script>
-        function toggleWeek(element) {
-            const weekCard = element.parentElement;
-            weekCard.classList.toggle('active');
-        }
-
-        // Optional: Close other weeks when opening one
-        document.querySelectorAll('.week-header').forEach(header => {
-            header.addEventListener('click', function() {
-                const currentCard = this.parentElement;
-                document.querySelectorAll('.week-card').forEach(card => {
-                    if (card !== currentCard) {
-                        card.classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
+    <script>window.COURSE_DATA_URL = 'data.json';</script>
+    <script src="../js/course.js"></script>
 </body>
 </html>
