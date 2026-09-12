@@ -3,260 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Luky Ramdani- Academic Portfolio</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Ahmad Luky Ramdani - Academic Portfolio</title>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f5f5f5;
-            min-height: 100vh;
-            padding: 20px;
-            margin: 0;
-        }
-        
-        .main-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .header-section {
-            text-align: center;
-            padding: 30px 20px 20px;
-            background: #667eea;
-            color: white;
-            border-radius: 8px 8px 0 0;
-        }
-        
-        .profile-name {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .profile-title {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 0;
-        }
-        
-        .nav-simple {
-            background: #f8f9fa;
-            padding: 10px 0;
-            text-align: center;
-        }
-        
-        .nav-simple .nav-link {
-            color: #495057;
-            padding: 8px 15px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 0 5px;
-            font-size: 0.9rem;
-        }
-        
-        .nav-simple .nav-link:hover,
-        .nav-simple .nav-link.active {
-            color: #667eea;
-            font-weight: 500;
-        }
-        
-        .content-section {
-            padding: 25px;
-        }
-        
-        .section-title {
-            color: #333;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e9ecef;
-        }
-        
-        .info-card {
-            background: #f8f9fa;
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 3px solid #667eea;
-        }
-        
-        .skill-tag {
-            background: #667eea;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            margin: 3px;
-            display: inline-block;
-        }
-        
-        .contact-list {
-            list-style: none;
-            padding: 0;
-            font-size: 0.9rem;
-        }
-        
-        .contact-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        .contact-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .contact-list a {
-            color: #495057;
-            text-decoration: none;
-        }
-        
-        .contact-list a:hover {
-            color: #667eea;
-        }
-        
-        .social-links {
-            margin-top: 15px;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            width: 35px;
-            height: 35px;
-            line-height: 35px;
-            text-align: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            margin: 0 4px;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        
-        .social-links a:hover {
-            background: rgba(255,255,255,0.3);
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 15px;
-            background: #f8f9fa;
-            color: #6c757d;
-            font-size: 0.85rem;
-            border-radius: 0 0 8px 8px;
-        }
-        
-        .profile-photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #667eea;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Shared portfolio styling -->
+    <link rel="stylesheet" href="stylesheets/portfolio.css">
 </head>
 <body>
-    <div class="container">
-        <div class="main-card">
-            
-            <!-- Header Section -->
-            <div class="header-section">
-                <h1 class="profile-name">Ahmad Luky Ramdani</h1>
-                <p class="profile-title">Academic Researcher & Educator</p>
-                
-                <!-- Social Links -->
-                <div class="social-links">
-                    <a href="mailto:ahmadluky@sd.itera.ac.id" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="#" title="Instagram" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://github.com/achluky" title="GitHub" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Navigation -->
-            <nav class="nav-simple">
-                <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Home</a>
-                <a class="nav-link" href="teaching.html"><i class="fas fa-chalkboard-teacher"></i> Teaching</a>
-                <a class="nav-link" href="https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en"><i class="fas fa-file-alt"></i> Publications</a>
-            </nav>
-            
-            <!-- Main Content -->
-            <div class="content-section">
-                <div class="row">
-                    <!-- About -->
-                    <div class="col-md-7 mb-3">
-                        <h2 class="section-title">About Me</h2>
-                        <div class="info-card">
-                            <p class="mb-2" style="font-size: 0.9rem;">
-                                I am a lecturer with a focused interest in Artificial Intelligence, Machine Learning, and Deep Learning, 
-                                particularly Deep Reinforcement Learning. My research primarily centers on Location-Based Social Network (LBSN) 
-                                data derived from social media platforms, exploring patterns and insights that bridge computational intelligence 
-                                with real-world applications.
-                            </p>
-                            <div>
-                                <span class="skill-tag">Artificial Intelligence</span>
-                                <span class="skill-tag">Machine Learning</span>
-                                <span class="skill-tag">Deep Learning</span>
-                                <span class="skill-tag">Deep Reinforcement Learning</span>
-                                <span class="skill-tag">LBSN Data Analysis</span>
-                                <span class="skill-tag">Social Media Analytics</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Contact -->
-                    <div class="col-md-5 mb-3">
-                        <!-- Profile Photo -->
-                        <div class="text-center mb-4">
-                            <img src="https://github.com/achluky.png" alt="Profile Photo" class="profile-photo">
-                        </div>
-                        
-                        <h2 class="section-title">Contact</h2>
-                        <ul class="contact-list">
-                            <li>
-                                <i class="fas fa-envelope me-2" style="color: #667eea;"></i>
-                                <a href="mailto:ahmadluky@sd.itera.ac.id">ahmadluky@sd.itera.ac.id</a>
-                            </li>
-                            <li>
-                                <i class="fab fa-instagram me-2" style="color: #667eea;"></i>
-                                <a href="#">@ahmadluky</a>
-                            </li>
-                            <li>
-                                <i class="fab fa-github me-2" style="color: #667eea;"></i>
-                                <a href="https://github.com/achluky" target="_blank">GitHub Profile</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Footer -->
-            <div class="footer">
-                <p class="mb-0">&copy; 2026 Ahmad Luky. All rights reserved.</p>
-            </div>
-            
-        </div>
-    </div>
+    <div class="top-bar"></div>
+    <div class="wrapper">
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Navigation -->
+        <nav class="site-nav">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">ALR</span>
+                <span class="brand-name">Ahmad Luky Ramdani</span>
+            </a>
+            <div class="links">
+                <a class="active" href="index.html">Home</a>
+                <a href="teaching.html">Teaching</a>
+                <a href="https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en">Publications</a>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div>
+                <p class="eyebrow">Academic Researcher &amp; Educator</p>
+                <h1 class="name">Ahmad Luky Ramdani</h1>
+                <p class="role">Dosen, Program Studi Sains Data</p>
+                <p class="affiliation"><i class="fas fa-university"></i> Institut Teknologi Sumatera (ITERA)</p>
+
+                <p class="statement">
+                    Exploring how intelligent systems learn from human behavior &mdash;
+                    from deep reinforcement learning to the digital traces we leave on social media.
+                </p>
+
+                <p class="bio">
+                    I am a lecturer with a focused interest in Artificial Intelligence, Machine Learning, and Deep Learning,
+                    particularly Deep Reinforcement Learning. My research centers on Location-Based Social Network (LBSN)
+                    data derived from social media platforms, exploring patterns and insights that bridge computational
+                    intelligence with real-world applications.
+                </p>
+
+                <div class="btn-row">
+                    <a class="btn-outline solid" href="mailto:ahmadluky@sd.itera.ac.id"><i class="fas fa-envelope"></i> Get in touch</a>
+                    <a class="btn-outline" href="https://github.com/achluky" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a class="btn-outline" href="https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                </div>
+            </div>
+            <div class="hero-frame">
+                <img src="https://github.com/achluky.png" alt="Profile Photo" class="hero-photo">
+            </div>
+        </div>
+
+        <!-- Stat strip -->
+        <div class="stat-strip">
+            <div class="stat-cell">
+                <strong>ITERA</strong>
+                <span>Institution</span>
+            </div>
+            <div class="stat-cell">
+                <strong>Sains Data</strong>
+                <span>Program Studi</span>
+            </div>
+            <div class="stat-cell">
+                <strong>3</strong>
+                <span>Courses Taught</span>
+            </div>
+            <div class="stat-cell">
+                <strong>6</strong>
+                <span>Research Areas</span>
+            </div>
+        </div>
+
+        <!-- About -->
+        <section>
+            <div class="section-head">
+                <p class="eyebrow center">Profile</p>
+                <h2>About Me</h2>
+            </div>
+            <div class="about-grid">
+                <p class="bio">
+                    My work sits at the intersection of computational intelligence and human behavior. I study how
+                    Location-Based Social Network (LBSN) data &mdash; the traces people leave through check-ins, posts,
+                    and interactions on social media &mdash; can be modeled with deep learning and reinforcement
+                    learning to better understand mobility, preference, and decision-making. Alongside research, I
+                    teach courses that connect these ideas to practical, hands-on skills for students in Data Science.
+                </p>
+                <dl class="detail-list">
+                    <div class="detail-item">
+                        <dt>Affiliation</dt>
+                        <dd>Institut Teknologi Sumatera</dd>
+                    </div>
+                    <div class="detail-item">
+                        <dt>Program Studi</dt>
+                        <dd>Sains Data</dd>
+                    </div>
+                    <div class="detail-item">
+                        <dt>Email</dt>
+                        <dd><a href="mailto:ahmadluky@sd.itera.ac.id" style="color: inherit; text-decoration: none;">ahmadluky@sd.itera.ac.id</a></dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- Research focus -->
+        <section>
+            <div class="section-head">
+                <p class="eyebrow center">Research</p>
+                <h2>Areas of Focus</h2>
+                <p>Where my research and curiosity currently live.</p>
+            </div>
+            <div class="focus-grid">
+                <div class="focus-card">
+                    <div class="focus-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Designing systems that reason, learn, and adapt.</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon"><i class="fas fa-diagram-project"></i></div>
+                    <h3>Machine Learning</h3>
+                    <p>Extracting patterns and predictive power from data.</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Deep Learning</h3>
+                    <p>Multi-layered neural architectures for complex representation learning.</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon"><i class="fas fa-chess-knight"></i></div>
+                    <h3>Deep Reinforcement Learning</h3>
+                    <p>Agents that learn optimal behavior through interaction and reward.</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon"><i class="fas fa-map-location-dot"></i></div>
+                    <h3>LBSN Data Analysis</h3>
+                    <p>Understanding human mobility through location-based social network data.</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon"><i class="fas fa-hashtag"></i></div>
+                    <h3>Social Media Analytics</h3>
+                    <p>Mining behavioral signals from social media platforms.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teaching preview -->
+        <section>
+            <div class="section-head">
+                <p class="eyebrow center">Teaching</p>
+                <h2>Currently Teaching</h2>
+            </div>
+            <div class="teaching-preview">
+                <a class="pill-link" href="visdat/index.html"><i class="fas fa-chart-line"></i> Data Visualization</a>
+                <a class="pill-link" href="pbf/index.html"><i class="fas fa-code"></i> Functional Programming</a>
+                <a class="pill-link" href="dl/index.html"><i class="fas fa-brain"></i> Deep Learning</a>
+            </div>
+            <p class="see-all"><a href="teaching.html">View all courses &rarr;</a></p>
+        </section>
+
+        <!-- Contact -->
+        <section style="margin-bottom: 0;">
+            <div class="contact-band">
+                <p class="eyebrow center">Contact</p>
+                <h2>Let's Connect</h2>
+                <p>Open to research collaboration, academic discussion, or questions about my courses.</p>
+                <div class="btn-row">
+                    <a class="btn-outline" href="mailto:ahmadluky@sd.itera.ac.id"><i class="fas fa-envelope"></i> ahmadluky@sd.itera.ac.id</a>
+                    <a class="btn-outline" href="https://github.com/achluky" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a class="btn-outline" href="#"><i class="fab fa-instagram"></i> @ahmadluky</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <span class="brand-mark">ALR</span>
+            <p>&copy; 2026 Ahmad Luky Ramdani. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
