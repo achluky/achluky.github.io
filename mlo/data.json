@@ -1,7 +1,7 @@
 {
-    "title": "Deep Learning",
+    "title": "Machine Learning Operations (MLOPS)",
     "badges": ["Ganjil 2026/2025", "Sains Data"],
-    "description": "Mata kuliah ini membahas teknik dan prinsip deep learning untuk membuat model yang dapat belajar dan membuat prediksi dari data.",
+    "description": "Mahasiswa mampu memahami  serangkaian praktik yang menggabungkan machine learning, rekayasa perangkat lunak, dan DevOps untuk mengelola siklus hidup model machine learning dari pengembangan hingga produksi secara otomatis dan efisien.",
     "info": {
         "Dosen": ["Ahmad Luky Ramdani dll."],
         "Waktu": ["Sesuai jadwal perkuliahan di ITERA"],
