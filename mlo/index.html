@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning - Course Details</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Shared portfolio styling -->
+    <link rel="stylesheet" href="../stylesheets/portfolio.css">
+</head>
+<body>
+    <div class="top-bar"></div>
+    <div class="wrapper">
+
+        <!-- Navigation -->
+        <nav class="site-nav">
+            <a class="brand" href="../index.html">
+                <span class="brand-mark">ALR</span>
+                <span class="brand-name">Ahmad Luky Ramdani</span>
+            </a>
+            <div class="links">
+                <a href="../index.html">Home</a>
+                <a class="active" href="../teaching.html">Teaching</a>
+                <a href="https://scholar.google.com/citations?user=gjOzo9MAAAAJ&hl=en">Publications</a>
+            </div>
+        </nav>
+
+        <!-- Course header (filled by js/course.js from data.json) -->
+        <div class="course-page-head">
+            <p class="eyebrow">Course</p>
+            <h1 class="name" id="course-title">&nbsp;</h1>
+            <div class="course-badges" id="course-badges"></div>
+            <p class="bio" id="course-bio"></p>
+        </div>
+
+        <!-- Course Information -->
+        <div class="info-panel">
+            <h3>Informasi Mata Kuliah</h3>
+            <div class="info-grid" id="info-grid"></div>
+        </div>
+
+        <!-- RPS Per Week Section -->
+        <h2 class="block-title">Rencana Pembelajaran Semester (RPS)</h2>
+        <div id="weeks-container">
+            <p style="color: var(--muted); font-size: .9rem;">Memuat RPS&hellip;</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <span class="brand-mark">ALR</span>
+            <p>&copy; 2026 Ahmad Luky Ramdani. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>window.COURSE_DATA_URL = 'data.json';</script>
+    <script src="../js/course.js"></script>
+</body>
+</html>

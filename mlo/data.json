@@ -1,0 +1,53 @@
+{
+    "title": "Deep Learning",
+    "badges": ["Ganjil 2026/2025", "Sains Data"],
+    "description": "Mata kuliah ini membahas teknik dan prinsip deep learning untuk membuat model yang dapat belajar dan membuat prediksi dari data.",
+    "info": {
+        "Dosen": ["Ahmad Luky Ramdani dll."],
+        "Waktu": ["Sesuai jadwal perkuliahan di ITERA"],
+        "Ruangan": ["Ruangan kelas perkuliahn di ITERA"],
+        "Semester": ["Ganjil 2026/2025"]
+    },
+    "weeks": [
+        {
+            "number": "Minggu 6",
+            "title": "Model Experimentation and Tracking",
+            "objective": "Mahasiswa mampu memahami konsep eksperimen model dan pelacakan dalam konteks deep learning, termasuk bagaimana mengelola eksperimen, melacak metrik, dan membandingkan hasil model.",
+            "topics": ["Experimentation in Deep Learning", "Tracking Metrics", "Model Versioning", "Tools for Experiment Tracking"],
+            "materials": [
+                { "label": "Slide Pertemuan 6", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 13",
+            "title": "Governance, Responsible AI, Regulatory Compliance and Ethics in Deep Learning",
+            "objective": "Mahasiswa mampu memahami konsep governance, responsible AI, dan etika dalam deep learning, termasuk tantangan dan pertimbangan etika yang muncul dalam pengembangan dan penerapan model deep learning.",
+            "topics": ["Introduction to Governance in AI", "Responsible AI Practices", "Ethical Considerations in Deep Learning", "Bias and Fairness in AI"],
+            "materials": [
+                { "label": "Slide Pertemuan 13", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 14",
+            "title": "Case Study: Recommendation Engine to Product Environment",
+            "objective": "Mahasiswa mampu memahami konsep recommendation engine dan bagaimana mengimplementasikannya dalam development dan product environment. ",
+            "topics": ["Case Study: Recommendation Engine", "Implementation in Development Environment", "Deployment in Product Environment", "Evaluation and Optimization"],
+            "materials": [
+                { "label": "Slide Pertemuan 14", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 15",
+            "title": "Presentation Project",
+            "objective": "Mahasiswa mampu memahami konsep eksperimen model dan pelacakan dalam konteks deep learning, termasuk bagaimana mengelola eksperimen, melacak metrik, dan membandingkan hasil model.",
+            "topics": ["Project Management", "Presentation Skills", "Communicating Results", "Project Evaluation"],
+            "materials": [
+                { "label": "Slide Pertemuan 15", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "title": "Data Mining",
+    "badges": ["Ganjil 2026/2025", "Sains Data"],
+    "description": "Mata kuliah ini membahas teknik dan prinsip data mining untuk menemukan pola dan pengetahuan dari jumlah besar data.",
+    "info": {
+        "Dosen": ["Ahmad Luky Ramdani dll."],
+        "Waktu": ["Sesuai jadwal perkuliahan di ITERA"],
+        "Ruangan": ["Ruangan kelas perkuliahn di ITERA"],
+        "Semester": ["Ganjil 2026/2025"]
+    },
+    "weeks": [
+        {
+            "number": "Minggu 11",
+            "title": "Pattern Mining (Analisis Asosiasi): Itemset Mining",
+            "objective": "Mahasiswa mampu memahami konsep dasar itemset mining dan analisis asosiasi dalam konteks data mining.",
+            "topics": ["Itemset Mining", "Apriori Algorithm", "FP-Growth Algorithm", "Applications of Itemset Mining"],
+            "materials": [
+                { "label": "Slide Pertemuan 11", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 12",
+            "title": "Graph Mining (Community Detection)",
+            "objective": "Mahasiswa mampu memahami konsep graph mining dan community detection dalam konteks data mining.",
+            "topics": ["Graph Mining", "Community Detection Algorithms", "Applications of Graph Mining"],
+            "materials": [
+                { "label": "Slide Pertemuan 12", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 13",
+            "title": "Outlier Detection",
+            "objective": "Mahasiswa mampu memahami konsep outlier detection dalam konteks data mining.",
+            "topics": [
+                "Introduction to Outlier Detection",
+                "Statistical Methods for Outlier Detection",
+                "Distance-based Methods",
+                "Density-based Methods"
+            ],
+            "materials": [
+                { "label": "Slide Pertemuan 13", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        }
+    ]
+}
