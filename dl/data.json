@@ -4,7 +4,7 @@
     "description": "Mata kuliah ini membahas teknik dan prinsip deep learning untuk membuat model yang dapat belajar dan membuat prediksi dari data.",
     "info": {
         "Dosen": ["Ahmad Luky Ramdani dll."],
-        "Waktu": [],
+        "Waktu": ["Sesuai jadwal perkuliahan di ITERA"],
         "Ruangan": ["Ruangan kelas perkuliahn di ITERA"],
         "Semester": ["Ganjil 2026/2025"]
     },
@@ -14,6 +14,7 @@
             "title": "Building Blocks of Deep Learning",
             "objective": "Memahami konsep dasar Deep learning",
             "topics": [
+                "Introduction Deep Learning (Machine Learning Vs Deep Learning)",
                 "Linear layers",
                 "Nonlinearitas",
                 "Convolutional Layers",
@@ -27,12 +28,28 @@
                 "Multiplicative Layers",
                 "Implicit Layers",
                 "Gradient Descent vs Gradient Descent",
-                "Backpropagation"
+                "Backpropagation",
+                "Number Representation (Embedding Layers)"
             ],
             "materials": [
-                { "label": "Slide Pertemuan 12", "href": "", "icon": "fas fa-file-pdf" }
+                { "label": "Intro. DL", "href": "https://docs.google.com/presentation/d/1NB39Dr3aSyeeOCpPqGR2wvj-NA0lTqjrpV-EpKaVsGo/edit?usp=sharing", "icon": "fas fa-file-pdf" },
+                { "label": "Linear Layers", "href": "https://docs.google.com/presentation/d/1mpiACghkFOKITS5ZAIPViEW7ZmTkh9ZU3x7HEfLe-gY/edit?usp=sharing", "icon": "fas fa-file-pdf" },
+                { "label": "Nonlinearitas", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Convolutional Layers", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Residual (skip) Connections", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Normalization Layers", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Dropout Layers", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Adaptive Bias Layers", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Pooling Layers", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Attention Layers", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Recurrent Layers", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Multiplicative Layers", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Implicit Layers", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Gradient Descent vs Gradient Descent", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "(Backpropagation)", "href": "", "icon": "fas fa-file-pdf" },
+                { "label": "Number Representation (Embedding Layers)", "href": "", "icon": "fas fa-file-pdf" }
             ],
-            "assessment": ""
+            "assessment": "Tugas dari setiap pembahasan terdapat pada slide pertemuan"
         },
         {
             "number": "Minggu 12",
