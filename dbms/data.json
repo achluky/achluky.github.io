@@ -1,0 +1,45 @@
+{
+    "title": "Teknologi Basis Data",
+    "badges": ["Ganjil 2026/2027", "Sains Data"],
+    "description": "Mata Kuliah ini mempebalajadi bagaimana cara untuk mengoptimalkan performa DBMS.",
+    "info": {
+        "Dosen": ["Ahmad Luky Ramdani dll."],
+        "Waktu": ["Sesuai jadwal perkuliahan di ITERA"],
+        "Ruangan": ["Ruangan kelas perkuliahn di ITERA"],
+        "Semester": ["Ganjil 2026/2027"]
+    },
+    "weeks": [
+        {
+            "number": "Minggu 9",
+            "title": "Transactions",
+            "objective": "Mahasiswa mampu memahami konsep Transactions dan Mamapu menentukan proses Transactions.",
+            "topics": ["Transactions"],
+            "materials": [
+                { "label": "Slide Pertemuan 9", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 10",
+            "title": "Concurrency Control",
+            "objective": "Mahasiswa mampu memahami konsep Concurrency",
+            "topics": ["Concurrency"],
+            "materials": [
+                { "label": "Slide Pertemuan 10", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
+            "number": "Minggu 11",
+            "title": "Recovery System",
+            "objective": "Mahasiswa mampu memahami konsep Recovery System",
+            "topics": [
+                "Recovery System"
+            ],
+            "materials": [
+                { "label": "Slide Pertemuan 11", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        }
+    ]
+}
