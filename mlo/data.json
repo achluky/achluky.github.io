@@ -15,7 +15,7 @@
             "objective": "Mahasiswa mampu memahami konsep eksperimen model dan pelacakan dalam konteks deep learning, termasuk bagaimana mengelola eksperimen, melacak metrik, dan membandingkan hasil model.",
             "topics": ["Experimentation in Deep Learning", "Tracking Metrics", "Model Versioning", "Tools for Experiment Tracking"],
             "materials": [
-                { "label": "Slide Pertemuan 6", "href": "", "icon": "fas fa-file-pdf" }
+                { "label": "Slide Pertemuan 6", "href": "model_xperimentation_and_tracking/slide_presentation.pdf", "icon": "fas fa-file-pdf" }
             ],
             "assessment": ""
         },

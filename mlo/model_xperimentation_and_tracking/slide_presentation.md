@@ -157,6 +157,22 @@ Prinsip inti MLOps yang saling terkait:
 
 ---
 
+# MLOps Principles (ml-ops.org)
+<br/>
+<center>
+<img src="images/mlops.png" alt="MLOps Principles" width="600" style="center">
+</center>
+
+---
+
+# MLOps Principles (ml-ops.org)
+<br/>
+<center>
+<img src="images/mlops2.png" alt="MLOps Principles" width="650" style="center">
+</center>
+
+---
+
 # Tiga Fase MLOps & Posisi Eksperimen
 
 ```
