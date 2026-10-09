@@ -17,7 +17,7 @@
             "materials": [
                 { "label": "Slide Pertemuan 6", "href": "model_xperimentation_and_tracking/slide_presentation.pdf", "icon": "fas fa-file-pdf" }
             ],
-            "assessment": "<a href='https://forms.gle/CKYGBesLJgCbwjJt7' target='_blank' class='btn btn-primary'>Tugas 1</a>"
+            "assessment": "Tugas dari setiap pembahasan terdapat pada slide pertemuan"
         },
         {
             "number": "Minggu 13",
@@ -27,7 +27,7 @@
             "materials": [
                 { "label": "Slide Pertemuan 13", "href": "", "icon": "fas fa-file-pdf" }
             ],
-            "assessment": ""
+            "assessment": "Tugas dari setiap pembahasan terdapat pada slide pertemuan"
         },
         {
             "number": "Minggu 14",

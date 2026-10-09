@@ -1504,3 +1504,10 @@ print(open(f"{path}/requirements.txt").read())
 ### Diskusi & Tanya Jawab
 
 > *"If you can't reproduce it, you can't trust it — and you can't ship it."*
+
+
+---
+
+# Form Pengumpulan Tugas
+### Link Google Form
+https://forms.gle/CKYGBesLJgCbwjJt7
