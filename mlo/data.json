@@ -17,7 +17,9 @@
             "materials": [
                 { "label": "Slide Pertemuan 6", "href": "model_xperimentation_and_tracking/slide_presentation.pdf", "icon": "fas fa-file-pdf" }
             ],
-            "assessment": ""
+            "assessment": [
+                { "label": "Tugas 1", "href": "https://forms.gle/CKYGBesLJgCbwjJt7", "icon": "fas fa-file-pdf" }
+            ]
         },
         {
             "number": "Minggu 13",
