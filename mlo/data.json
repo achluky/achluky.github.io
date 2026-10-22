@@ -20,6 +20,16 @@
             "assessment": ""
         },
         {
+            "number": "Minggu 7",
+            "title": "Preparing for Production: QA, Risk, Security, and Compliance",
+            "objective": "Mahasiswa mampu memahami konsep persiapan model deep learning untuk produksi, termasuk praktik quality assurance, manajemen risiko, pertimbangan keamanan, dan kepatuhan terhadap regulasi.",
+            "topics": ["Preparing for Production", "Quality Assurance", "Risk Management", "Security Considerations", "Compliance"],
+            "materials": [
+                { "label": "Slide Pertemuan 7", "href": "", "icon": "fas fa-file-pdf" }
+            ],
+            "assessment": ""
+        },
+        {
             "number": "Minggu 13",
             "title": "Governance, Responsible AI, Regulatory Compliance and Ethics in Deep Learning",
             "objective": "Mahasiswa mampu memahami konsep governance, responsible AI, dan etika dalam deep learning, termasuk tantangan dan pertimbangan etika yang muncul dalam pengembangan dan penerapan model deep learning.",
