@@ -3,12 +3,13 @@ marp: true
 theme: default
 paginate: true
 size: 16:9
-header: 'MLOps — Model Experimentation & Tracking'
-footer: 'Sains Data · ITERA · Minggu 6'
+header: 'Model Experimentation & Tracking in Machine Learning'
+footer: 'Ahmad Luky Ramdani · Sains Data ITERA'
 style: |
   :root {
     --primary: #1e3a8a;
     --accent: #0ea5e9;
+    --wb: #ffcc33;
     --warn: #dc2626;
     --ok: #16a34a;
     --muted: #64748b;
@@ -31,12 +32,18 @@ style: |
   pre { font-size: 0.68em; line-height: 1.35; border-radius: 8px; }
   blockquote { border-left: 5px solid var(--accent); background: #f0f9ff; padding: 8px 18px; color: #0f172a; font-style: normal; }
   header, footer { color: var(--muted); font-size: 0.55em; }
+  p:has(> img) { text-align: center; margin: 6px 0; }
+  p:has(> img) + p { text-align: center; font-size: 0.6em; margin-top: 4px; }
   section.lead { background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%); color: #fff; justify-content: center; }
   section.lead h1 { color: #fff; border: none; font-size: 2.1em; }
   section.lead h2, section.lead h3, section.lead strong, section.lead p { color: #e0f2fe; }
   section.divider { background: #0f172a; color: #fff; justify-content: center; }
   section.divider h1 { color: #38bdf8; border: none; font-size: 2em; }
   section.divider p { color: #cbd5e1; }
+  section.wb h1 { border-bottom-color: var(--wb); }
+  section.wbdivider { background: #1a1c1f; color: #fff; justify-content: center; }
+  section.wbdivider h1 { color: var(--wb); border: none; font-size: 2em; }
+  section.wbdivider p { color: #cbd5e1; }
   section.small { font-size: 21px; }
   section.tiny { font-size: 18px; }
 ---
@@ -48,9 +55,26 @@ style: |
 
 # Model Experimentation and Tracking in Machine Learning
 
-## Dari "notebook yang berantakan" menuju eksperimen yang **reproducible**, terukur
+## Dari "notebook yang berantakan" menuju eksperimen yang **reproducible** dan terukur — dengan **Weights & Biases**
 
 Ahmad Luky Ramdani · Program Studi Sains Data · ITERA
+
+---
+
+# Agenda
+
+| # | Topik |
+|---|-------|
+| 1 | **Motivasi** — mengapa ML butuh *experiment tracking* |
+| 2 | Posisi experiment tracking dalam **MLOps** |
+| 3 | **Anatomi eksperimen** — *run, params, metrics, artifacts* |
+| 4 | Merancang eksperimen yang valid di **deep learning** |
+| 5 | **Tracking metrics** — apa, kapan, dan bagaimana |
+| 6 | **Versioning** — data, kode, dan model |
+| 7 | Lanskap **tools** experiment tracking |
+| 8 | **Hands-on Weights & Biases** — track, compare, sweep, version |
+
+> Setelah sesi ini kita akan berdiskusi terkait dengan mencatat setiap eksperimen secara otomatis, **membandingkan** puluhan run dalam satu dashboard, dan **menelusuri** model terbaik sampai ke data & kodenya.
 
 ---
 
@@ -74,7 +98,7 @@ Satu proyek deep learning biasa melibatkan variasi pada:
 - **Data**: versi dataset, split, augmentasi, preprocessing, sampling
 - **Environment**: versi library, CUDA, GPU, random seed
 
-> Dengan 5 learning rate × 3 batch size × 3 arsitektur × 2 augmentasi = **90 run**. Tanpa pencatatan sistematis, tidak mungkin diingat mana yang terbaik — apalagi *mengapa*.
+> 5 learning rate × 3 batch size × 3 arsitektur × 2 augmentasi = **90 run**. Tanpa pencatatan sistematis, mustahil mengingat mana yang terbaik — apalagi *mengapa*.
 
 ---
 
@@ -91,7 +115,7 @@ Satu proyek deep learning biasa melibatkan variasi pada:
 
 ---
 
-# The real cost of not tracking
+# Harga yang Dibayar Jika Tidak Melacak
 
 | Masalah | Dampak |
 |---------|--------|
@@ -106,13 +130,11 @@ Satu proyek deep learning biasa melibatkan variasi pada:
 
 <!-- _class: divider -->
 
-# 2. Experiment Tracking dalam ML
+# 2. Experiment Tracking dalam MLOps
 
 ---
 
 # MLOps Principles (ml-ops.org)
-
-Prinsip inti MLOps yang saling terkait:
 
 | Prinsip | Kaitan dengan Experiment Tracking |
 |---------|-----------------------------------|
@@ -132,14 +154,14 @@ Prinsip inti MLOps yang saling terkait:
 ```
  ┌───────────────────┐    ┌─────────────────────────────┐    ┌───────────────────────┐
  │  1. DESIGN        │    │  2. MODEL DEVELOPMENT       │    │  3. OPERATIONS        │
- │                   │    │   (Experimentation)         │    │                       │
- │ • Requirement     │──▶ │ • Data engineering          │──▶ │ • CI/CD pipeline      │
+ │                   │    │     (Experimentation)       │    │                       │
+ │ • Requirement     │──> │ • Data engineering          │──> │ • CI/CD pipeline      │
  │ • Use-case        │    │ • ML model engineering      │    │ • Serving / Deploy    │
  │ • Data available? │    │ • Model testing & validasi  │    │ • Monitoring          │
- │                   │    │ ★ EXPERIMENT TRACKING ★    │    │ • Triggering retrain  │
+ │                   │    │ >> EXPERIMENT TRACKING <<   │    │ • Triggering retrain  │
  └───────────────────┘    └─────────────────────────────┘    └───────────────────────┘
           ▲                              │                               │
-          └──────────── feedback loop ◀──┴──────── drift / degradasi ◀──┘
+          └──────────── feedback loop <──┴──────── drift / degradasi <──┘
 ```
 
 Experiment tracking adalah **jembatan** antara *development* dan *operations*: model yang di-deploy harus dapat ditelusuri ke **run eksperimen** yang menghasilkannya.
@@ -152,15 +174,14 @@ Software tradisional: **Code** → versi cukup dengan Git.
 Machine learning: **Code + Data + Model + Config + Environment**.
 
 ```
-           Software 1.0                    Software 2.0 (ML)
-      ┌──────────────────┐          ┌──────────────────────────────┐
-      │      CODE        │          │  CODE   ─┐                   │
-      │        │         │          │  DATA   ─┼──▶ TRAINING ──▶ MODEL
-      │        ▼         │          │  PARAMS ─┤     (stokastik)   │
-      │    PROGRAM       │          │  ENV    ─┘                   │
-      └──────────────────┘          └──────────────────────────────┘
-       versi: git commit             versi: git + data hash + run id
-                                            + model version
+        Software 1.0                         Software 2.0 (ML)
+   ┌──────────────────┐        ┌─────────────────────────────────────────┐
+   │       CODE       │        │  CODE   ─┐                              │
+   │         │        │        │  DATA   ─┼──>  TRAINING  ──>  MODEL     │
+   │         ▼        │        │  PARAMS ─┤    (stokastik)               │
+   │      PROGRAM     │        │  ENV    ─┘                              │
+   └──────────────────┘        └─────────────────────────────────────────┘
+    versi: git commit           versi: git + data hash + run id + model version
 ```
 
 > Model adalah **fungsi dari data**. Mengubah satu baris data dapat mengubah model, meskipun kode tidak berubah sama sekali.
@@ -177,15 +198,15 @@ Istilah dan konsep dasar
 
 # Terminologi Kunci
 
-| Istilah | Definisi | Contoh |
-|---------|----------|--------|
-| **Experiment** | Kumpulan run untuk satu pertanyaan/tujuan | `churn-prediction`, `cifar10-classifier` |
-| **Run** | Satu kali eksekusi kode training | `run_id = a3f9c1…` |
-| **Parameters** | Input konfigurasi (statis per run) | `lr=0.001`, `batch_size=64` |
-| **Metrics** | Hasil terukur, bisa per *step/epoch* | `val_loss`, `f1`, `auc` |
-| **Artifacts** | File keluaran | model `.pt`, confusion matrix, plot, log |
-| **Tags / Metadata** | Label bebas untuk pencarian | `author`, `git_commit`, `stage=baseline` |
-| **Lineage** | Jejak asal-usul model | data v3 + commit `9e1b` → run X → model v7 |
+| Istilah | Definisi | Contoh | Di W&B |
+|---------|----------|--------|--------|
+| **Experiment** | Kumpulan run untuk satu tujuan | `cifar10-classifier` | *Project* |
+| **Run** | Satu kali eksekusi kode training | `run_id = a3f9c1` | `wandb.init()` |
+| **Parameters** | Input konfigurasi (statis per run) | `lr=0.001`, `batch_size=64` | `run.config` |
+| **Metrics** | Hasil terukur, bisa per *step/epoch* | `val_loss`, `f1`, `auc` | `run.log()` |
+| **Artifacts** | File keluaran / masukan berversi | model `.pt`, dataset, plot | `wandb.Artifact` |
+| **Tags / Metadata** | Label bebas untuk pencarian | `baseline`, `git_commit` | `tags=`, `notes=` |
+| **Lineage** | Jejak asal-usul model | data v3 + commit `9e1b` → run X → model v7 | *Lineage graph* |
 
 ---
 
@@ -202,22 +223,13 @@ Istilah dan konsep dasar
 | **System** | GPU/CPU, memori, durasi, biaya | Efisiensi dan kapasitas |
 | **Context** | Siapa, kapan, hipotesis, catatan | Pengetahuan tim |
 
+> Mencatat **code, environment, dan system** secara otomatis — kita cukup menambahkan config, metrics, dan artifacts.
+
 ---
 
 # Siklus Sebuah Eksperimen
 
-```
-   ┌────────────┐   ┌────────────┐   ┌────────────┐   ┌────────────┐   ┌────────────┐
-   │ 1.HIPOTESIS│──▶│ 2. DESAIN  │──▶│ 3. EKSEKUSI│──▶│ 4. ANALISIS│──▶│ 5. KEPUTUSAN│
-   │            │   │            │   │  + LOGGING │   │ & KOMPARASI│   │            │
-   │"Augmentasi │   │ baseline,  │   │ params,    │   │ kurva,     │   │ promote /  │
-   │ mixup naik │   │ variabel,  │   │ metrics,   │   │ tabel,     │   │ iterate /  │
-   │ F1 ≥ 2%"   │   │ metrik,    │   │ artifacts  │   │ uji        │   │ discard    │
-   │            │   │ seed       │   │            │   │ signifikan │   │            │
-   └────────────┘   └────────────┘   └────────────┘   └────────────┘   └─────┬──────┘
-         ▲                                                                   │
-         └────────────────────────── insight baru ───────────────────────────┘
-```
+![w:1120](images/experiment_cycle.png)
 
 > Eksperimen yang baik dimulai dari **hipotesis yang dapat diuji**, bukan dari "coba-coba saja".
 
@@ -238,9 +250,11 @@ Merancang eksperimen yang valid
 3. **Tetapkan metrik utama sebelum mulai** — hindari *metric shopping* setelah melihat hasil.
 4. **Kunci data split** — train / validation / test tetap dan berversi; **test set hanya disentuh di akhir**.
 5. **Kendalikan keacakan** — set seed; jalankan beberapa seed untuk mengukur variansi.
-6. **Catat hipotesis & kesimpulan** — termasuk eksperimen yang **gagal** (negative results juga pengetahuan).
+6. **Catat hipotesis & kesimpulan** — termasuk eksperimen yang **gagal** (*negative results* juga pengetahuan).
 
 ---
+
+<!-- _class: small -->
 
 # Sumber Non-Determinisme di Deep Learning
 
@@ -250,7 +264,7 @@ Merancang eksperimen yang valid
 | Data shuffling | `DataLoader(shuffle=True)` | Seed + `worker_init_fn`, `generator` |
 | Augmentasi acak | RandomCrop, Mixup | Seed pada library augmentasi |
 | Dropout | Mask acak | Seed global |
-| Operasi GPU | cuDNN autotune, atomic add | `torch.backends.cudnn.deterministic=True`, `torch.use_deterministic_algorithms(True)` |
+| Operasi GPU | cuDNN autotune, atomic add | `cudnn.deterministic=True`, `torch.use_deterministic_algorithms(True)` |
 | Hardware/library | Versi CUDA berbeda | Lock environment (Docker) |
 
 ```python
@@ -275,9 +289,11 @@ Dua konfigurasi, masing-masing 5 seed:
 
 - Jika hanya melihat seed 4 → "B lebih baik". Ternyata **tidak berbeda signifikan**.
 - Laporkan **mean ± std** atau *confidence interval*; gunakan uji statistik (t-test, bootstrap) untuk klaim perbaikan.
-- Experiment tracker memudahkan agregasi ini dengan **tag/grouping** per konfigurasi.
+- Di W&B: beri `group="lr=1e-3"` pada `wandb.init()` → dashboard otomatis menampilkan **rata-rata ± rentang** per grup.
 
 ---
+
+<!-- _class: small -->
 
 # Strategi Hyperparameter Search
 
@@ -286,10 +302,10 @@ Dua konfigurasi, masing-masing 5 seed:
 | **Manual** | Intuisi peneliti | Murah untuk awal | Bias, tidak sistematis |
 | **Grid Search** | Semua kombinasi | Lengkap, sederhana | Eksponensial (*curse of dimensionality*) |
 | **Random Search** | Sampel acak | Lebih efisien dari grid (Bergstra & Bengio, 2012) | Tidak belajar dari run sebelumnya |
-| **Bayesian Opt.** (Optuna/TPE) | Model surrogate memilih titik berikutnya | Efisien sampel | Lebih kompleks |
+| **Bayesian Opt.** (Optuna/TPE, W&B `bayes`) | Model surrogate memilih titik berikutnya | Efisien sampel | Lebih kompleks |
 | **Early-stopping based** (Hyperband/ASHA) | Hentikan run yang jelek lebih awal | Hemat komputasi | Butuh metrik intermediate |
 
-> Setiap trial = **satu run** di tracker. Gunakan **nested runs** (parent = sweep, child = trial) agar terorganisir.
+> Setiap trial = **satu run** di tracker. Di W&B, semua trial dikelompokkan otomatis dalam satu **Sweep**.
 
 ---
 
@@ -307,7 +323,7 @@ Tujuan: mengukur **kontribusi tiap komponen** dengan menghapusnya satu per satu.
 
 **Insight**: pretrained weights paling berpengaruh (−8.2 poin); label smoothing hampir tidak berpengaruh → kandidat untuk disederhanakan.
 
-> Tanpa tracker, tabel seperti ini harus dirakit manual dari log yang tercecer.
+> Tanpa tracker, tabel seperti ini harus dirakit manual dari log yang tercecer. Dengan tracker: cukup **filter + Runs Table**.
 
 ---
 
@@ -356,7 +372,7 @@ Apa, kapan, dan bagaimana mengukur
         training lebih lama                       gunakan scheduler / warmup
 ```
 
-Logging **per step** (bukan hanya nilai akhir) memungkinkan diagnosis seperti ini.
+> Logging **per step/epoch** (bukan hanya nilai akhir) memungkinkan diagnosis seperti ini — dan di tracker, kurva dari banyak run bisa **ditumpuk** untuk dibandingkan.
 
 ---
 
@@ -374,13 +390,15 @@ Logging **per step** (bukan hanya nilai akhir) memungkinkan diagnosis seperti in
 
 ---
 
+<!-- _class: small -->
+
 # Pitfalls dalam Tracking Metrics
 
 | Pitfall | Contoh | Solusi |
 |---------|--------|--------|
 | **Data leakage** | Normalisasi dihitung pada seluruh data sebelum split | Fit preprocessing hanya pada train; log pipeline sebagai artifact |
 | **Cherry-picking** | Melaporkan seed/epoch terbaik saja | Log semua run; laporkan mean ± std |
-| **Metrik tidak konsisten** | `f1` macro di run A, weighted di run B | Nama metrik eksplisit: `val_f1_macro` |
+| **Metrik tidak konsisten** | `f1` macro di run A, weighted di run B | Nama metrik eksplisit: `val/f1_macro` |
 | **Split berbeda** | Random split ulang di tiap run | Version & hash data split |
 | **Hanya log nilai akhir** | Tidak tahu kapan overfitting mulai | Log per step/epoch |
 | **Lupa metrik sistem** | Model akurat tapi 10× lebih lambat | Log latency & resource |
@@ -389,7 +407,7 @@ Logging **per step** (bukan hanya nilai akhir) memungkinkan diagnosis seperti in
 
 <!-- _class: divider -->
 
-# 6. Model Versioning
+# 6. Versioning
 
 Data · Code · Model · Registry
 
@@ -400,20 +418,22 @@ Data · Code · Model · Registry
 | Pilar | Tools | Yang di-versi |
 |-------|-------|---------------|
 | **Code** | Git, GitHub/GitLab | Script training, preprocessing, konfigurasi |
-| **Data** | DVC, LakeFS, Delta Lake, Pachyderm | Dataset mentah, fitur, split |
-| **Model** | MLflow Model Registry, W&B Artifacts, DVC | Bobot, signature, metadata, stage |
+| **Data** | DVC, LakeFS, Delta Lake, **W&B Artifacts** | Dataset mentah, fitur, split |
+| **Model** | **W&B Artifacts + Registry**, MLflow Model Registry, DVC | Bobot, metadata, alias/stage |
 
 **Run eksperimen** adalah simpul yang mengikat ketiganya:
 
 ```
   git commit 9e1b2c  ─┐
-  data  md5:7fa3…    ─┼──▶  run_id a3f9c1  ──▶  model "fraud-detector" v7  ──▶  production
+  data  md5:7fa3…    ─┼──>  run_id a3f9c1  ──>  model "fraud-detector" v7  ──>  production
   config.yaml        ─┘      (metrics, artifacts, env)
 ```
 
 > Dengan *lineage* ini, setiap prediksi di produksi dapat ditelusuri kembali ke data dan kode asalnya.
 
 ---
+
+<!-- _class: small -->
 
 # Data Versioning dengan DVC
 
@@ -434,7 +454,7 @@ dvc add data/train.csv && git commit -am "data: train v2" && dvc push
 git checkout <commit_v1> && dvc checkout   # kembali ke data v1 secara persis
 ```
 
-Log hash data ke experiment tracker: `mlflow.log_param("data_md5", md5)` → setiap run terhubung ke versi data.
+Hubungkan ke experiment tracker: `wandb.init(config={"data_md5": md5, ...})` → setiap run tercatat memakai versi data yang mana. Alternatif tanpa DVC: **W&B Artifacts** (dibahas di bagian 8).
 
 ---
 
@@ -444,20 +464,18 @@ Log hash data ke experiment tracker: `mlflow.log_param("data_md5", md5)` → set
 
 | Konsep | Penjelasan |
 |--------|------------|
-| **Registered model** | Nama logis, mis. `fraud-detector` |
-| **Version** | Bertambah otomatis: v1, v2, v3 … — tiap versi menunjuk ke satu run |
-| **Alias** (MLflow ≥ 2.9) | Pointer yang dapat dipindah: `@champion`, `@challenger` |
-| **Stage** (legacy) | `None → Staging → Production → Archived` |
-| **Signature** | Skema input/output model |
+| **Registered model / collection** | Nama logis, mis. `fraud-detector` |
+| **Version** | Bertambah otomatis: v0, v1, v2 … — tiap versi menunjuk ke satu run |
+| **Alias** | Pointer yang dapat dipindah: `@production`, `@staging`, `@best` |
 | **Lineage** | Run, dataset, commit, author |
 
 ```
- v5 (Archived)   v6  ◀── @champion (melayani produksi)
-                 v7  ◀── @challenger (shadow / A-B test)
-                 v8  (baru diregistrasi, menunggu validasi)
+ v5 (lama)    v6  <── @production (melayani produksi)
+              v7  <── @staging    (shadow / A-B test)
+              v8  (baru diregistrasi, menunggu validasi)
 ```
 
-**Rollback** = memindahkan alias `@champion` kembali ke versi sebelumnya — cepat dan aman.
+**Rollback** = memindahkan alias `@production` kembali ke versi sebelumnya — cepat dan aman.
 
 ---
 
@@ -471,7 +489,7 @@ Konvensi yang sering dipakai tim:
 | **MINOR** — retrain dengan data/arsitektur baru, API sama | Retrain bulanan, ganti backbone | `1.3.0` |
 | **PATCH** — perbaikan kecil tanpa perubahan perilaku berarti | Ubah threshold, fix preprocessing bug | `1.3.1` |
 
-Simpan versi semantik sebagai **tag** di registry, berdampingan dengan versi numerik otomatis.
+Simpan versi semantik sebagai **alias/tag** di registry, berdampingan dengan versi numerik otomatis.
 
 ---
 
@@ -482,7 +500,7 @@ Simpan versi semantik sebagai **tag** di registry, berdampingan dengan versi num
 | **L0 — Tidak ada** | "Works on my machine" | — |
 | **L1 — Code** | Kode yang sama | Git commit |
 | **L2 — Code + Config** | Hyperparameter sama | Tracker (params) |
-| **L3 — + Data** | Data identik | DVC / data hash |
+| **L3 — + Data** | Data identik | DVC / W&B Artifacts / data hash |
 | **L4 — + Environment** | Library & OS identik | Docker / conda lock |
 | **L5 — Bit-exact** | Hasil numerik identik | Seed + deterministic ops + hardware sama |
 
@@ -513,8 +531,8 @@ Simpan versi semantik sebagai **tag** di registry, berdampingan dengan versi num
 
 | Tool | Lisensi / Hosting | Kekuatan | Catatan |
 |------|-------------------|----------|---------|
-| **MLflow** | Open source (Apache 2.0), self-host / managed | Tracking + Models + Registry; framework-agnostic; de facto standar | UI lebih sederhana |
-| **Weights & Biases** | SaaS (free tier akademik), self-host enterprise | Visualisasi kaya, Sweeps, Reports, kolaborasi | Data di cloud vendor |
+| **Weights & Biases** | SaaS (gratis untuk personal/akademik), self-host enterprise | Visualisasi kaya, Sweeps, Artifacts, Registry, Reports | Data di cloud vendor (kecuali self-host) |
+| **MLflow** | Open source (Apache 2.0), self-host / managed | Tracking + Models + Registry; framework-agnostic | UI lebih sederhana |
 | **Neptune.ai** | SaaS | Metadata store fleksibel, skala besar | Komersial |
 | **Comet ML** | SaaS / on-prem | Experiment + production monitoring | Komersial |
 | **ClearML** | Open source + SaaS | Tracking + orchestration + data mgmt | Setup lebih berat |
@@ -534,26 +552,381 @@ Simpan versi semantik sebagai **tag** di registry, berdampingan dengan versi num
 6. **Biaya & lisensi** — open source vs SaaS per-seat.
 7. **API & query** — bisa mencari run secara programatik (mis. "run dengan F1 > 0.9")?
 
-> Untuk perkuliahan & tim kecil: **MLflow (self-host)** atau **W&B (free academic)** adalah titik awal yang baik.
+> Untuk belajar & tim kecil: **W&B (gratis, tanpa setup server)** atau **MLflow (self-host)** adalah titik awal yang baik. Hari ini kita praktik dengan **W&B**.
 
 ---
+
+<!-- _class: wbdivider -->
+
+# 8. Hands-on: Weights & Biases
+
+Track and compare experiments with models
+
+---
+
+<!-- _class: wb -->
+
+# Apa itu Weights & Biases (W&B)?
+
+Platform *experiment tracking* & *model management*: cukup tambahkan beberapa baris ke skrip training, semua run tersimpan di **satu dashboard**.
+
+![w:1000](images/wandb_how_it_works.png)
+
+**Experiments** (log & bandingkan run) · **Sweeps** (hyperparameter search) · **Artifacts & Registry** (versioning + lineage) · **Reports** (berbagi hasil)
+
+---
+
+<!-- _class: wb -->
+
+# Setup dalam 3 Langkah
+
+```bash
+# 1. Install
+pip install wandb
+
+# 2. Login — buat akun gratis di https://wandb.ai, ambil API key di https://wandb.ai/authorize
+wandb login
+
+# 3. (Opsional) tanpa internet / tanpa akun: simpan lokal, sinkronkan nanti
+export WANDB_MODE=offline          # Windows: set WANDB_MODE=offline
+wandb sync wandb/offline-run-*     # upload saat sudah online
+```
+
+Di Google Colab / Kaggle:
+
+```python
+!pip install -q wandb
+import wandb
+wandb.login()        # akan meminta API key
+```
+
+> Konsep organisasi: **Entity** (user/tim) → **Project** (= experiment) → **Run**.
+
+---
+
+<!-- _class: wb small -->
+
+# Run Pertama: 5 Baris yang Mengubah Segalanya
+
+```python
+import wandb
+
+config = {"lr": 1e-3, "batch_size": 64, "epochs": 30, "arch": "resnet18", "dropout": 0.2}
+
+run = wandb.init(                       # 1. mulai run baru
+    project="cifar10-classifier",       #    = nama eksperimen
+    config=config,                      # 2. catat hyperparameter
+    tags=["baseline"], notes="ResNet-18 pretrained, augmentasi standar",
+)
+
+for epoch in range(run.config.epochs):
+    train_loss = train_one_epoch(model, run.config.lr)
+    val_loss, val_acc = evaluate(model)
+    run.log({"epoch": epoch, "train/loss": train_loss,    # 3. log metrik per epoch
+             "val/loss": val_loss, "val/accuracy": val_acc})
+
+run.summary["best_val_accuracy"] = best_acc              # 4. ringkasan (kolom di tabel)
+run.finish()                                             # 5. selesai
+```
+
+Yang **otomatis** tercatat: git commit & diff, `requirements.txt`, OS/Python, CPU/GPU/memori, durasi, console log.
+
+---
+
+<!-- _class: wb -->
+
+# Workspace: Semua Run dalam Satu Layar
+
+![h:470](images/wandb_workspace.png)
+
+*Ilustrasi tampilan Workspace W&B (data sintetis). Setiap warna = satu run; grafik dibuat otomatis dari kunci di `run.log()`.*
+
+---
+
+<!-- _class: wb small -->
+
+# Membaca Workspace: Apa yang Terlihat?
+
+### Dari ilustrasi sebelumnya
+- 🟠 `lr1e-3` — konvergen paling cepat, **val/accuracy tertinggi**
+- 🟢 `lr1e-2` — kurva **berosilasi** → learning rate terlalu besar
+- 🟡 `noaug` — train loss terendah, tetapi **val/loss naik** setelah epoch ~10 → *overfitting* tanpa augmentasi
+- 🟣 `resnet50` — lebih lambat, hasil mirip → tidak sebanding dengan biaya 2× waktu
+
+### Fitur yang sering dipakai
+**Group by** `config.arch` (rata-rata ± rentang) · **Filter** `config.lr < 0.005` · **Smoothing** kurva berisik · **x-axis** bebas (step/epoch/waktu) · sembunyikan run · tab **System** (GPU, memori)
+
+> Diagnosis yang tadi dibahas di slide *learning curves* kini bisa dilakukan untuk **puluhan run sekaligus**.
+
+---
+
+<!-- _class: wb -->
+
+# Runs Table: Membandingkan Secara Tabular
+
+![w:1080](images/wandb_runs_table.png)
+
+*Ilustrasi Runs Table (data sintetis): setiap kolom berasal dari `config` dan `summary`. Urutkan, filter, lalu pilih beberapa run → panel perbandingan.*
+
+---
+
+<!-- _class: wb small -->
+
+# Integrasi dengan Framework Populer
+
+| Framework | Cara integrasi |
+|-----------|----------------|
+| **PyTorch** | `run.watch(model, log="all", log_freq=100)` + `run.log({...})` di loop training |
+| **Keras / TensorFlow** | `model.fit(..., callbacks=[WandbMetricsLogger(), WandbModelCheckpoint("m.keras")])` |
+| **HuggingFace Transformers** | `TrainingArguments(..., report_to="wandb", run_name="bert-lr2e-5")` |
+| **PyTorch Lightning** | `Trainer(logger=WandbLogger(project="p", log_model=True))` |
+| **XGBoost / LightGBM** | `wandb.integration.xgboost.WandbCallback()` / `wandb.integration.lightgbm.wandb_callback()` |
+| **scikit-learn** | `run.log()` manual + `wandb.sklearn.plot_classifier(...)` |
+
+```python
+from wandb.integration.keras import WandbMetricsLogger, WandbModelCheckpoint
+from lightning.pytorch.loggers import WandbLogger
+```
+
+> Integrasi bawaan berarti **tanpa mengubah loop training** — cukup tambahkan callback/logger.
+
+---
+
+<!-- _class: wb small -->
+
+# Logging Lebih dari Angka
+
+```python
+# Confusion matrix interaktif
+run.log({"val/confusion_matrix": wandb.plot.confusion_matrix(
+    y_true=y_val, preds=y_pred, class_names=class_names)})
+
+# Tabel prediksi — lihat contoh yang salah klasifikasi
+table = wandb.Table(columns=["image", "label", "prediksi", "confidence"])
+for img, y, p, c in wrong_samples:
+    table.add_data(wandb.Image(img), y, p, c)
+run.log({"val/salah_prediksi": table})
+
+# Gambar, audio, histogram, plot matplotlib
+run.log({"sample": wandb.Image(img, caption="epoch 5"),
+         "weights": wandb.Histogram(model.fc.weight.detach().cpu()),
+         "roc": wandb.plot.roc_curve(y_val, y_proba)})
+```
+
+> **Error analysis** jadi jauh lebih mudah: filter Table untuk `label != prediksi`, urutkan berdasarkan confidence, lalu cari pola kesalahan.
+
+---
+
+<!-- _class: wb small -->
+
+# Sweeps: Hyperparameter Search Otomatis
+
+```python
+sweep_config = {
+    "method": "bayes",                                  # grid | random | bayes
+    "metric": {"name": "val/accuracy", "goal": "maximize"},
+    "parameters": {
+        "lr":         {"distribution": "log_uniform_values", "min": 1e-4, "max": 1e-1},
+        "batch_size": {"values": [16, 32, 64, 128]},
+        "dropout":    {"distribution": "uniform", "min": 0.0, "max": 0.5},
+    },
+    "early_terminate": {"type": "hyperband", "min_iter": 3},   # hentikan run yang jelek
+}
+
+def train():
+    with wandb.init() as run:                 # config diisi otomatis oleh sweep controller
+        model = build_model(run.config.dropout)
+        for epoch in range(20):
+            run.log({"val/accuracy": fit_one_epoch(model, run.config.lr, run.config.batch_size)})
+
+sweep_id = wandb.sweep(sweep_config, project="cifar10-classifier")
+wandb.agent(sweep_id, function=train, count=40)     # bisa dijalankan paralel di banyak mesin/GPU
+```
+
+---
+
+<!-- _class: wb -->
+
+# Hasil Sweep: Parallel Coordinates & Parameter Importance
+
+![h:380](images/wandb_sweep.png)
+
+*Ilustrasi (data sintetis). Kiri: setiap garis = satu run, warna = val/accuracy. Kanan: hyperparameter mana yang paling memengaruhi metrik.*
+
+**Insight contoh**: `lr` paling berpengaruh (korelasi negatif → lr kecil lebih baik); `weight_decay` hampir tidak berpengaruh → tidak perlu di-tuning lagi.
+
+---
+
+<!-- _class: wb small -->
+
+# Artifacts: Versioning Dataset & Model
+
+```python
+# --- Run 1: unggah dataset sebagai artifact ---
+with wandb.init(project="cifar10-classifier", job_type="upload-data") as run:
+    data = wandb.Artifact("cifar10-split", type="dataset",
+                          metadata={"n_train": 40000, "n_val": 10000, "seed": 0})
+    data.add_dir("data/processed/")
+    run.log_artifact(data)                    # isi berubah → versi baru (v0, v1, ...)
+
+# --- Run 2: training memakai dataset versi tertentu, simpan model ---
+with wandb.init(project="cifar10-classifier", job_type="train", config=cfg) as run:
+    data_dir = run.use_artifact("cifar10-split:v2").download()   # tercatat sebagai INPUT
+    model = train(data_dir, run.config)
+    torch.save(model.state_dict(), "model.pt")
+
+    model_art = wandb.Artifact("cifar10-resnet", type="model",
+                               metadata={"val_accuracy": 0.89, **dict(run.config)})
+    model_art.add_file("model.pt")
+    run.log_artifact(model_art, aliases=["best"])               # tercatat sebagai OUTPUT
+```
+
+W&B menyimpan **hash isi** (deduplikasi): file yang tidak berubah tidak diunggah ulang.
+
+---
+
+<!-- _class: wb -->
+
+# Lineage: Dari Data Mentah Sampai Produksi
+
+![w:1080](images/wandb_lineage.png)
+
+*Ilustrasi Lineage graph W&B (data sintetis). Terbentuk otomatis dari `use_artifact()` (input) dan `log_artifact()` (output).*
+
+---
+
+<!-- _class: wb small -->
+
+# Registry: Promosi Model ke Produksi
+
+```python
+# Hubungkan versi model terbaik ke W&B Registry (koleksi "cifar10-classifier")
+with wandb.init(project="cifar10-classifier", job_type="promote") as run:
+    art = run.use_artifact("cifar10-resnet:best")
+    run.link_artifact(art, target_path="wandb-registry-model/cifar10-classifier")
+```
+
+```python
+# Di sisi serving / CI: selalu ambil model yang beralias @production
+with wandb.init(project="cifar10-classifier", job_type="inference") as run:
+    path = run.use_artifact(
+        "wandb-registry-model/cifar10-classifier:production").download()
+```
+
+- Alias (`production`, `staging`) dipindah lewat UI atau API → **rollback** cukup memindah alias.
+- **Automations**: picu CI/CD (webhook / GitHub Action) saat alias baru ditambahkan.
+- Setiap versi di registry tetap terhubung ke **run, dataset, dan commit** asalnya.
+
+---
+
+<!-- _class: wb small -->
+
+# Membandingkan Run Secara Programatik (Public API)
+
+```python
+import wandb
+api = wandb.Api()
+
+runs = api.runs(
+    "itera-ds/cifar10-classifier",
+    filters={"config.arch": "resnet18", "summary_metrics.val/accuracy": {"$gt": 0.85}},
+    order="-summary_metrics.val/accuracy",
+)
+
+import pandas as pd
+df = pd.DataFrame([{"name": r.name, **r.config,
+                    "val_acc": r.summary.get("val/accuracy")} for r in runs])
+print(df.head())
+
+best = runs[0]
+history = best.history(keys=["val/loss", "val/accuracy"])   # kurva lengkap sebagai DataFrame
+```
+
+Berguna untuk: analisis statistik (mean ± std antar seed), membuat tabel untuk laporan/paper, dan **quality gate** di CI ("tolak model jika val_acc < baseline").
+
+---
+
+<!-- _class: wb -->
+
+# Reports: Berbagi Hasil Eksperimen
+
+**Report** = dokumen interaktif yang menggabungkan teks, grafik live, dan tabel run.
+
+- Tulis **hipotesis → setup → hasil → kesimpulan** di satu tempat
+- Grafik di report terhubung ke run asli → bukan screenshot yang usang
+- Bagikan via link ke dosen/tim, beri komentar, ekspor ke PDF/LaTeX
+- Cocok untuk: **laporan tugas, log-book riset, lampiran skripsi**, *weekly sync* tim
+
+> Kebiasaan baik: setiap eksperimen penting diakhiri dengan **satu report** — termasuk eksperimen yang gagal.
+
+---
+
+<!-- _class: wb small -->
+
+# Praktik: `wandb_demo.py`
+
+Skrip siap jalan (CPU, ~1 menit): dataset **digits** + `MLPClassifier`, lengkap dengan log per epoch, confusion matrix, tabel prediksi salah, artifact model, dan sweep.
+
+```bash
+pip install wandb scikit-learn
+wandb login
+
+python wandb_demo.py                          # run 1 (default: lr=1e-3, hidden=64)
+python wandb_demo.py --lr 0.01                # run 2: lr lebih besar
+python wandb_demo.py --hidden 16 --alpha 0.01 # run 3: model kecil + regularisasi kuat
+python wandb_demo.py --sweep --count 15       # sweep Bayesian 15 trial
+```
+
+**Tugas mini** di dashboard `digits-experiment-tracking`:
+1. Run mana dengan `best_val_accuracy` tertinggi? Apa konfigurasinya?
+2. Adakah run yang *overfitting*? Tunjukkan dari kurva `train/loss` vs `val/loss`.
+3. Dari sweep: hyperparameter mana yang paling penting (*Parameter Importance*)?
+4. Angka berapa yang paling sering salah diprediksi (lihat tabel `val/salah_prediksi`)?
+
+---
+
+<!-- _class: small -->
+
+# Best Practices Experiment Tracking
+
+| ✅ Lakukan | ❌ Hindari |
+|-----------|-----------|
+| Satu **project** per pertanyaan/tujuan | Semua run dalam satu project "test" |
+| Nama metrik konsisten & berprefiks: `train/loss`, `val/f1_macro` | `loss`, `loss2`, `acc_final` |
+| **Semua** hyperparameter masuk `config` (termasuk seed & versi data) | Hardcode nilai di tengah kode |
+| `tags`, `group`, `notes` berisi hipotesis | Run tanpa konteks |
+| Commit kode sebelum menjalankan run | Menjalankan kode yang belum di-commit |
+| Log dataset & model sebagai **Artifact** | `model_final_v2_fix.pkl` di Google Drive |
+| Jalankan beberapa seed untuk klaim penting | Menyimpulkan dari satu run |
+| Simpan API key di environment variable | API key di notebook yang di-push ke GitHub |
+
+---
+
+# Ringkasan
+
+1. ML bersifat **eksperimental** → tanpa tracking, hasil tidak bisa dipercaya dan diulang.
+2. Lacak **full context**: code, data, config, environment, metrics, artifacts.
+3. Eksperimen yang valid: **baseline, ubah satu hal, kunci split, beberapa seed**.
+4. Log metrik **per epoch** untuk mendiagnosis *overfitting*, *underfitting*, dan lr.
+5. Versioning **data + kode + model** → *lineage* dari produksi sampai data mentah.
+6. **Weights & Biases**: `init` → `config` → `log` → **compare** → **sweep** → **artifact** → **registry**.
+
+> *"If you can't reproduce it, you can't trust it — and you can't ship it."*
+
+---
+
+<!-- _class: small -->
 
 # Referensi
 
 1. ml-ops.org — *MLOps Principles*. https://ml-ops.org/content/mlops-principles
-2. S. Soni — *A Practical Guide to Experiment Tracking in MLOps*, Medium. https://medium.com/@sachinsoni600517/a-practical-guide-to-experiment-tracking-in-mlops-14777cfc3724
-3. Diametral — *MLOps: Why Data and Model Experiment Tracking is Important*. https://diametral.com/en/articles/mlops-why-data-and-model-experiment-tracking-is-important
-4. B. Wilson — *DevOps & MLOps* (LinkedIn post). https://www.linkedin.com/posts/bibinwilson_devops-mlops-share-7484966746697895936-ex0x/
-5. Snowflake — *Experiment Tracking*. https://www.snowflake.com/en/artificial-intelligence/machine-learning/model-evaluation/experiment-tracking/
-
-
----
-
-# Referensi
-
-6. trail-ml — *First Steps in Experiment Tracking*. https://www.trail-ml.com/blog/first-steps-experiment-tracking
-7. Nazmi — *MLOps Experiment Tracking with MLflow*. https://nazmi.tech/blog/mlops-experiment-tracking-with-mlflow
-8. MLflow Documentation. https://mlflow.org/docs/latest/
+2. Weights & Biases Documentation — *Experiments*. https://docs.wandb.ai/guides/track/
+3. Weights & Biases Documentation — *Sweeps*. https://docs.wandb.ai/guides/sweeps/
+4. Weights & Biases Documentation — *Artifacts* & *Registry*. https://docs.wandb.ai/guides/artifacts/ · https://docs.wandb.ai/guides/registry/
+5. S. Soni — *A Practical Guide to Experiment Tracking in MLOps*, Medium. https://medium.com/@sachinsoni600517/a-practical-guide-to-experiment-tracking-in-mlops-14777cfc3724
+6. Diametral — *MLOps: Why Data and Model Experiment Tracking is Important*. https://diametral.com/en/articles/mlops-why-data-and-model-experiment-tracking-is-important
+7. Snowflake — *Experiment Tracking*. https://www.snowflake.com/en/artificial-intelligence/machine-learning/model-evaluation/experiment-tracking/
+8. trail-ml — *First Steps in Experiment Tracking*. https://www.trail-ml.com/blog/first-steps-experiment-tracking
 9. Google Cloud — *MLOps: Continuous delivery and automation pipelines in machine learning*.
 10. Bergstra, J. & Bengio, Y. (2012). *Random Search for Hyper-Parameter Optimization*. JMLR 13.
 
@@ -569,7 +942,6 @@ Simpan versi semantik sebagai **tag** di registry, berdampingan dengan versi num
 ### Diskusi & Tanya Jawab
 
 > *"If you can't reproduce it, you can't trust it — and you can't ship it."*
-
 
 ---
 
