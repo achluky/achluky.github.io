@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Buku{% endblock %}
+{% block content %}
+<h1>Katalog Buku</h1>
+<form method="get" class="toolbar">
+  <input name="q" value="{{ q }}" placeholder="Cari judul / penulis / ISBN">
+  <select name="kategori">
+    <option value="">Semua kategori</option>
+    {% for k in kategori %}<option value="{{ k.id }}" {% if kat == k.id %}selected{% endif %}>{{ k.nama }}</option>{% endfor %}
+  </select>
+  <select name="urut">
+    {% for v, label in [('judul','Judul'),('tahun','Tahun terbaru'),('stok','Stok terbanyak'),('terbaru','Baru ditambahkan')] %}
+      <option value="{{ v }}" {% if urut == v %}selected{% endif %}>{{ label }}</option>
+    {% endfor %}
+  </select>
+  <button>Cari</button>
+  {% if user.role == 'admin' %}<a class="btn" href="{{ url_for('katalog.buku_form') }}">+ Buku</a>{% endif %}
+</form>
+<table>
+  <tr><th>ISBN</th><th>Judul</th><th>Penulis</th><th>Kategori</th><th>Tahun</th><th>Stok</th></tr>
+  {% for b in buku %}
+  <tr><td>{{ b.isbn }}</td><td><a href="{{ url_for('katalog.buku_detail', buku_id=b.id) }}">{{ b.judul }}</a></td>
+      <td>{{ b.penulis }}</td><td>{{ b.kategori }}</td><td>{{ b.tahun or '-' }}</td>
+      <td>{% if b.stok == 0 %}<span class="badge warn">habis</span>{% else %}{{ b.stok }}{% endif %}</td></tr>
+  {% else %}<tr><td colspan="6" class="muted">Tidak ada buku yang cocok</td></tr>{% endfor %}
+</table>
+{% endblock %}

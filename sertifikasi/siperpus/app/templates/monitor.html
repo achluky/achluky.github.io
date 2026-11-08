@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Monitor Resource{% endblock %}
+{% block content %}
+<h1>Monitor Resource</h1>
+<div class="stats">
+  <div class="stat"><b>{{ m.memori_mb }} MB</b><span>Memori proses</span></div>
+  <div class="stat"><b>{{ m.cpu_persen if m.cpu_persen is not none else 'n/a' }}{% if m.cpu_persen is not none %}%{% endif %}</b><span>CPU</span></div>
+  <div class="stat"><b>{{ m.db_mb }} MB</b><span>Ukuran database</span></div>
+  <div class="stat"><b>{{ m.disk_bebas_gb }} GB</b><span>Disk bebas ({{ m.disk_terpakai_persen }}% terpakai)</span></div>
+  <div class="stat"><b>{{ m.rata_ms }} / {{ m.p95_ms }} ms</b><span>Respons rata-rata / p95</span></div>
+  <div class="stat"><b>{{ m.jumlah_request }}</b><span>Request ({{ m.error_5xx }} error 5xx)</span></div>
+  <div class="stat"><b>{{ m.rata_query_ms }} ms</b><span>Rata-rata query ({{ m.jumlah_query }})</span></div>
+  <div class="stat"><b>{{ m.uptime_detik }} s</b><span>Uptime · PID {{ m.pid }}</span></div>
+</div>
+<div class="cols">
+  <section class="card">
+    <h2>Endpoint teramai</h2>
+    <table><tr><th>Endpoint</th><th>Hit</th></tr>
+      {% for ep, n in m.endpoint_teramai %}<tr><td>{{ ep }}</td><td>{{ n }}</td></tr>{% endfor %}</table>
+  </section>
+  <section class="card">
+    <h2>Versi skema database</h2>
+    <table><tr><th>Versi</th><th>Migrasi</th><th>Diterapkan</th></tr>
+      {% for v in versi %}<tr><td>{{ v.versi }}</td><td>{{ v.nama }}</td><td>{{ v.diterapkan_pada }}</td></tr>{% endfor %}</table>
+  </section>
+</div>
+<h2>Slow query (&gt; {{ config.SLOW_QUERY_MS }} ms)</h2>
+<table><tr><th>Waktu</th><th>SQL</th><th>ms</th></tr>
+  {% for w, sql, ms in m.slow_queries %}<tr><td>{{ w }}</td><td><code>{{ sql }}</code></td><td>{{ ms }}</td></tr>
+  {% else %}<tr><td colspan="3" class="muted">Tidak ada slow query</td></tr>{% endfor %}</table>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Laporan{% endblock %}
+{% block content %}
+<h1>Laporan</h1>
+<div class="cols">
+  <section class="card">
+    <h2>Buku terpopuler <small class="muted">(GROUP BY + heap top-N)</small></h2>
+    <table><tr><th>Judul</th><th>Dipinjam</th></tr>
+      {% for judul, n in populer %}<tr><td>{{ judul }}</td><td>{{ n }}×</td></tr>{% endfor %}</table>
+  </section>
+  <section class="card">
+    <h2>Peminjaman per bulan <small class="muted">(strftime)</small></h2>
+    <table><tr><th>Bulan</th><th>Jumlah</th></tr>
+      {% for r in per_bulan %}<tr><td>{{ r.bulan }}</td><td>{{ r.jumlah }}</td></tr>{% endfor %}</table>
+  </section>
+  <section class="card">
+    <h2>Anggota dengan denda <small class="muted">(HAVING)</small></h2>
+    <table><tr><th>Anggota</th><th>Terlambat</th><th>Total denda</th></tr>
+      {% for r in denda %}<tr><td>{{ r.no_anggota }} — {{ r.nama }}</td><td>{{ r.kali_terlambat }}×</td><td>Rp{{ '{:,}'.format(r.total_denda).replace(',', '.') }}</td></tr>
+      {% else %}<tr><td colspan="3" class="muted">Tidak ada</td></tr>{% endfor %}</table>
+  </section>
+  <section class="card">
+    <h2>Belum pernah dipinjam <small class="muted">(NOT EXISTS)</small></h2>
+    <table><tr><th>ISBN</th><th>Judul</th></tr>
+      {% for r in tidak_dipinjam %}<tr><td>{{ r.isbn }}</td><td>{{ r.judul }}</td></tr>
+      {% else %}<tr><td colspan="2" class="muted">Semua buku pernah dipinjam</td></tr>{% endfor %}</table>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<div class="stats">
+  <div class="stat"><b>{{ stat.total_judul }}</b><span>Judul buku</span></div>
+  <div class="stat"><b>{{ stat.total_stok }}</b><span>Eksemplar tersedia</span></div>
+  <div class="stat"><b>{{ stat.anggota_aktif }}</b><span>Anggota aktif</span></div>
+  <div class="stat"><b>{{ stat.dipinjam }}</b><span>Sedang dipinjam</span></div>
+  <div class="stat warn"><b>{{ stat.terlambat }}</b><span>Terlambat</span></div>
+</div>
+<h2>Jatuh tempo terdekat</h2>
+<table>
+  <tr><th>Anggota</th><th>Judul</th><th>Jatuh tempo</th><th>Terlambat</th></tr>
+  {% for p in aktif %}
+  <tr><td>{{ p.nama_anggota }}</td><td>{{ p.judul }}</td><td>{{ p.tgl_jatuh_tempo }}</td>
+      <td>{% if p.hari_terlambat > 0 %}<span class="badge warn">{{ p.hari_terlambat }} hari</span>{% else %}-{% endif %}</td></tr>
+  {% else %}<tr><td colspan="4" class="muted">Tidak ada peminjaman aktif</td></tr>{% endfor %}
+</table>
+{% endblock %}

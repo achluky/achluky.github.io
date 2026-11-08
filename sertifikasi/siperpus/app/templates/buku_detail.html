@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ buku.judul }}{% endblock %}
+{% block content %}
+<h1>{{ buku.judul }}</h1>
+<div class="card">
+  <p><b>Penulis:</b> {{ buku.penulis }} · <b>Penerbit:</b> {{ buku.penerbit or '-' }} · <b>Tahun:</b> {{ buku.tahun or '-' }}</p>
+  <p><b>ISBN:</b> {{ buku.isbn }} · <b>Kategori:</b> {{ buku.kategori }} · <b>Stok:</b> {{ buku.stok }} · <b>Antrian reservasi:</b> {{ antrian }}</p>
+  {% if user.role == 'admin' %}
+  <div class="toolbar">
+    <a class="btn" href="{{ url_for('katalog.buku_form', buku_id=buku.id) }}">Edit</a>
+    <form method="post" action="{{ url_for('katalog.buku_hapus', buku_id=buku.id) }}" class="inline">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <button class="danger">Hapus</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+
+{% if buku.stok == 0 %}
+<h2>Reservasi (stok habis)</h2>
+<form method="post" action="{{ url_for('sirkulasi.reservasi') }}" class="toolbar">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <input type="hidden" name="buku_id" value="{{ buku.id }}">
+  <select name="anggota_id" required>{% for a in anggota %}<option value="{{ a.id }}">{{ a.no_anggota }} — {{ a.nama }}</option>{% endfor %}</select>
+  <button>Masukkan antrian</button>
+</form>
+{% endif %}
+
+<h2>Peminjam buku ini juga meminjam</h2>
+<ul>
+  {% for r in rekomendasi %}<li><a href="{{ url_for('katalog.buku_detail', buku_id=r.id) }}">{{ r.judul }}</a> <span class="muted">— {{ r.penulis }}</span></li>
+  {% else %}<li class="muted">Belum ada data</li>{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Anggota{% endblock %}
+{% block content %}
+<h1>Anggota</h1>
+<form method="post" class="toolbar">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <input name="no_anggota" placeholder="No. anggota" required maxlength="20">
+  <input name="nama" placeholder="Nama" required maxlength="120">
+  <input type="email" name="email" placeholder="Email" maxlength="120">
+  <input name="telepon" placeholder="Telepon" maxlength="20">
+  <button>+ Anggota</button>
+</form>
+<table>
+  <tr><th>No.</th><th>Nama</th><th>Email</th><th>Telepon</th><th>Terdaftar</th><th>Pinjam aktif</th></tr>
+  {% for a in anggota %}
+  <tr><td>{{ a.no_anggota }}</td><td>{{ a.nama }}</td><td>{{ a.email or '-' }}</td><td>{{ a.telepon or '-' }}</td>
+      <td>{{ a.tgl_daftar }}</td><td>{{ a.pinjam_aktif }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

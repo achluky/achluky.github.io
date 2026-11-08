@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Sirkulasi{% endblock %}
+{% block content %}
+<h1>Sirkulasi</h1>
+<form method="post" action="{{ url_for('sirkulasi.pinjam') }}" class="toolbar">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <select name="anggota_id" required>
+    <option value="">— Anggota —</option>
+    {% for a in anggota %}<option value="{{ a.id }}">{{ a.no_anggota }} — {{ a.nama }} ({{ a.pinjam_aktif }} aktif)</option>{% endfor %}
+  </select>
+  <select name="buku_id" required>
+    <option value="">— Buku —</option>
+    {% for b in buku %}<option value="{{ b.id }}">{{ b.judul }} (stok {{ b.stok }})</option>{% endfor %}
+  </select>
+  <button>Pinjamkan</button>
+</form>
+
+<h2>Peminjaman aktif</h2>
+<table>
+  <tr><th>Anggota</th><th>Judul</th><th>Pinjam</th><th>Jatuh tempo</th><th>Status</th><th></th></tr>
+  {% for p in aktif %}
+  <tr><td>{{ p.no_anggota }} — {{ p.nama_anggota }}</td><td>{{ p.judul }}</td><td>{{ p.tgl_pinjam }}</td><td>{{ p.tgl_jatuh_tempo }}</td>
+      <td>{% if p.hari_terlambat > 0 %}<span class="badge warn">terlambat {{ p.hari_terlambat }} hari</span>{% else %}<span class="badge ok">tepat waktu</span>{% endif %}</td>
+      <td><form method="post" action="{{ url_for('sirkulasi.kembali', peminjaman_id=p.id) }}" class="inline">
+            <input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button>Kembalikan</button></form></td></tr>
+  {% else %}<tr><td colspan="6" class="muted">Tidak ada peminjaman aktif</td></tr>{% endfor %}
+</table>
+
+<h2>Antrian reservasi</h2>
+<table>
+  <tr><th>Judul</th><th>Anggota</th><th>Sejak</th></tr>
+  {% for r in reservasi %}<tr><td>{{ r.judul }}</td><td>{{ r.nama_anggota }}</td><td>{{ r.tgl_reservasi }}</td></tr>
+  {% else %}<tr><td colspan="3" class="muted">Tidak ada reservasi</td></tr>{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit' if buku_id else 'Tambah' }} Buku{% endblock %}
+{% block content %}
+<h1>{{ 'Edit' if buku_id else 'Tambah' }} Buku</h1>
+<form method="post" class="card grid">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <label>ISBN-13 <input name="isbn" value="{{ buku.isbn if buku else '' }}" required maxlength="17"></label>
+  <label>Judul <input name="judul" value="{{ buku.judul if buku else '' }}" required maxlength="200"></label>
+  <label>Penulis <input name="penulis" value="{{ buku.penulis if buku else '' }}" required maxlength="200"></label>
+  <label>Penerbit <input name="penerbit" value="{{ (buku.penerbit or '') if buku else '' }}" maxlength="120"></label>
+  <label>Tahun <input type="number" name="tahun" value="{{ (buku.tahun or '') if buku else '' }}" min="1900" max="2100"></label>
+  <label>Stok <input type="number" name="stok" value="{{ buku.stok if buku else 1 }}" min="0"></label>
+  <label>Kategori
+    <select name="kategori_id" required>
+      {% for k in kategori %}<option value="{{ k.id }}" {% if buku and buku.kategori_id|string == k.id|string %}selected{% endif %}>{{ k.nama }}</option>{% endfor %}
+    </select>
+  </label>
+  <button>Simpan</button>
+</form>
+{% endblock %}

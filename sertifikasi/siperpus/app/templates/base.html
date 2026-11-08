@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}SIPERPUS{% endblock %} · SIPERPUS</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  {% if user %}
+  <nav class="nav">
+    <a class="brand" href="{{ url_for('katalog.dashboard') }}">📚 SIPERPUS</a>
+    <a href="{{ url_for('katalog.buku_list') }}">Buku</a>
+    <a href="{{ url_for('katalog.anggota') }}">Anggota</a>
+    <a href="{{ url_for('sirkulasi.index') }}">Sirkulasi</a>
+    <a href="{{ url_for('admin.laporan') }}">Laporan</a>
+    {% if user.role == 'admin' %}
+      <a href="{{ url_for('admin.monitor') }}">Monitor</a>
+      <a href="{{ url_for('admin.audit_log') }}">Audit</a>
+    {% endif %}
+    <span class="spacer"></span>
+    <span class="muted">{{ user.username }} ({{ user.role }}) · {{ config.ENV_NAME }}</span>
+    <form method="post" action="{{ url_for('auth.logout') }}" class="inline">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <button class="link">Keluar</button>
+    </form>
+  </nav>
+  {% endif %}
+  <main>
+    {% for kategori, pesan in get_flashed_messages(with_categories=true) %}
+      <div class="flash {{ kategori }}">{{ pesan }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer>SIPERPUS v{{ config.VERSION }} · env: {{ config.ENV_NAME }}</footer>
+</body>
+</html>

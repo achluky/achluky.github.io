@@ -1,0 +1,11 @@
+# J.620100.003.01 - Library/framework yang diperlukan (versi dikunci agar build konsisten)
+Flask==3.0.3            # web framework (routing, templating Jinja2, session)
+Werkzeug==3.0.6         # WSGI toolkit + hashing password (scrypt/pbkdf2)
+gunicorn==23.0.0        # WSGI server untuk staging/production
+psutil==6.1.0           # pemantauan CPU & memori proses
+
+# Development / QA
+pytest==8.3.3           # unit & integration test
+pytest-cov==5.0.0       # coverage test
+flake8==7.1.1           # linting (standar kode untuk code review)
+pip-audit==2.7.3        # pemindaian kerentanan dependensi

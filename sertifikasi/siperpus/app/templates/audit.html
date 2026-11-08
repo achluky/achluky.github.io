@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Audit Log{% endblock %}
+{% block content %}
+<h1>Audit Log <small class="muted">(100 terakhir)</small></h1>
+<table>
+  <tr><th>Waktu (UTC)</th><th>User</th><th>Aksi</th><th>Detail</th><th>IP</th></tr>
+  {% for l in log %}<tr><td>{{ l.waktu }}</td><td>{{ l.username }}</td><td><span class="badge">{{ l.aksi }}</span></td><td>{{ l.detail }}</td><td>{{ l.ip }}</td></tr>{% endfor %}
+</table>
+{% endblock %}
