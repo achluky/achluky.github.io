@@ -15,7 +15,7 @@
             "objective": "Mahasiswa mampu memahami konsep dasar itemset mining dan analisis asosiasi dalam konteks data mining.",
             "topics": ["Itemset Mining", "Apriori Algorithm", "FP-Growth Algorithm", "Applications of Itemset Mining"],
             "materials": [
-                { "label": "Slide Pertemuan 11", "href": "", "icon": "fas fa-file-pdf" }
+                { "label": "Slide Pertemuan 11", "href": "p11_itemset_mining.pdf", "icon": "fas fa-file-pdf" }
             ],
             "assessment": ""
         },

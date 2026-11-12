@@ -40,7 +40,7 @@ style: |
 <!-- _header: '' -->
 
 # Pattern Mining (Analisis Asosiasi)
-## Itemset Mining: Apriori · FP-Growth · Eclat
+## Itemset Mining: Apriori · FP-Growth
 
 ### Pertemuan 11 — Data Mining
 **Sains Data ITERA · Ganjil 2026/2025**
@@ -49,7 +49,7 @@ style: |
 
 # Capaian Pembelajaran & Agenda
 
-> Mahasiswa mampu memahami konsep dasar **itemset mining** dan **analisis asosiasi**, serta mampu menghitung secara manual *frequent itemset* dan *association rule*.
+> Mahasiswa mampu memahami konsep dasar **itemset mining** dan **analisis asosiasi**, serta mampu menganalisis dan menghitung secara manual *frequent itemset* dan *association rule*.
 
 1. Motivasi & aplikasi — *market basket analysis*
 2. Definisi formal: itemset, support, confidence, aturan asosiasi
@@ -57,12 +57,11 @@ style: |
 4. **Algoritma Apriori** — perhitungan manual langkah demi langkah
 5. Pembangkitan aturan & ukuran *interestingness* (lift, leverage, conviction)
 6. **Algoritma FP-Growth** — FP-tree & *conditional pattern base*
-7. **Eclat** (format vertikal) · *closed* & *maximal itemset*
-8. Implementasi Python · **studi kasus jurnal** · latihan
+7. Implementasi Python · **studi kasus jurnal** · latihan
 
 ---
 
-# Motivasi: Apa yang Sering Dibeli Bersamaan?
+# Motivasi: Apa yang Sering Dibeli Konsumen Secara Bersamaan?
 
 Setiap transaksi kasir = **keranjang belanja** (himpunan item). Dari jutaan keranjang ingin ditemukan pola seperti:
 
@@ -76,6 +75,8 @@ $$\{\text{Roti}, \text{Susu}\} \Rightarrow \{\text{Mentega}\}$$
 | Pendidikan | Pola mata kuliah yang diambil/tidak lulus bersamaan |
 | Web mining | Halaman yang dikunjungi dalam satu sesi |
 | Keamanan | Kombinasi *event* log yang mendahului serangan |
+
+<br/>
 
 Diperkenalkan oleh **Agrawal, Imieliński & Swami (1993)** untuk data transaksi supermarket.
 
@@ -124,12 +125,12 @@ Dengan *minsup* = 50%, $X$ **tidak frequent**.
 
 ---
 
-# Aturan Asosiasi (Association Rule)
+# Association Rule
 
 Aturan berbentuk $X \Rightarrow Y$ dengan $X, Y \subseteq I$ dan $X \cap Y = \emptyset$
 ($X$ = *antecedent / LHS*, $Y$ = *consequent / RHS*)
 
-$$\text{support}(X \Rightarrow Y) = s(X \cup Y) = \frac{\sigma(X \cup Y)}{N} \qquad \text{→ seberapa sering aturan berlaku}$$
+$$\text{support}(X \Rightarrow Y) = s(X \cup Y) = \frac{\sigma(X \cup Y)}{N} \qquad \text{→ seberapa sering rule berlaku}$$
 
 $$\text{confidence}(X \Rightarrow Y) = \frac{\sigma(X \cup Y)}{\sigma(X)} = P(Y \mid X) \qquad \text{→ seberapa dapat dipercaya}$$
 
@@ -137,38 +138,39 @@ $$\text{confidence}(X \Rightarrow Y) = \frac{\sigma(X \cup Y)}{\sigma(X)} = P(Y 
 
 $$s = \frac{\sigma(\text{Susu},\text{Popok},\text{Bir})}{N} = \frac{2}{5} = 0{,}4 \qquad c = \frac{\sigma(\text{Susu},\text{Popok},\text{Bir})}{\sigma(\text{Susu},\text{Popok})} = \frac{2}{3} = 0{,}67$$
 
-> Aturan **kuat (strong rule)** jika $s \ge \textit{minsup}$ **dan** $c \ge \textit{minconf}$.
-> Asosiasi ≠ kausalitas: aturan hanya menyatakan *co-occurrence*.
+> **Strong rule**: jika $s \ge \textit{minsup}$ **dan** $c \ge \textit{minconf}$.
+> Asosiasi ≠ kausalitas: rule hanya menyatakan *co-occurrence* (Kebersamaan muncul).
 
 ---
 
-# Masalah Mining Aturan Asosiasi
+# Masalah Association Rule Mining
 
-**Diberikan** $D$, *minsup*, *minconf* → **temukan semua** aturan dengan $s \ge \textit{minsup}$ dan $c \ge \textit{minconf}$.
+**Diberikan** $D$ (basis data transaksi), *minsup*, *minconf* → **temukan semua** rule dengan $s \ge \textit{minsup}$ dan $c \ge \textit{minconf}$.
 
 ### Pendekatan dua tahap
-1. **Frequent itemset generation** — cari semua itemset dengan $s \ge \textit{minsup}$ *(bagian paling mahal)*
-2. **Rule generation** — dari setiap frequent itemset $L$, bentuk aturan $A \Rightarrow L \setminus A$ dengan confidence tinggi
+1. **Frequent itemset generation** — cari semua itemset dengan $s \ge \textit{minsup}$ *(costly)*
+2. **Rule generation** — dari setiap frequent itemset $L$, bentuk rule $A \Rightarrow L \setminus A$ dengan confidence tinggi
 
-Mengapa dua tahap? Semua aturan dari itemset yang sama memiliki **support yang sama**:
+Mengapa dua tahap? Semua rule dari itemset yang sama memiliki **support yang sama**:
 
 $$\{\text{Susu},\text{Popok}\}\Rightarrow\{\text{Bir}\},\;\; \{\text{Bir}\}\Rightarrow\{\text{Susu},\text{Popok}\},\;\; \{\text{Popok},\text{Bir}\}\Rightarrow\{\text{Susu}\},\;\dots \quad s = 0{,}4$$
 
-→ cukup periksa **support itemset**-nya sekali; confidence dihitung belakangan.
+→ cukup periksa **support itemset**-nya sekali
+→ confidence dihitung berikutnya
 
 ---
 
-# Kompleksitas: Mengapa Brute Force Tidak Mungkin?
+# Kompleksitas: Brute Force ?
 
-Dengan $d$ item:
+Dengan $d$ item: $\text{jumlah itemset kandidat} = 2^d - 1 ;  \text{jumlah rule } R = 3^d - 2^{d+1} + 1$
 
-$$\text{jumlah itemset kandidat} = 2^d - 1 \qquad\qquad \text{jumlah aturan } R = 3^d - 2^{d+1} + 1$$
-
-| $d$ | Itemset | Aturan |
+| $d$ | Itemset | Rule |
 |---|---|---|
 | 6 | 63 | 602 |
 | 20 | ≈ 1 juta | ≈ 3,5 × 10⁹ |
 | 100 | ≈ 1,27 × 10³⁰ | ≈ 5 × 10⁴⁷ |
+
+<br/>
 
 **Brute force**: cocokkan setiap kandidat ($M = 2^d$) dengan setiap transaksi ($N$, lebar rata-rata $w$) → $O(N \cdot M \cdot w)$ — **eksponensial**.
 
@@ -187,7 +189,7 @@ $$\text{jumlah itemset kandidat} = 2^d - 1 \qquad\qquad \text{jumlah aturan } R 
 
 ---
 
-# Sifat Anti-Monoton Support (Pembuktian)
+# Sifat Anti-Monoton Support
 
 $$\forall X, Y : \; X \subseteq Y \;\Rightarrow\; s(X) \ge s(Y)$$
 
@@ -201,7 +203,72 @@ Jika $\sigma(\{A,B\}) < \textit{minsup}$, maka untuk setiap $Y \supseteq \{A,B\}
 
 $$\sigma(Y) \le \sigma(\{A,B\}) < \textit{minsup}$$
 
-→ $\{A,B,C\}$, $\{A,B,D\}$, $\{A,B,C,D\}$ **tidak perlu dihitung** sama sekali.
+→ $\{A,B,C\}$, $\{A,B,D\}$, $\{A,B,C,D\}$
+→ **tidak perlu dihitung** sama sekali.
+
+---
+
+<!-- _class: two small -->
+
+# Pembuktian Manual: Rantai Superset
+
+Dataset contoh (Tan et al.):
+
+| TID | Item |
+|---|---|
+| 1 | Roti, Susu |
+| 2 | Roti, Popok, Bir, Telur |
+| 3 | Susu, Popok, Bir, Cola |
+| 4 | Roti, Susu, Popok, Bir |
+| 5 | Roti, Susu, Popok, Cola |
+
+<br/>
+
+Ambil rantai itemset yang terus **diperbesar**:
+
+$$\{\text{Popok}\} \subset \{\text{Popok},\text{Bir}\} \subset \{\text{Susu},\text{Popok},\text{Bir}\} \subset \{\text{Roti},\text{Susu},\text{Popok},\text{Bir}\}$$
+
+| Itemset $X$ | TID yang memuat $X$ | $\sigma(X)$ | $s(X)$ |
+|---|---|---|---|
+| {Popok} | {2, 3, 4, 5} | 4 | 80% |
+| {Popok, Bir} | {2, 3, 4} | 3 | 60% |
+| {Susu, Popok, Bir} | {3, 4} | 2 | 40% |
+| {Roti, Susu, Popok, Bir} | {4} | 1 | 20% |
+
+<br/>
+
+Himpunan TID **menyusut** di setiap langkah:
+
+$$\{4\} \subseteq \{3,4\} \subseteq \{2,3,4\} \subseteq \{2,3,4,5\}$$
+
+sehingga $\;1 \le 2 \le 3 \le 4\;$ ✓ — persis langkah bukti: setiap transaksi yang memuat superset **pasti** memuat subset-nya, tetapi tidak sebaliknya.
+
+---
+
+<!-- _class: small -->
+
+# Pembuktian Manual: Pruning & Batasannya
+
+Gunakan *min support count* = **3** (60%) pada dataset yang sama.
+
+### 1. Itemset tidak frequent → semua superset tidak frequent
+$\sigma(\{\text{Susu},\text{Bir}\}) = |\{3,4\}| = 2 < 3$ → **tidak frequent**. Periksa superset-nya:
+
+| Superset dari {Susu, Bir} | TID | σ | Batas atas dari prinsip Apriori | Frequent? |
+|---|---|---|---|---|
+| {Susu, Popok, Bir} | {3, 4} | 2 | ≤ 2 | ✗ |
+| {Roti, Susu, Bir} | {4} | 1 | ≤ 2 | ✗ |
+| {Susu, Bir, Cola} | {3} | 1 | ≤ 2 | ✗ |
+| {Susu, Popok, Bir, Cola} | {3} | 1 | ≤ 2 | ✗ |
+
+<br/>
+
+Tanpa menghitung pun sudah pasti: $\sigma(\text{superset}) \le 2 < 3$ → semuanya **dipangkas**.
+
+### 2. Kebalikannya TIDAK berlaku
+$\sigma(\{\text{Roti}\}) = 4$ ✓ dan $\sigma(\{\text{Bir}\}) = 3$ ✓, tetapi $\sigma(\{\text{Roti},\text{Bir}\}) = |\{2,4\}| = 2$ ✗
+
+> Semua subset frequent adalah **syarat perlu**, bukan **syarat cukup**. Karena itu Apriori tetap harus **menghitung** support kandidat yang lolos prune.
 
 ---
 
@@ -222,7 +289,8 @@ Output: L = semua frequent itemset
 2:  for (k = 2; L(k-1) ≠ ∅; k++) do
 3:      Ck ← apriori_gen(L(k-1))                     // JOIN + PRUNE
 4:      for each transaksi t ∈ D do                   // scan D ke-k
-5:          for each kandidat c ∈ Ck, c ⊆ t do  c.count++
+5:          for each kandidat c ∈ Ck, c ⊆ t do  
+              c.count++
 6:      Lk ← { c ∈ Ck | c.count ≥ minsup }
 7:  return L = ∪k Lk
 
@@ -281,6 +349,8 @@ Bayangkan item sebagai produk, misalnya I1 = Roti, I2 = Susu, I3 = Mentega, I4 =
 | {I4} | T200, T400 | **2** | ✓ |
 | {I5} | T100, T800 | **2** | ✓ |
 
+<br/>
+
 $$L_1 = \{\{I1\}{:}6,\; \{I2\}{:}7,\; \{I3\}{:}6,\; \{I4\}{:}2,\; \{I5\}{:}2\}$$
 
 Semua item lolos → tidak ada pruning pada level ini.
@@ -301,11 +371,13 @@ Semua item lolos → tidak ada pruning pada level ini.
 | {I1,I5} | T100, T800 | **2** ✓ | | {I3,I5} | T800 | 1 ✗ |
 | {I2,I3} | T300, T600, T800, T900 | **4** ✓ | | {I4,I5} | – | 0 ✗ |
 
+<br/>
+
 $$L_2 = \{\{I1,I2\}{:}4,\ \{I1,I3\}{:}4,\ \{I1,I5\}{:}2,\ \{I2,I3\}{:}4,\ \{I2,I4\}{:}2,\ \{I2,I5\}{:}2\}$$
+<br/>
+4 kandidat tidak digunakan: {I1,I4}, {I3,I4}, {I3,I5}, {I4,I5}.
 
-4 kandidat gugur: {I1,I4}, {I3,I4}, {I3,I5}, {I4,I5}.
-
-> Kandidat yang gugur di sini akan dipakai untuk **memangkas** kandidat level 3 — tanpa perlu menghitungnya.
+> Kandidat yang tidak digunakan di sini akan dipakai untuk **memangkas** kandidat level 3 — tanpa perlu menghitungnya.
 
 ---
 
@@ -328,6 +400,8 @@ $$L_2 = \{\{I1,I2\}{:}4,\ \{I1,I3\}{:}4,\ \{I1,I5\}{:}2,\ \{I2,I3\}{:}4,\ \{I2,I
 | {I2,I3,I5} | {I3,I5} ✗ | tidak | dipangkas |
 | {I2,I4,I5} | {I4,I5} ✗ | tidak | dipangkas |
 
+<br/>
+
 → dari 6 kandidat hasil join hanya **2** yang perlu dihitung di scan berikutnya.
 
 ---
@@ -340,6 +414,8 @@ $$L_2 = \{\{I1,I2\}{:}4,\ \{I1,I3\}{:}4,\ \{I1,I5\}{:}2,\ \{I2,I3\}{:}4,\ \{I2,I
 |---|---|---|---|
 | {I1,I2,I3} | T800, T900 | **2** | ✓ frequent |
 | {I1,I2,I5} | T100, T800 | **2** | ✓ frequent |
+
+<br/>
 
 $$L_3 = \{\{I1,I2,I3\}{:}2,\ \{I1,I2,I5\}{:}2\}$$
 
@@ -356,16 +432,16 @@ PRUNE: subset {I1,I3,I5} ∉ $L_3$ (juga {I2,I3,I5}) → **dipangkas** → $C_4 
 
 <!-- _class: divider -->
 
-# Bagian 2 — Pembangkitan Aturan
+# Bagian 2 — Pembangkitan Rule
 Dari frequent itemset ke *strong association rules*
 
 ---
 
-# Algoritma Pembangkitan Aturan
+# Algoritma Pembangkitan Rule
 
 Untuk setiap frequent itemset $L$ dan setiap subset tak-kosong $A \subset L$:
 
-$$A \Rightarrow (L \setminus A) \quad\text{jika}\quad \text{conf} = \frac{\sigma(L)}{\sigma(A)} \ge \textit{minconf}$$
+$$A \Rightarrow (L \setminus A) \quad\text{jika}, \quad \text{conf} = \frac{\sigma(L)}{\sigma(A)} \ge \textit{minconf}$$
 
 - Itemset berukuran $k$ menghasilkan $2^k - 2$ kandidat aturan
 - **Tidak perlu scan ulang** — semua $\sigma$ sudah diketahui dari tahap Apriori
@@ -380,6 +456,25 @@ karena pembilang sama ($\sigma(L)$) dan $\sigma(\{I1,I2\}) \le \sigma(\{I1\})$.
 
 ---
 
+# Datasets
+
+| TID | Item |
+|---|---|
+| T100 | I1, I2, I5 |
+| T200 | I2, I4 |
+| T300 | I2, I3 |
+| T400 | I1, I2, I4 |
+| T500 | I1, I3 |
+| T600 | I2, I3 |
+| T700 | I1, I3 |
+| T800 | I1, I2, I3, I5 |
+| T900 | I1, I2, I3 |
+
+<br/>
+
+**Sumber**: Han, Kamber & Pei (2012), Tabel 6.1 — *AllElectronics*
+
+---
 # Aturan dari $L = \{I1, I2, I5\}$ — σ(L) = 2
 
 | Aturan | Perhitungan confidence | conf | ≥ 70%? |
@@ -390,6 +485,8 @@ karena pembilang sama ($\sigma(L)$) dan $\sigma(\{I1,I2\}) \le \sigma(\{I1\})$.
 | {I1} ⇒ {I2, I5} | 2 / σ(I1) = 2/6 | 33% | ✗ |
 | {I2} ⇒ {I1, I5} | 2 / σ(I2) = 2/7 | 29% | ✗ |
 | {I5} ⇒ {I1, I2} | 2 / σ(I5) = 2/2 | **100%** | ✓ |
+
+<br/>
 
 Semua aturan ini memiliki support $= 2/9 = 22{,}2\%$.
 
@@ -409,6 +506,8 @@ Semua aturan ini memiliki support $= 2/9 = 22{,}2\%$.
 | {I2} ⇒ {I1, I3} | 2 / 7 | 29% ✗ |
 | {I3} ⇒ {I1, I2} | 2 / 6 | 33% ✗ |
 
+<br/>
+
 Tidak ada aturan kuat. Itemset ini **frequent tetapi tidak menghasilkan aturan yang dapat dipercaya**.
 
 > Frequent itemset ≠ aturan yang kuat: support tinggi tidak menjamin confidence tinggi.
@@ -417,7 +516,7 @@ Tidak ada aturan kuat. Itemset ini **frequent tetapi tidak menghasilkan aturan y
 
 # Seluruh Strong Rules
 
-### Strong rules (*minconf* 70%) dari 13 frequent itemset
+Strong rules (*minconf* 70%) dari 13 frequent itemset
 
 | Aturan | sup | conf | | Aturan | sup | conf |
 |---|---|---|---|---|---|---|
@@ -425,9 +524,11 @@ Tidak ada aturan kuat. Itemset ini **frequent tetapi tidak menghasilkan aturan y
 | {I5} ⇒ {I1} | 22% | 100% | | {I5} ⇒ {I2} | 22% | 100% |
 | {I2,I5} ⇒ {I1} | 22% | 100% | | {I1,I5} ⇒ {I2} | 22% | 100% |
 
+<br/>
+
 Dari 13 frequent itemset (8 itemset berukuran ≥ 2) diperiksa **24 kandidat aturan** (6 × 2 + 2 × 6); hanya **6** yang lolos *minconf* 70%.
 
-Perhatikan: 5 dari 6 aturan melibatkan I5 atau I4 — item yang **jarang** (σ = 2). Confidence 100% di sini didukung hanya oleh 2 transaksi → butuh ukuran tambahan untuk menilai apakah pola ini menarik.
+> Perhatikan: 5 dari 6 rule melibatkan I5 atau I4 — item yang **jarang** (σ = 2). Confidence 100% di sini didukung hanya oleh 2 transaksi → butuh ukuran tambahan untuk menilai apakah pola ini menarik.
 
 ---
 
@@ -471,12 +572,12 @@ $$\text{lift}(X \Rightarrow Y) = \frac{\text{conf}(X\Rightarrow Y)}{s(Y)} = \fra
 
 # Kelemahan Apriori & Perbaikannya
 
-### Bottleneck
+Bottleneck:
 1. **Kandidat sangat banyak** — $10^4$ frequent 1-itemset → $\binom{10^4}{2} \approx 5 \times 10^7$ kandidat 2-itemset
 2. **Scan basis data berulang** — untuk pola sepanjang 100 item: $2^{100} \approx 10^{30}$ kandidat & 100+ scan
 3. Mencocokkan kandidat dengan transaksi mahal
 
-### Teknik peningkatan efisiensi
+Teknik peningkatan efisiensi:
 | Teknik | Ide |
 |---|---|
 | Hash-based (DHP) | Hash 2-itemset ke *bucket* saat scan 1; bucket < minsup → kandidat dibuang |
