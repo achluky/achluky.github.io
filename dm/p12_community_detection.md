@@ -49,7 +49,7 @@ style: |
 
 # Capaian Pembelajaran & Agenda
 
-> Mahasiswa mampu memahami konsep **graph mining** dan **community detection**, menghitung secara manual ukuran-ukuran kunci (modularity, edge betweenness, ΔQ), serta mengenali perkembangan metode terbaru.
+> Mahasiswa mampu memahami konsep **graph mining** dan **community detection**, menghitung secara manual hal-hal dasar (seperti modularity, edge betweenness, ΔQ), serta mengenali perkembangan metode terbaru.
 
 1. Motivasi: data berbentuk **graf** & ragam tugas graph mining
 2. Dasar graf: representasi, derajat, densitas, *clustering coefficient*
@@ -65,7 +65,7 @@ style: |
 
 <!-- _class: divider -->
 
-# Bagian 0 — Graph Mining
+# Graph Mining: Motivasi
 
 Mengapa data perlu dipandang sebagai graf?
 
@@ -83,6 +83,8 @@ Mengapa data perlu dipandang sebagai graf?
 | Transportasi | Halte / kota | Rute | Wilayah dengan mobilitas tinggi |
 | Web | Halaman | Hyperlink | Topik & situs sejenis |
 
+<br/>
+
 > Pada data tabular, baris dianggap **independen**. Pada graf, informasi utama justru ada pada **relasi antar-objek**.
 
 ---
@@ -98,13 +100,15 @@ Mengapa data perlu dipandang sebagai graf?
 | **Node classification** | Label simpul yang belum diketahui? | Label propagation, GCN |
 | **Graph anomaly detection** | Simpul/subgraf yang menyimpang? | OddBall, GNN-based |
 
+<br/>
+
 > Community detection adalah analog **clustering** pada graf: *unsupervised*, tanpa label, mencari struktur kelompok.
 
 ---
 
 <!-- _class: divider -->
 
-# Bagian 1 — Dasar Graf
+# Dasar Graf
 
 Representasi & ukuran dasar
 
@@ -121,6 +125,8 @@ Graf $G = (V, E)$ dengan $n = |V|$ simpul dan $m = |E|$ sisi.
 | Bipartit | Dua jenis simpul, mis. pengguna–produk |
 | Atribut | Simpul punya fitur (umur, teks profil) → *attributed graph* |
 
+<br/>
+
 **Matriks ketetanggaan** (*adjacency matrix*) $A$:
 $$A_{ij} = \begin{cases} 1 & \text{jika } \{i,j\} \in E \\ 0 & \text{lainnya} \end{cases} \qquad k_i = \sum_j A_{ij} \;\;(\text{derajat}), \qquad \sum_i k_i = 2m$$
 
@@ -132,7 +138,9 @@ $$A_{ij} = \begin{cases} 1 & \text{jika } \{i,j\} \in E \\ 0 & \text{lainnya} \e
 
 ![w:1080](images/p12_toy_graph.png)
 
-$E = \{(1,2),(1,3),(2,3),(2,4),(3,4),(4,5),(5,6),(5,7),(6,7),(6,8),(7,8)\}$ → $n = 8$, $m = 11$. Graf ini dipakai di seluruh perhitungan manual hari ini.
+$E = \{(1,2),(1,3),(2,3),(2,4),(3,4),(4,5),(5,6),(5,7),(6,7),(6,8),(7,8)\}$ → $n = 8$, $m = 11$. 
+
+> Graf ini dipakai sebagai contoh dalam di seluruh slide.
 
 ---
 
@@ -153,6 +161,8 @@ $E = \{(1,2),(1,3),(2,3),(2,4),(3,4),(4,5),(5,6),(5,7),(6,7),(6,8),(7,8)\}$ → 
 | **7** | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 1 |
 | **8** | 0 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
 
+<br/>
+
 Simetris karena graf tak berarah.
 
 ### Derajat (jumlah baris $A$)
@@ -160,6 +170,8 @@ Simetris karena graf tak berarah.
 | Simpul | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
 |---|---|---|---|---|---|---|---|---|
 | $k_i$ | 2 | 3 | 3 | 3 | 3 | 3 | 3 | 2 |
+
+<br/>
 
 $$\sum_i k_i = 2+3+3+3+3+3+3+2 = 22 = 2m \;\checkmark$$
 
@@ -172,7 +184,7 @@ Graf nyata umumnya sangat *sparse* ($\rho \ll 0{,}01$).
 
 # Clustering Coefficient: "Teman dari Temanku adalah Temanku"
 
-$$C_i = \frac{\text{jumlah sisi di antara tetangga } i}{\binom{k_i}{2}} = \frac{2\,T_i}{k_i(k_i-1)}$$
+$C_i = \frac{\text{jumlah sisi di antara tetangga } i}{\binom{k_i}{2}} = \frac{2\,T_i}{k_i(k_i-1)}$
 
 | Simpul | Tetangga | Sisi antar-tetangga | $\binom{k_i}{2}$ | $C_i$ |
 |---|---|---|---|---|
@@ -182,6 +194,8 @@ $$C_i = \frac{\text{jumlah sisi di antara tetangga } i}{\binom{k_i}{2}} = \frac{
 | 5 | {4, 6, 7} | (6,7) | 3 | **0,333** |
 | 8 | {6, 7} | (6,7) | 1 | **1,000** |
 
+<br/>
+
 Simetris: $C_3 = C_6 = C_7 = 0{,}667$. Rata-rata $\bar{C} = (1 + 4 \times 0{,}667 + 2 \times 0{,}333 + 1)/8 = 0{,}667$.
 
 > Simpul **4 dan 5** (penghubung kedua kelompok) memiliki $C_i$ terendah — indikasi awal adanya **batas komunitas**.
@@ -190,7 +204,7 @@ Simetris: $C_3 = C_6 = C_7 = 0{,}667$. Rata-rata $\bar{C} = (1 + 4 \times 0{,}66
 
 <!-- _class: divider -->
 
-# Bagian 2 — Komunitas
+# Komunitas
 
 Definisi, jenis, dan taksonomi metode
 
@@ -228,7 +242,6 @@ $$\phi(S) = \frac{1}{\min(11, 11)} = 0{,}091 \quad \Rightarrow \text{komunitas y
 
 ---
 
-<!-- _class: small -->
 
 # Taksonomi Metode Community Detection
 
@@ -248,7 +261,7 @@ $$\phi(S) = \frac{1}{\min(11, 11)} = 0{,}091 \quad \Rightarrow \text{komunitas y
 
 <!-- _class: divider -->
 
-# Bagian 3 — Modularity
+# Modularity
 
 Ukuran kualitas partisi yang paling populer
 
@@ -263,8 +276,7 @@ $$Q = \frac{1}{2m}\sum_{i,j}\left[A_{ij} - \frac{k_i k_j}{2m}\right]\delta(c_i, 
 - $A_{ij}$ = sisi nyata; $\dfrac{k_i k_j}{2m}$ = peluang sisi $i$–$j$ pada graf acak (*configuration model*)
 - $\delta(c_i,c_j) = 1$ jika $i$ dan $j$ satu komunitas
 
-Bentuk per komunitas (lebih mudah dihitung manual):
-$$\boxed{Q = \sum_{c}\left[\frac{L_c}{m} - \left(\frac{d_c}{2m}\right)^2\right]}$$
+Bentuk per komunitas (lebih mudah dihitung manual) : $Q = \sum_{c}\left[\frac{L_c}{m} - \left(\frac{d_c}{2m}\right)^2\right]$
 
 $L_c$ = jumlah sisi di dalam komunitas $c$; $d_c$ = jumlah derajat simpul di $c$.
 
@@ -334,7 +346,7 @@ Alternatif: **CPM** (*Constant Potts Model*) yang dipakai Leiden, bebas dari *re
 
 <!-- _class: divider -->
 
-# Bagian 4 — Algoritma Klasik
+# Algoritma Klasik
 
 Girvan–Newman · Louvain · Leiden · LPA · Spectral · Infomap
 
@@ -369,6 +381,8 @@ Sisi (2,3): hanya pasangan (2,3) yang lintasan terpendeknya memakai sisi ini (1�
 | Sisi | (4,5) | (2,4), (3,4), (5,6), (5,7) | (1,2), (1,3), (6,8), (7,8) | (2,3), (6,7) |
 |---|---|---|---|---|
 | EB | **16** | 7,5 | 3,5 | 1 |
+
+<br/> 
 
 Contoh EB(2,4) = 7,5: pasangan $\{1,2,3\} \times \{4,\ldots,8\}$ yang lewat 2→4. Dari 2: 5 pasangan (×1). Dari 1: 5 pasangan, separuh lewat 2 (×0,5) = 2,5. Total = 5 + 2,5 = **7,5**.
 
@@ -436,6 +450,8 @@ Keadaan: $\{1,2,3\}$, $\{4\}$, $\{5,6,7,8\}$ ($Q = 0{,}3264$). Simpul 4 ($k_4 = 
 | 2 | — | **Refinement**: pecah komunitas menjadi sub-komunitas yang dijamin terhubung |
 | 3 | Aggregation | Aggregation berdasarkan partisi hasil refinement |
 
+<br/>
+
 - **Garansi**: semua komunitas **terhubung**; pada konvergensi, *subpartition γ-dense*.
 - Lebih **cepat** dari Louvain pada graf besar.
 - Mendukung fungsi kualitas **modularity** maupun **CPM**.
@@ -471,10 +487,17 @@ Hasil: {1,2,3,4} = A, {5,6,7,8} = B.
 
 **Laplacian** $L = D - A$, dengan $D = \text{diag}(k_1, \ldots, k_n)$. Untuk graf contoh:
 
+<br/>
+
 $$L = \begin{bmatrix}
 2&-1&-1&0&0&0&0&0\\ -1&3&-1&-1&0&0&0&0\\ -1&-1&3&-1&0&0&0&0\\ 0&-1&-1&3&-1&0&0&0\\
 0&0&0&-1&3&-1&-1&0\\ 0&0&0&0&-1&3&-1&-1\\ 0&0&0&0&-1&-1&3&-1\\ 0&0&0&0&0&-1&-1&2
 \end{bmatrix}$$
+
+
+---
+
+# Spectral Clustering
 
 - Eigenvalue terkecil selalu $\lambda_1 = 0$ (vektor konstan); **jumlah eigenvalue 0 = jumlah komponen terhubung**.
 - **Fiedler vector** (eigenvector $\lambda_2$) → minimisasi *ratio cut* yang direlaksasi; **tanda** komponennya membagi graf menjadi dua.
@@ -524,7 +547,7 @@ $$P(A_{ij} = 1) = \omega_{b_i b_j}$$
 
 <!-- _class: divider -->
 
-# Bagian 5 — Komunitas Overlapping
+# Komunitas Overlapping
 
 ---
 
@@ -551,7 +574,7 @@ Komunitas: T1 ∪ T2 = **{1,2,3,4}**, T3 ∪ T4 = **{5,6,7,8}**. Sisi (4,5) tida
 
 <!-- _class: divider -->
 
-# Bagian 6 — Evaluasi & Studi Kasus
+# Evaluasi & Studi Kasus
 
 ---
 
@@ -618,13 +641,11 @@ Output `p12_community_detection_demo.py` (graf tanpa bobot, `seed=42`):
 
 <!-- _class: divider -->
 
-# Bagian 7 — Perkembangan Terbaru
+# Perkembangan Terbaru
 
 Dari heuristik modularity menuju representation learning
 
 ---
-
-<!-- _class: small -->
 
 # Lini Masa Perkembangan Metode
 
@@ -674,8 +695,6 @@ Pendekatan lain: Graph Auto-Encoder, *contrastive learning* (DGI, GRACE), MinCut
 
 ---
 
-<!-- _class: small -->
-
 # Tren 3: Graf Dinamis, Multilayer & Attributed
 
 | Arah riset | Masalah | Pendekatan |
@@ -703,11 +722,11 @@ Pendekatan lain: Graph Auto-Encoder, *contrastive learning* (DGI, GRACE), MinCut
 | Pertanyaan lokal ("Siapa X?") | Baik | Baik |
 | Pertanyaan **global / tematik** | Lemah | **Lebih baik** — berkat ringkasan komunitas |
 
+<br/>
+
 > Community detection, metode "klasik" dari 2008–2019, kini menjadi **komponen kunci sistem AI generatif**.
 
 ---
-
-<!-- _class: small -->
 
 # Memilih Algoritma: Panduan Praktis
 
@@ -722,13 +741,15 @@ Pendekatan lain: Graph Auto-Encoder, *contrastive learning* (DGI, GRACE), MinCut
 | Ada fitur simpul yang kaya | **GNN** (DMoN) atau embedding + clustering |
 | Graf berubah seiring waktu | Metode komunitas dinamis |
 
+<br/>
+
 **Tips**: jalankan beberapa *seed*, periksa stabilitas hasil, coba beberapa nilai resolusi $\gamma$, dan **validasi dengan pengetahuan domain**.
 
 ---
 
 <!-- _class: divider -->
 
-# Bagian 8 — Implementasi Python
+# Implementasi Python
 
 ---
 
@@ -781,7 +802,7 @@ Skrip lengkap: `p12_community_detection_demo.py` · gambar: `make_figures_p12.py
 
 <!-- _class: divider -->
 
-# Bagian 9 — Latihan
+# Latihan
 
 ---
 
@@ -873,5 +894,3 @@ $$E_H = \{(a,b),(a,c),(b,c),(c,d),(d,e),(e,f),(e,g),(f,g),(d,f)\}$$
 # Terima Kasih
 
 ### Pertemuan berikutnya: **Outlier Detection**
-
-Kerjakan latihan hitung manual dan jalankan `p12_community_detection_demo.py`
